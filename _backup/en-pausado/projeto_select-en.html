@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Select mag for Tablet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+
+<body>
+
+    <script>
+        function trocarSVGMenu() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth < 1024) {
+                var svg = document.getElementById("hamburguer");
+                if (svg.innerHTML.includes("ico_hamburguer_branco.svg")) {
+                    svg.innerHTML = '<img src="assets/ico_close_branco.svg" alt="Close menu">';
+                } else {
+                    svg.innerHTML = '<img src="assets/ico_hamburguer_branco.svg" alt="Show menu">';
+                }
+            }
+        }
+    </script><!-- When the user clicks the hamburger button, change the SVG button -->
+
+    <!-- Loading -->
+    <div class="container-loading">
+        <div id="logo-loading">
+            <img src="assets/img_logo_ar_black_v2.png" alt="Logo">
+        </div>
+        <div id="progress-loading"></div>
+    </div>
+
+    <!-- Menu -->
+    <nav>
+        <div id="navbar">
+            <div class="nav-left">
+                <div id="my-logo"></div>
+                <div class="lang-switch" aria-label="Language">
+                    <a href="projeto_select-en.html" class="is-active" aria-current="page" hreflang="en">ENG</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <a href="projeto_select.html" hreflang="pt-BR" lang="pt-BR">PORT</a>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li onclick="trocarSVGMenu()"><a href="index-en.html" target="_self">Back</a></li>
+                </ul>
+                <div class="menu-icon">
+                    <button class="icone" id="hamburguer" onclick="trocarSVGMenu()"><img src="assets/ico_hamburguer_branco.svg" alt="Menu"></button>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <section id="Herosection">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/select/img_bg_select.jpg)">
+                <h1 class="hero-phrase">Select mag for Tablet</h1>
+                <div>[ Scroll page for more ]</div>
+                <div class="seta-animada">
+                    <a href="#Aboutsection"><img src="assets/anima-seta.svg"></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <!-- Intro -->
+        <section id="Introsection">
+            <div id="Intro">
+                <div class="timeline">
+                    <div class="container-full">
+                        <div class="div-left">
+                            <h2>2014 to 2016</h2>
+                            <h4>Editora 3</h4>
+                            <p>
+                                My work on this project focused on transforming the printed publication into a digital editorial experience.
+                                My main responsibilities included:<br><br>
+                            </p>
+                            <div class="container-full">
+                                <ul class="sectors__list">
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Adapting and re-laying out editorial content for digital devices.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Rethinking the visual composition of pages for smaller screens.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Preserving the magazine's visual and editorial identity.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Transforming charts and visual elements into interactive experiences.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Evaluating interaction possibilities to enrich reading.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Considering usability, legibility and navigation aspects.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Adapting content to the particularities of the digital environment.</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 17L17 7M9 7h8v8" />
+                                        </svg>Following visual and functional issues during the production of each issue.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="div-right">
+                            <h4>Job tags:</h4>
+                            <div class="div-tags">
+                                <div class="tags"><span>Editorial design</span></div>
+                                <div class="tags"><span>Interaction</span></div>
+                                <div class="tags"><span>Digital Publishing</span></div>
+                                <div class="tags"><span>Adobe suite</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project body 1 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h1>The Challenge</h1>
+                <div class="container-full">
+                    <p>Select — From print magazine to digital experience</p>
+                </div>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/select/img_select_01.jpg" alt="Select magazine, image 1"></div><br>
+            <div class="container-full">
+                <p>From paper to screen: turning an editorial publication into a digital experience.
+                    For two years, I worked on the digital version of Select magazine, taking part in the process of transforming a printed publication into a reading experience adapted to the digital environment.
+                    The challenge went beyond reproducing pages: it meant rethinking layouts, adapting content, turning graphic elements into interactive experiences and preserving the magazine's editorial identity across different devices.
+
+                </p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/select/img_select_02.jpg" alt="Select magazine, image 2"></div><br>
+            <div class="container-full">
+                <p>Select had an editorial identity built around the printed experience. Its pages combined text, photographs, illustrations, charts and visual compositions that were part of the publication's personality.
+                    With the move to the digital environment, there was an opportunity to bring this content into new formats and explore possibilities that paper did not allow.
+                    The work consisted of preserving the magazine's visual and editorial essence, while understanding how each piece of content could work better on a screen.
+                    This meant rethinking how information was presented, how readers moved through articles and how digital resources could enrich the reading experience.</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/select/img_select_03.jpg" alt="Select magazine, image 3"></div><br>
+            <div class="container-full">
+                <p>The main question was understanding that the digital experience has its own characteristics and should not be treated as a simple reproduction of the printed version.
+                    Unlike paper, screens come in varied sizes, have viewing limitations and offer different forms of interaction. A composition that works perfectly on a printed page can become hard to read or difficult to navigate on a mobile device.
+                    From this, the project presented some central challenges:
+                    Layout adaptation: reorganizing content for different screen sizes without losing the editorial identity.
+                    Legibility: ensuring reading comfort in digital environments.
+                    Interactivity: turning static elements into explorable experiences.
+                    Navigation: creating an intuitive and consistent experience.
+                    Editorial experience: preserving the publication's personality while taking advantage of digital possibilities.
+                    The goal was to find the balance between editorial fidelity, usability and innovation.</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/select/animacao01.gif" alt="Select magazine, animation 1"></div><br>
+            <div class="fotoprojetos"><img src="assets/projetos/select/animacao02.gif" alt="Select magazine, animation 2"></div><br>
+            <div class="container-full">
+                <div class="texto-bloco">
+                    <p>The adaptation process meant analyzing the content of each issue and identifying how it could be better presented in the digital environment.
+                    Rather than simply shrinking the printed pages, it was necessary to evaluate the structure of each composition, the importance of the information and the possibilities for interaction.
+                    This work involved three main fronts:</p>
+                    <ol class="fronts">
+                        <li class="front"><span class="front__num">01</span><h3 class="front__title">Re-layout and content adaptation</h3><p class="front__text">Reorganizing editorial elements to improve reading and viewing on smaller screens.</p></li>
+                        <li class="front"><span class="front__num">02</span><h3 class="front__title">Interactivity and data visualization</h3><p class="front__text">Turning charts and other visual elements into interactive features, taking advantage of the digital medium.</p></li>
+                        <li class="front"><span class="front__num">03</span><h3 class="front__title">Navigation and reading experience</h3><p class="front__text">Attention to how content is organized, to visual consistency and to how the reader interacted with the publication.</p></li>
+                    </ol>
+                    <p>Each decision had to respect both editorial needs and the particularities of the digital experience. Main design considerations:</p>
+                    <ul class="checklist">
+                        <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Reorganizing text, images and graphic elements.</li>
+                        <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Typography adjustments to improve legibility.</li>
+                        <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Review of margins, spacing and proportions.</li>
+                        <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Preserving the publication's visual identity.</li>
+                        <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Adapting compositions to the different screen formats.</li>
+                    </ul>
+                    <p>The goal was an experience that kept the magazine's editorial character but was naturally suited to digital reading.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project body 2 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+
+        </section>
+
+        <!-- Project body 3 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h1>Learnings</h1>
+                <div class="container-full">
+                    <p>The digital environment brought the possibility of turning traditional graphic elements into more dynamic experiences.
+                        Charts and infographics that once presented all the information statically began to offer interaction, allowing the reader to explore certain data more actively.
+                        This transformation required thinking not only about the appearance of the elements, but also about how people would interact with them.
+                        This project broadened my view of the role of UX Design in products whose content is the main protagonist.
+                        I learned that a good digital adaptation requires understanding not only how an interface works, but also the nature of the information being presented.
+                        I understood that preserving a visual identity does not mean keeping every original decision. Often, it is necessary to deconstruct a composition in order to rebuild it in a way better suited to the context of use.
+                        I also realized that interactivity only adds value when there is a clear purpose behind it. Not every piece of content needs animations or clickable elements; what matters most is understanding how technology can make comprehension easier and enrich the experience.
+                        This work strengthened my ability to connect design, content and technology, developing solutions that respect the essence of a publication while exploring the possibilities of a new medium.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project body 4 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+        </section>
+    </main>
+
+    <!-- Back to top button -->
+    <button id="botao-topo"><img src="assets/ico_setaup_branco.svg" alt="Go to the top"></button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Coded and Created by me - Copyright 2022</p>
+    </footer>
+
+    <!-- Here start the scripts-->
+
+    <script>
+        const filterBtns = document.querySelectorAll('.btn');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const category = btn.dataset.filter;
+
+                // Remove the 'active' class from all filter buttons
+                filterBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Add the 'active' class to the clicked button
+                btn.classList.add('active');
+
+                const items = document.querySelectorAll('.portfolio-item');
+
+                items.forEach(function(item) {
+                    const isCategory = category === 'todos' || item.classList.contains(category);
+
+                    item.classList.toggle('hide', !isCategory);
+                });
+            });
+        });
+    </script><!-- Js code for the job category buttons -->
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            // Check whether the browser window is wider than 1024px
+            if (window.innerWidth > 1024) {
+                // Hide or show the navigation bar based on the scroll direction
+                if (prevScrollpos > currentScrollPos) {
+                    document.getElementById("navbar").style.top = "0";
+                } else {
+                    document.getElementById("navbar").style.top = "-100px";
+                }
+            }
+
+            // Show or hide the back-to-top button based on the scroll position
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("botao-topo").style.display = "block";
+            } else {
+                document.getElementById("botao-topo").style.display = "none";
+            }
+
+            prevScrollpos = currentScrollPos;
+        };
+
+        // Take the user back to the top when the button is clicked
+        document.getElementById("botao-topo").addEventListener("click", function() {
+            document.body.scrollTop = 0; // Safari
+            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+        });
+    </script><!-- Show the UP button when the user scrolls down -->
+    <!-- When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar -->
+
+    <!-- Mobile menu JavaScript code -->
+
+    <script>
+        window.addEventListener('load', function() {
+            var progressBar = document.getElementById('progress-loading');
+            var maxWidth = document.body.clientWidth;
+            var progress = 0;
+            var intervalId = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(intervalId);
+                    var containerLoading = document.querySelector('.container-loading');
+                    containerLoading.style.display = 'none'; // Hide the loading div
+                    document.body.style.overflow = 'auto'; // Enable page scrolling
+                } else {
+                    progress += 1;
+                    var width = (progress / 100) * maxWidth;
+                    progressBar.style.width = width + 'px';
+                }
+            }, 10);
+        });
+    </script><!-- Loading JavaScript code -->
+
+    <script>
+        // reset: false -> cada texto é revelado uma vez e não some ao rolar de volta
+        window.sr = ScrollReveal({
+            reset: false
+        });
+        sr.reveal('.hero-phrase', {
+            delay: 0,
+            rotate: {
+                x: 100,
+                y: 10,
+                z: 0
+            },
+            duration: 1000
+        });
+        sr.reveal('.container-full', {
+            delay: 0,
+            rotate: {
+                x: 0,
+                y: 10,
+                z: 0
+            },
+            duration: 500
+        });
+    </script><!-- Scroll Reveal -->
+
+    <script src="menu.js"></script>
+</body>
+
+</html>

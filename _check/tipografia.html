@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:-apple-system,Segoe UI,Roboto,sans-serif;padding:44px 48px 30px}
+h1.page{font-size:26px;margin:0 0 6px;letter-spacing:-.02em}
+.sub{font-size:13px;color:#777;margin:0 0 30px;line-height:1.5}
+table{width:100%;border-collapse:collapse}
+tr.group td{padding:26px 0 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#999;border-bottom:1.5px solid #111}
+td{padding:16px 0;border-bottom:1px solid #eee;vertical-align:middle}
+td.sample{width:56%;padding-right:32px}
+.s-inner{display:inline-block;line-height:1.15;padding:4px 8px;border-radius:6px}
+td.cls{width:26%;font-size:13px;line-height:1.5}
+td.cls code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#f2f2f2;padding:2px 6px;border-radius:4px;color:#111}
+td.cls .note{display:block;color:#a33;font-size:11px;margin-top:4px}
+td.specs{width:18%;text-align:right;font-size:13px;line-height:1.5;color:#555;white-space:nowrap}
+td.specs b{font-size:16px;color:#111}
+.foot{margin-top:26px;font-size:11px;color:#888;line-height:1.6}
+</style></head><body>
+<h1 class="page">Tipografia do site</h1>
+<p class="sub">Alexandre Macedo Costa · valores computados no navegador<br>
+Desktop 1440×900 · Mobile 390×844 · quando o tamanho muda, aparece <b>desktop → mobile</b></p>
+<table><tr class="group"><td colspan="3">Títulos</td></tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:54px;font-weight:700;line-height:75.6px;color:#000;">Olá, meu nome é Alexandre.</div></td>
+  <td class="cls"><code>.hero-phrase / .hero-intro</code><span class="note">· 6vh no desktop (900px de altura)</span></td>
+  <td class="specs"><b>54px</b> → 30px<br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:32px;font-weight:700;line-height:36.8px;color:rgb(255, 0, 0);">Breve histórico</div></td>
+  <td class="cls"><code>.container-titulo &gt; h2</code></td>
+  <td class="specs"><b>32px</b><br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:26px;font-weight:800;line-height:31.2px;color:rgb(85, 85, 85);">UX / Design de produto</div></td>
+  <td class="cls"><code>.how__col-title</code></td>
+  <td class="specs"><b>26px</b> → 22px<br><span>Montserrat · 800</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:20px;font-weight:700;line-height:24px;color:rgb(255, 255, 255);background:#fc6f6f;">Select magazine</div></td>
+  <td class="cls"><code>.caption h3</code><span class="note">· texto branco sobre o card</span></td>
+  <td class="specs"><b>20px</b><br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:18px;font-weight:700;line-height:36px;color:rgb(0, 0, 0);">Minhas competências em UX/UI</div></td>
+  <td class="cls"><code>.panel-content h4</code></td>
+  <td class="specs"><b>18px</b> → 16px<br><span>Montserrat · 700</span></td>
+</tr><tr class="group"><td colspan="3">Navegação e ações</td></tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:16px;font-weight:700;line-height:normal;color:rgb(0, 0, 0);">Início</div></td>
+  <td class="cls"><code>#navbar .menu &gt; ul a</code></td>
+  <td class="specs"><b>16px</b><br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Arial;font-size:12px;font-weight:400;line-height:normal;text-transform:uppercase;color:rgb(255, 255, 255);background:#111;">TODOS</div></td>
+  <td class="cls"><code>.button-small</code><span class="note">· sem font-family definida (Arial do navegador)</span></td>
+  <td class="specs"><b>12px</b><br><span>Arial (navegador) · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:13px;font-weight:700;line-height:normal;letter-spacing:0.78px;text-transform:uppercase;color:rgb(255, 255, 255);background:#111;">VER PROJETOS</div></td>
+  <td class="cls"><code>.hero-cta</code></td>
+  <td class="specs"><b>13px</b><br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:12px;font-weight:700;line-height:normal;letter-spacing:0.96px;text-transform:uppercase;color:rgb(255, 255, 255);background:#111;">ENVIAR MENSAGEM</div></td>
+  <td class="cls"><code>.contact-submit</code></td>
+  <td class="specs"><b>12px</b><br><span>Montserrat · 700</span></td>
+</tr><tr class="group"><td colspan="3">Conteúdo</td></tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:16px;font-weight:400;line-height:28.8px;color:rgb(0, 0, 0);">Nos últimos 20 anos trabalhando como designer, me tornei especialista em editorial digital.</div></td>
+  <td class="cls"><code>p</code></td>
+  <td class="specs"><b>16px</b> → 14px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:46.08px;font-weight:800;line-height:46.08px;letter-spacing:-0.9216px;color:rgb(0, 0, 0);">+20</div></td>
+  <td class="cls"><code>.stat__num</code><span class="note">· clamp(40px, 5.5vw, 76px)</span></td>
+  <td class="specs"><b>46.08px</b> → 40px<br><span>Montserrat · 800</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:15px;font-weight:400;line-height:18.75px;color:rgb(0, 0, 0);">anos no mercado de design</div></td>
+  <td class="cls"><code>.stat__label</code></td>
+  <td class="specs"><b>15px</b> → 14px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:26px;font-weight:800;line-height:31.2px;color:rgb(85, 85, 85);">Setores por onde passei</div></td>
+  <td class="cls"><code>.sectors__title</code></td>
+  <td class="specs"><b>26px</b> → 22px<br><span>Montserrat · 800</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:15px;font-weight:500;line-height:22.5px;color:rgb(0, 0, 0);">Educação</div></td>
+  <td class="cls"><code>.sectors__list li</code></td>
+  <td class="specs"><b>15px</b> → 14px<br><span>Montserrat · 500</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:28px;font-weight:900;line-height:42px;letter-spacing:-0.28px;color:rgb(17, 17, 17);">Os processos mudam a cada cenário.</div></td>
+  <td class="cls"><code>.how__quote</code></td>
+  <td class="specs"><b>28px</b> → 22px<br><span>Montserrat · 900</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:14px;font-weight:600;line-height:normal;letter-spacing:0.56px;text-transform:uppercase;color:rgb(17, 17, 17);">DESCOBRIR</div></td>
+  <td class="cls"><code>.how__tab</code></td>
+  <td class="specs"><b>14px</b> → 13px<br><span>Montserrat · 600</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:15px;font-weight:400;line-height:24px;color:rgb(17, 17, 17);">Entender o negócio</div></td>
+  <td class="cls"><code>.how__panel li</code></td>
+  <td class="specs"><b>15px</b> → 14px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:14px;font-weight:700;line-height:normal;color:rgb(0, 0, 0);">Pesquisa</div></td>
+  <td class="cls"><code>.skills-grid .level-label</code></td>
+  <td class="specs"><b>14px</b> → 12px<br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Doto;font-size:20px;font-weight:700;line-height:44px;color:rgb(255, 0, 0);">2022/2026</div></td>
+  <td class="cls"><code>.container-timeline .div-left h2</code></td>
+  <td class="specs"><b>20px</b><br><span>Doto · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:16px;font-weight:400;line-height:28.8px;color:rgb(68, 68, 68);">Agora, de volta ao Banco BV, estou ajudando a desenvolver um produto de Backoffice.</div></td>
+  <td class="cls"><code>.container-timeline .div-left p</code></td>
+  <td class="specs"><b>16px</b> → 14px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:14px;font-weight:400;line-height:normal;color:rgb(119, 119, 119);">Design de produto</div></td>
+  <td class="cls"><code>.tags span</code></td>
+  <td class="specs"><b>14px</b> → 12px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:16px;font-weight:400;line-height:28.8px;color:rgb(255, 255, 255);background:#fc8093;">Criado e codificado por mim — Copyright 2022</div></td>
+  <td class="cls"><code>footer p</code></td>
+  <td class="specs"><b>16px</b> → 14px<br><span>Montserrat · 400</span></td>
+</tr><tr class="group"><td colspan="3">Contato</td></tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:48px;font-weight:700;line-height:55.2px;color:rgb(255, 0, 0);">Contato</div></td>
+  <td class="cls"><code>.contact-hero h1</code><span class="note">· clamp(34px, 4.6vw, 48px)</span></td>
+  <td class="specs"><b>48px</b> → 34px<br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:17px;font-weight:400;line-height:28.05px;color:rgb(51, 51, 51);">Aberto a novos projetos, colaborações e posições full-time.</div></td>
+  <td class="cls"><code>.contact-hero__lead</code></td>
+  <td class="specs"><b>17px</b> → 16px<br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:11px;font-weight:700;line-height:normal;letter-spacing:1.1px;text-transform:uppercase;color:rgb(85, 85, 85);">NOME</div></td>
+  <td class="cls"><code>.contact-field label</code></td>
+  <td class="specs"><b>11px</b><br><span>Montserrat · 700</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:16px;font-weight:400;line-height:normal;color:rgb(17, 17, 17);">Alexandre</div></td>
+  <td class="cls"><code>.contact-field input</code><span class="note">· valor digitado</span></td>
+  <td class="specs"><b>16px</b><br><span>Montserrat · 400</span></td>
+</tr><tr>
+  <td class="sample"><div class="s-inner" style="font-family:Montserrat;font-size:12px;font-weight:400;line-height:21.6px;color:rgb(136, 136, 136);">Costumo responder em até 2 dias úteis.</div></td>
+  <td class="cls"><code>.contact-note</code></td>
+  <td class="specs"><b>12px</b><br><span>Montserrat · 400</span></td>
+</tr></table>
+<p class="foot">Tamanhos em px, medidos em 23/11/2026. O hero usa <code>6vh</code> no desktop; os números da intro usam <code>clamp()</code>.<br>
+Títulos de seção: Montserrat 700 em vermelho. Texto corrido: Montserrat 400.</p>
+</body></html>

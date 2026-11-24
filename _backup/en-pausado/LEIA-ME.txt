@@ -1,0 +1,13 @@
+Versões em inglês pausadas em 23/11/2026.
+
+O site está publicado apenas em português (arquivos na raiz).
+Estes arquivos são um snapshot do inglês como estava quando foi pausado.
+
+Para retomar:
+1. Copie estes arquivos de volta para a raiz do site.
+2. Reaplique o seletor de idioma (ENG | PORT) nas páginas PT e EN.
+3. Traduza novamente o que mudou no PT desde esta data — estes arquivos NÃO
+   acompanham edições posteriores.
+
+Observação: os links internos destes arquivos já apontam para os nomes "-en"
+e para as versões PT na raiz, então funcionam ao voltar para a raiz.

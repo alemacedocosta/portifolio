@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Revista Super Interessante para tablet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+
+<body>
+
+    <script>
+        function trocarSVGMenu() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth < 1024) {
+                var svg = document.getElementById("hamburguer");
+                if (svg.innerHTML.includes("ico_hamburguer_branco.svg")) {
+                    svg.innerHTML = '<img src="assets/ico_close_branco.svg" alt="Close menu">';
+                } else {
+                    svg.innerHTML = '<img src="assets/ico_hamburguer_branco.svg" alt="Show menu">';
+                }
+            }
+        }
+
+    </script><!-- When the user click in the button hamburguer, change the SVG button -->
+
+    <!-- Loading -->
+    <div class="container-loading">
+        <div id="logo-loading">
+            <img src="assets/img_logo_ar_black_v2.png" alt="Logo">
+        </div>
+        <div id="progress-loading"></div>
+    </div>
+
+    <!-- Menu -->
+    <nav>
+        <div id="navbar">
+            <div class="nav-left">
+                <div id="my-logo"></div>
+                <div class="lang-switch" aria-label="Idioma">
+                    <a href="projeto_super.html" hreflang="en">ENG</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <a href="projeto_super-pt.html" class="is-active" aria-current="page" hreflang="pt-BR" lang="pt-BR">PORT</a>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li onclick="trocarSVGMenu()"><a href="index-pt.html" target="_self">Voltar</a></li>
+                </ul>
+                <div class="menu-icon">
+                    <button class="icone" id="hamburguer" onclick="trocarSVGMenu()"><img src="assets/ico_hamburguer_branco.svg" alt="Menu"></button>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <section id="Herosection">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/super/img_bg_super.jpg)">
+                <h1 class="hero-phrase">Revista Super Interessante para tablet</h1>
+                <div>[ Role a página para ver mais ]</div>
+                <div class="seta-animada">
+                    <a href="#Aboutsection"><img src="assets/anima-seta.svg"></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <!-- Intro -->
+        <section id="Introsection">
+            <div id="Intro">
+                <div class="timeline">
+                    <div class="container-full">
+                        <div class="div-left">
+                            <h2>2012</h2>
+                            <h4>Ed. Abril</h4>
+                            <p>Em 2012, tive a incrível oportunidade de criar uma edição inteira da revista Superinteressante para o iPad. Foi uma experiência empolgante, que me permitiu explorar o universo da publicação digital e ampliar os limites da narrativa. Poder aproveitar as capacidades interativas do iPad abriu um mundo totalmente novo de criatividade e engajamento. Com esse projeto, pude mergulhar no universo do conteúdo multimídia, integrando de forma fluida vídeos, animações e elementos de áudio para enriquecer a experiência do leitor. A tecnologia do tablet me permitiu construir narrativas imersivas e apresentar informações de maneiras dinâmicas e envolventes. De pop-ups a animações de transição e efeitos de paralaxe, cada recurso buscava cativar e informar o público.<br><br></p>
+                        </div>
+                        <div class="div-right">
+                            <h4>Tags de atuação:</h4>
+                            <div class="div-tags">
+                                <div class="tags"><span>Design editorial</span></div>
+                                <div class="tags"><span>Interação</span></div>
+                                <div class="tags"><span>Publicação digital</span></div>
+                                <div class="tags"><span>Suíte Adobe</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 1 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h1>O desafio</h1>
+                <div class="container-full">
+                    <p>A criação de toda a edição da revista Super Interessante para tablets, com o tema criatividade, foi uma experiência incrível e desafiadora. A possibilidade de criar uma experiência de leitura interativa e imersiva com a tecnologia dos tablets nos permitiu explorar novas formas de contar histórias e de apresentar informações de maneira mais dinâmica e envolvente.</p>
+                </div>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_01.jpg" alt="Imagem do projeto"></div><br>
+            <div class="container-full">
+                <p>Um dos principais aspectos da interatividade em tablets é a capacidade de criar conteúdo multimídia, como vídeos, animações e áudio, que complementam e enriquecem a experiência de leitura. Além disso, é possível criar recursos interativos, como pop-ups, animações de transição, efeitos de paralaxe, entre outros, que ajudam a tornar o conteúdo mais dinâmico e interessante.</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_02.jpg" alt="Imagem do projeto"></div><br>
+
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_03.jpg" alt="Imagem do projeto"></div><br>
+            <div class="container-full">
+                <p>Para a criação da edição, usamos a tecnologia Adobe Publishing Suite, que permite criar conteúdo para tablets com facilidade e eficiência. Com essa ferramenta, foi possível criar layouts responsivos, otimizar imagens e gerenciar o conteúdo de forma intuitiva e organizada.</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_04.jpg" alt="Imagem do projeto"></div><br>
+            <div class="container-full">
+                <p>Outro destaque da edição foram os infográficos interativos, que permitiam explorar os dados de maneira mais dinâmica e envolvente. Utilizamos recursos como mapas interativos, gráficos animados e infográficos em camadas para apresentar as informações de forma clara e objetiva.</p>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 2 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_05.jpg" alt="Imagem do projeto"></div><br>
+            <div class="fotoprojetos"><img src="assets/projetos/super/img_super_06.jpg" alt="Imagem do projeto"></div><br>
+        </section>
+
+        <!-- Corpo do projeto 3 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h1>Aprendizados</h1>
+                <div class="container-full">
+                    <p>Em resumo, a criação da edição da Super Interessante para tablets foi uma experiência rica e desafiadora, que nos permitiu explorar novas formas de contar histórias e de apresentar informações de maneira mais envolvente e interativa. O uso da tecnologia Adobe Publishing Suite e dos infográficos interativos foi fundamental para o sucesso da edição, e a parceria com a Editora Abril contribuiu para a excelência do projeto como um todo.</p>
+                </div>
+            </div>
+            <div class="container-full">
+                <p>A Editora Abril foi uma parceira importante neste projeto, oferecendo apoio e recursos para garantir a qualidade do conteúdo e a entrega da edição dentro do prazo. Foi uma honra trabalhar com uma empresa tão renomada e reconhecida no mercado editorial.</p>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 4 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+        </section>
+
+    </main>
+
+    <!-- Botão Ir ao topo -->
+    <button id="botao-topo"><img src="assets/ico_setaup_branco.svg" alt="Ir ao topo"></button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Criado e codificado por mim - Copyright 2022</p>
+    </footer>
+
+    <!-- Here start the scripts-->
+
+    <script>
+        const filterBtns = document.querySelectorAll('.btn');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const category = btn.dataset.filter;
+
+                // Remove a classe 'active' de todos os botões de filtro
+                filterBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Adiciona a classe 'active' ao botão clicado
+                btn.classList.add('active');
+
+                const items = document.querySelectorAll('.portfolio-item');
+
+                items.forEach(function(item) {
+                    const isCategory = category === 'todos' || item.classList.contains(category);
+
+                    item.classList.toggle('hide', !isCategory);
+                });
+            });
+        });
+
+    </script><!-- Js code dos botões de categoria de jobs-->
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            // Verificar se a largura da janela do navegador é maior que 1024px
+            if (window.innerWidth > 1024) {
+                // Ocultar ou exibir a barra de navegação com base no scroll
+                if (prevScrollpos > currentScrollPos) {
+                    document.getElementById("navbar").style.top = "0";
+                } else {
+                    document.getElementById("navbar").style.top = "-100px";
+                }
+            }
+
+            // Mostrar ou ocultar o botão de volta ao topo com base no scroll
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("botao-topo").style.display = "block";
+            } else {
+                document.getElementById("botao-topo").style.display = "none";
+            }
+
+            prevScrollpos = currentScrollPos;
+        };
+
+        // Levar o usuário de volta ao topo quando o botão for clicado
+        document.getElementById("botao-topo").addEventListener("click", function() {
+            document.body.scrollTop = 0; // Para Safari
+            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+        });
+
+    </script><!-- Mostrar botão UP quando o usuário rolar para baixo -->
+    <!-- When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar -->
+
+
+    <script>
+        window.addEventListener('load', function() {
+            var progressBar = document.getElementById('progress-loading');
+            var maxWidth = document.body.clientWidth;
+            var progress = 0;
+            var intervalId = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(intervalId);
+                    var containerLoading = document.querySelector('.container-loading');
+                    containerLoading.style.display = 'none'; // Oculta a div de carregamento
+                    document.body.style.overflow = 'auto'; // Ativa a rolagem da página
+                } else {
+                    progress += 1;
+                    var width = (progress / 100) * maxWidth;
+                    progressBar.style.width = width + 'px';
+                }
+            }, 10);
+        });
+
+    </script><!-- Loading javasacrpt code -->
+    
+    <script>
+        window.sr = ScrollReveal({
+            reset: true
+        });
+        sr.reveal('.hero-phrase', {
+            delay: 0,
+            rotate: {
+                x: 100,
+                y: 10,
+                z: 0
+            },
+            duration: 1000
+        });
+        sr.reveal('.container-full', {
+            delay: 0,
+            rotate: {
+                x: 0,
+                y: 10,
+                z: 0
+            },
+            duration: 500
+        });
+
+    </script><!-- Scroll Reveal -->
+
+    <script src="menu.js"></script>
+</body>
+
+</html>

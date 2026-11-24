@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Plataforma mag para Tablet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+
+<body>
+
+    <script>
+        function trocarSVGMenu() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth < 1024) {
+                var svg = document.getElementById("hamburguer");
+                if (svg.innerHTML.includes("ico_hamburguer_branco.svg")) {
+                    svg.innerHTML = '<img src="assets/ico_close_branco.svg" alt="Close menu">';
+                } else {
+                    svg.innerHTML = '<img src="assets/ico_hamburguer_branco.svg" alt="Show menu">';
+                }
+            }
+        }
+    </script><!-- Quando o usuário clica no botão hambúrguer, troca o ícone SVG do botão -->
+
+    <!-- Carregando -->
+    <div class="container-loading">
+        <div id="logo-loading">
+            <img src="assets/img_logo_ar_black_v2.png" alt="Logo">
+        </div>
+        <div id="progress-loading"></div>
+    </div>
+
+    <!-- Menu -->
+    <nav>
+        <div id="navbar">
+            <div id="my-logo"></div>
+            <nav class="menu">
+                <ul>
+                    <li onclick="trocarSVGMenu()"><a href="index.html" target="_self">Voltar</a></li>
+                </ul>
+                <div class="menu-icon">
+                    <button class="icone" id="hamburguer" onclick="trocarSVGMenu()"><img src="assets/ico_hamburguer_branco.svg" alt="Menu"></button>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header>
+        <section id="Herosection">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/plataforma/img_bg_plataforma.jpg)">
+                <h1 class="hero-phrase">Plataforma mag para Tablet</h1>
+                <div>[ Role a página para ver mais ]</div>
+                <div class="seta-animada">
+                    <a href="#Aboutsection"><img src="assets/anima-seta.svg"></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <!-- Intro -->
+        <section id="Introsection">
+            <div id="Intro">
+                <div class="timeline">
+                    <div class="container-full">
+                        <div class="div-left">
+                            <h2>2012</h2>
+                            <h4>Ed. Latitude</h4>
+                            <p>Texto Intro<br><br></p>
+                        </div>
+                        <div class="div-right">
+                            <h4>Tags do projeto:</h4>
+                            <div class="div-tags">
+                                <div class="tags"><span>Design editorial</span></div>
+                                <div class="tags"><span>Interação</span></div>
+                                <div class="tags"><span>Publicação digital</span></div>
+                                <div class="tags"><span>Adobe suite</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 1 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h2>O desafio</h2>
+                <div class="container-full">
+                    <p>Texto img 01</p>
+                </div>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_03.jpg" alt="Escreva uma descrição"></div><br>
+            <div class="container-full">
+                <p>Texto img 2</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_02.jpg" alt="Escreva uma descrição"></div><br>
+
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_04.jpg" alt="Escreva uma descrição"></div><br>
+            <div class="container-full">
+                <p>Texto img 4</p>
+            </div>
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_05.jpg" alt="Escreva uma descrição"></div><br>
+            <div class="container-full">
+                <p>Texto img 5</p>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 2 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_01.jpg" alt="Escreva uma descrição"></div><br>
+            <div class="fotoprojetos"><img src="assets/projetos/plataforma/img_plataforma_06.gif" alt="Escreva uma descrição"></div><br>
+        </section>
+
+        <!-- Galeria modal -->
+        <div class="container-full">
+            <p>[Clique nas imagens para ver mais]</p>
+        </div>
+        <div class="gallery">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_01.jpg" alt="Imagem 1" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_02.jpg" alt="Imagem 2" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_03.jpg" alt="Imagem 3" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_04.jpg" alt="Imagem 4" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_05.jpg" alt="Imagem 5" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_06.jpg" alt="Imagem 6" onclick="openModal(this)">
+        </div>
+        <!-- Adicione mais divs com a classe "image" para mais imagens -->
+
+        <!-- Janela modal -->
+        <div id="modal" class="modal">
+            <button class="icone close" id="modal-close" onclick="closeModal()"><img src="assets/ico_close_branco.svg" alt="Menu"></button>
+            <img class="modal-content" id="modal-image">
+        </div>
+
+        <!-- Corpo do projeto 3 -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h2>Aprendizados</h2>
+                <div class="container-full">
+                    <p>Texto</p>
+                </div>
+            </div>
+            <div class="container-full">
+                <p>Texto</p>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto 4 -->
+        <section id="Aboutsection">
+            <div class="container-titulo"></div>
+        </section>
+
+    </main>
+
+    <!-- Botão Ir ao topo -->
+    <button id="botao-topo"><img src="assets/ico_setaup_branco.svg" alt="Ir para o topo"></button>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Criado e codificado por mim - Copyright 2022</p>
+    </footer>
+
+    <!-- Aqui começam os scripts-->
+
+    <script>
+        const filterBtns = document.querySelectorAll('.btn');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const category = btn.dataset.filter;
+
+                // Remove a classe 'active' de todos os botões de filtro
+                filterBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Adiciona a classe 'active' ao botão clicado
+                btn.classList.add('active');
+
+                const items = document.querySelectorAll('.portfolio-item');
+
+                items.forEach(function(item) {
+                    const isCategory = category === 'todos' || item.classList.contains(category);
+
+                    item.classList.toggle('hide', !isCategory);
+                });
+            });
+        });
+    </script><!-- Js code dos botões de categoria de jobs-->
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            // Verificar se a largura da janela do navegador é maior que 1024px
+            if (window.innerWidth > 1024) {
+                // Ocultar ou exibir a barra de navegação com base no scroll
+                if (prevScrollpos > currentScrollPos) {
+                    document.getElementById("navbar").style.top = "0";
+                } else {
+                    document.getElementById("navbar").style.top = "-100px";
+                }
+            }
+
+            // Mostrar ou ocultar o botão de volta ao topo com base no scroll
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("botao-topo").style.display = "block";
+            } else {
+                document.getElementById("botao-topo").style.display = "none";
+            }
+
+            prevScrollpos = currentScrollPos;
+        };
+
+        // Levar o usuário de volta ao topo quando o botão for clicado
+        document.getElementById("botao-topo").addEventListener("click", function() {
+            document.body.scrollTop = 0; // Para Safari
+            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+        });
+    </script><!-- Mostrar botão UP quando o usuário rolar para baixo -->
+    <!-- Quando o usuário rola para baixo, esconde a navbar. Quando rola para cima, mostra a navbar -->
+
+
+    <script>
+        window.addEventListener('load', function() {
+            var progressBar = document.getElementById('progress-loading');
+            var maxWidth = document.body.clientWidth;
+            var progress = 0;
+            var intervalId = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(intervalId);
+                    var containerLoading = document.querySelector('.container-loading');
+                    containerLoading.style.display = 'none'; // Oculta a div de carregamento
+                    document.body.style.overflow = 'auto'; // Ativa a rolagem da página
+                } else {
+                    progress += 1;
+                    var width = (progress / 100) * maxWidth;
+                    progressBar.style.width = width + 'px';
+                }
+            }, 10);
+        });
+    </script><!-- Código JavaScript do carregamento -->
+
+    <script>
+        var images = document.getElementsByClassName("gallery-item");
+        var modal = document.getElementById("modal");
+        var modalImage = document.getElementById("modal-image");
+        var currentIndex;
+
+        // Função para abrir a janela modal com a imagem selecionada
+        function openModal(element) {
+            modal.style.display = "block";
+            modalImage.src = element.src;
+            currentIndex = Array.from(images).indexOf(element);
+        }
+
+        // Função para fechar a janela modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Função para ir para a próxima imagem na galeria
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            modalImage.src = images[currentIndex].src;
+        }
+
+        // Função para retornar para a imagem anterior na galeria
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            modalImage.src = images[currentIndex].src;
+        }
+
+        // Event listener para fechar a janela modal ao clicar fora da imagem
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+    </script><!-- Galeria com modal -->
+    
+    <script>
+        window.sr = ScrollReveal({
+            reset: true
+        });
+        sr.reveal('.hero-phrase', {
+            delay: 0,
+            rotate: {
+                x: 100,
+                y: 10,
+                z: 0
+            },
+            duration: 1000
+        });
+        sr.reveal('.container-full', {
+            delay: 0,
+            rotate: {
+                x: 0,
+                y: 10,
+                z: 0
+            },
+            duration: 500
+        });
+
+    </script><!-- Scroll Reveal -->
+
+    <script src="menu.js"></script>
+    <script src="scroll-inertia.js"></script>
+</body></html>

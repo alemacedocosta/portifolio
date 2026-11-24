@@ -1,0 +1,528 @@
+# Resumo da sessão: redesign do portfólio do Alexandre Macedo Costa
+
+## 1. Contexto e regras de trabalho
+
+- **Projeto:** site estático (HTML + CSS, sem build) do portfólio de Alexandre Macedo Costa, Product Designer / UX/UI.
+- **Conversa:** em português. **Conteúdo do site:** em inglês. Textos que o usuário escreve em português devem ser traduzidos para inglês antes de entrar no site.
+- **Pasta de trabalho:** `/home/claude/claude-redesign/versao-olhos/` (arquivos `index.html` e `mystyle.css`).
+- **Pasta original (não alterar):** `/home/claude/claude-redesign/versao-original/`. Só gravar nela com aprovação explícita do usuário.
+- **Outras pastas do projeto:** `versao-nova/`, `versao-foto/`, `versao-parallax/`, `versao-stack/`, `preview-metodo/`, `preview-numeros/`, `projetos-src/`, `assets/`.
+- **Link de preview (artifact, privado):** https://claude.ai/artifact/Ngd4qVa1WrPcD4tq2sBR5j
+- **Fluxo de publicação:** Artifact `publish` no mesmo `url`, com `file_path=/home/claude/claude-redesign/versao-olhos/index.html`, `root=/home/claude/claude-redesign/versao-olhos` e `files=["mystyle.css"]`.
+- **Pacotes para o Mac:** o usuário baixa `index.html` + `mystyle.css` e substitui na sua cópia local. Último pacote gerado: `atualizacao-v103.zip` (em `scratchpad`). Para a versão 104, o usuário pediu arquivos sem compactar (já enviados).
+- **Ambiente:** a sessão **não está vinculada** ao computador do usuário. Não é possível gravar em `mesa/site/claude 2/part1-site-e-assets-a` daqui. Para vincular, abrir a tarefa no app Claude desktop e escolher "Link to this computer" (ou iniciar nova tarefa pelo app com o computador selecionado).
+- **Verificação visual:** Playwright com servidor local (`python3 -m http.server <porta>`). Elementos com `opacity: 0` / `visibility: hidden` (scroll reveal, ScrollReveal bloqueado offline) precisam ser forçados visíveis só para captura. O erro "ScrollReveal is not defined" é esperado e pode ser ignorado.
+- **Estilo de aprovação do usuário:** ele revisa cada mudança no preview e costuma pedir ajustes curtos e diretos. Quando aprova, pede "arquivos para atualizar".
+
+## 2. Estado atual (versão publicada: 166 — sessão no DSH, 23/11/2026)
+
+### Hero
+- Texto de apresentação "Hi, my name is Alexandre…" em **preto** (`.hero-intro`). A frase sobre São Paulo continua com o grifo amarelo animado (`.hero-hl`).
+
+### Introdução ("Short resume", antes "A short long history")
+- Título da seção renomeado para **"Short resume"**.
+- Frase "Today, AI is part of my daily work…" com **grifo rosa claro** que desliza linha a linha ao entrar na tela (`.grifo`, `IntersectionObserver`; desativado com `prefers-reduced-motion`).
+- Bloco "Sectors I've worked in":
+  - Título em cinza (Montserrat 800, 26px; 22px no celular) com **seta igual às dos quadrados dos números** (SVG `stat__arrow`, girada -135° para apontar para o título, animação `sectors-arrow` de balanço, 26px no desktop e 34px no celular).
+  - Lista em **grade de 2 colunas** com fundo cinza claro em cada item, 15px no desktop e 14px no celular (mesmo tamanho dos rótulos "years in the design market").
+  - Cada item tem **ícone de 12px** (livro = Education, barras = Finance, cruz = Health, documento = Editorial, paleta = Art).
+  - Nomes em inglês: Education, Finance, Health, Editorial, Art.
+- Animação de rotação de setores (um por vez, com embaralhamento) foi implementada e **revertida** a pedido do usuário.
+- Espaço entre a introdução e "How I work" = **140px** no desktop, igual ao espaço entre "How I work" e Skills (`.how { margin-top: 140px }` em `min-width: 801px`). No celular, mantido como estava.
+
+### How I work (`section#metodo`, classes `.how*`)
+- **Refeito do zero** conforme a imagem enviada pelo usuário. Todas as interações antigas foram removidas: balões de etapas, duplo diamante (animação e desenho), tap para abrir, letras com efeito, grifo.
+- **Layout:**
+  - Desktop (>1024px): 3 colunas (`1.15fr 1fr 1fr`, gap 32px): citação à esquerda; "UX / Product design" e "UI" ao lado.
+  - Tablet (601–1024px): citação ocupa a largura toda; as duas colunas lado a lado.
+  - Celular (≤600px): tudo em uma coluna.
+- **Citação:** 28px desktop, 24px tablet, 22px celular. Montserrat 900, preto, sem caixa. Três frases rotativas a cada 10s, com três quadrados como indicadores (clicáveis).
+- **Abas (acordeão):** **uma aba aberta por vez em toda a seção**, mas **todas podem ficar fechadas** (v108). Clicar na aba aberta fecha; abrir outra fecha a anterior. Por padrão abre "Discover" (primeira de UX), definido no próprio HTML.
+  - Cabeçalho: fundo `#ececec`, texto uppercase Montserrat 600, chevron que gira ao abrir.
+  - Painel: fundo `#f5f5f5`, texto Montserrat 400 15px, itens com "- " via CSS `::before`.
+- **Conteúdo (tudo em inglês):**
+  - UX / Product design: Discover (Understanding the business; Stakeholder research; User research; Experience analysis), Define (Workshops; Research synthesis; Problem definition; Opportunity definition; Solution definition), Design (I sketch fast and iterate in the open, with feedback on every round.), Test (Real users see the work early, while changes are still cheap.), Delivery (Ship, measure, learn and repeat. A product is never really finished.).
+  - UI: Design system (Color palette and tokens; Type scales; Buttons and states; Inputs and forms; Cards and components; Grid and spacing; Error, loading and success states; Responsive components), Documentation (Handoff: documentation and delivery to development), Governance (Color contrast; Visual hierarchy; Legibility; Focus states; Keyboard navigation; Interaction feedback; Accessibility).
+- **JS:** bloco único com a lógica de abas (`openTab`) e a rotação das citações (`show`, `restart`, 10s, respeita `prefers-reduced-motion`).
+- **Toggle "Show/hide content":** a lista de seções controladas inclui `#metodo`.
+- Espaço: `.how { padding-bottom: 96px }`, `.how .container-titulo { margin-bottom: 48px }` (32px no celular).
+- **CSS antigo removido:** todas as regras com `method` ou `lead-q` foram retiradas de `mystyle.css`. Backups anteriores ficaram em `/home/claude/claude-redesign/index.before-how.html` e `mystyle.before-how.css`.
+
+### Skills (accordion)
+- Corrigido o corte do último card: o painel aberto recalcula sua altura com `ResizeObserver` e no evento `resize` (antes a altura era fixa em pixels, calculada só no carregamento).
+- Testado em 1440, 1024, 800, 600, 390 e 360px.
+
+### Outros ajustes recentes
+- Duplo diamante: primeiro ficou cinza claro (`#c9c9c9`), depois removido por completo (SVG, JS e CSS).
+- Caixa preta de citação: ocupava 450px; agora ocupa a metade esquerda (`max-width: none`). Depois foi substituída pelo layout acima.
+
+## 3. Tipografia do site
+- **Montserrat** (500, 800, 900): texto padrão (`--font-padrao`), títulos de seção, lista de setores, abas e citações.
+- **Merriweather** (700): título `h1` da coluna da esquerda (`.div-left > h1`, `--font-titulo`).
+- **Doto** (700): textos pontilhados das etapas antigas e anos da cápsula do tempo.
+- Importados mas não usados: Roboto, Muli e Quicksand (podem ser removidos).
+- Para instalar no Mac: fonts.google.com > Montserrat > Download all > instalar os `.ttf` pelo Font Book.
+
+## 4. Pacotes entregues
+- `atualizacao-how-i-work.zip`, `atualizacao-v62.zip`, `atualizacao-v78.zip`, `atualizacao-v82.zip`, `atualizacao-v83.zip`, `atualizacao-v93.zip`, `atualizacao-v96.zip`, `atualizacao-v103.zip` (scratchpad: `/tmp/claude-0/-home-claude/92f1f8f8-6b1b-5fbe-ad9e-801a5eca1250/scratchpad/`).
+- Versão 104: `index.html` e `mystyle.css` enviados separados e sem compactar.
+
+### Tooltip (v106)
+- Visual: caixa `#111` reta (sem border-radius), texto branco em `ui-monospace` 12px, rabicho triangular via `::after`, `pointer-events: none`.
+- Variantes mantidas: `.center` (padrão), `.right` (ancorado à esquerda do elemento) e `.left` (ancorado à direita).
+- Animação: ao entrar com mouse/foco, o texto é digitado letra por letra (38ms/letra) com cursor de bloco piscando (`.tip-t::after`).
+- O texto original fica em `data-text`; o JS envolve o conteúdo num `<span class="tip-t">` para o cursor ficar **no fim** (o `::after` da caixa é o rabicho).
+- `min-width` é reservado com a largura final antes de digitar, para a caixa não pular a cada letra.
+- `prefers-reduced-motion`: mostra o texto completo direto, sem cursor.
+- Sem JS: o texto original permanece no DOM (só é esvaziado no momento de digitar).
+
+### Menu mobile (v107) — `menu.js` + CSS
+- Overlay em tela cheia (`#mmenu`), fundo `#0b0b0b`, montado por **`menu.js`** a partir dos links que já existem no `<nav class="menu">` — vale para a home (5 links) e para as páginas de projeto (Back).
+- Itens grandes (Montserrat 800, `clamp(30px, 8.6vw, 42px)`), sem numeração (v111).
+- Entrada: `clip-path` de cima para baixo (0,55s) + itens em cascata (`--i`, 60ms).
+- Hover/foco: label desloca 10px, fica rosa, seta entra e um sublinhado rosa varre da esquerda; `:active` no toque.
+- Redes sociais (Instagram, Behance, WhatsApp) em botões circulares, mesmos links do rodapé; + e-mail e "São Paulo, BR".
+- Acessibilidade: `role="dialog"`, `aria-modal`, `aria-expanded` no hambúrguer, foco no diálogo ao abrir (não no 1º link, para não parecer hover), Tab preso dentro, Esc fecha, fundo trava o scroll (`html.menu-open`), `inert` ao fechar.
+- Responsivo: breakpoint ≤1024px; em telas baixas (≤560px de altura, celular deitado) a tipografia e os espaçamentos diminuem para caber sem rolar.
+- `prefers-reduced-motion`: sem clip/cascata.
+- O script antigo do menu (que só trocava o ícone e alternava `.menu ul.active`) foi removido das 8 páginas; `trocarSVGMenu` virou no-op para os `onclick` antigos não conflitarem.
+- Desktop (>1024px) intacto: overlay `display:none` e o menu horizontal continua igual.
+
+### Toggle show/hide (v109)
+- O tooltip mostra a **ação do próximo clique**, não um texto fixo:
+  - ligado (verde, seções visíveis) → **"Show only projects"**
+  - desligado (cinza, só a grade de jobs) → **"Show all site contents"**
+- Implementação: o tooltip lê o texto de `data-text` (fonte única) e expõe `tip.setText(texto)`. O `change` do `#toggleSwitch` troca o texto; se o tooltip estiver aberto, ele **redigita** a nova frase.
+- O `aria-label` do checkbox acompanha o mesmo texto (antes o input não tinha nome acessível).
+- Texto inicial no HTML: "Show only projects" (estado `checked`).
+- O tooltip do toggle continua com a variante `.right` (rabicho à esquerda).
+
+### Tooltip e foco (v110)
+- Problema: `:focus-within` mantinha o tooltip aberto depois do clique, porque o botão/checkbox continua focado mesmo com o mouse longe.
+- Correção: o reveal por foco só acontece quando a interação veio do **teclado**. O JS marca `kbd` em `keydown` e desmarca em `pointerdown`, e aplica a classe `.is-focus` no `.tooltip` apenas nesse caso.
+- CSS: `:focus-within` trocado por `.tooltip.is-focus` (no tooltip genérico e nos cards de Skills).
+- Resultado: clique com mouse → tooltip fecha ao sair com o mouse; Tab → tooltip abre e digita normalmente.
+
+### Ajustes de espaçamento e conteúdo (v112)
+- Filtros de categoria (All/Editorial/Web/Digital): `gap` de 15px → **8px** (`.div-btscategoria`). No mobile os 4 botões passam a caber em uma linha.
+- Ícone ↔ título das seções: era **30px** (16px de `column-gap` + 14px de `margin-right` no `.sec-ico`); agora **24px** — `margin-right: 0` e `column-gap: 24px` no `h1` flex.
+- Primeiro card da Time capsule: `2022/2025` → **2022/2026**.
+
+### Seção Projects: alinhamento do título (v113)
+- A seção `#Jobssection` fica **fora do `<main>`** (é filha direta do `body`), então não herda o `padding` lateral dele.
+- Ela tinha `padding: 50px` fixo: alinhava no desktop, mas no mobile o `main` usa 20px e o título ficava em 50px — deslocado em relação aos outros títulos.
+- Correção: `.Jobsprincipal` replica o padding do `main` (50px no desktop, 20px em `max-width: 800px`). Medido: título em 50/50/50 (Jobs/Skills/Time) no desktop e 20/20/20 no mobile.
+- O grid de projetos continua com 20px de margem própria (full-bleed) — no desktop o título fica 30px à direita da borda dos cards, igual ao padrão das outras seções.
+- Título renomeado de "Dear jobs" para **"Projects"**.
+- Ícone ↔ título: 24px → **16px**.
+
+### Página de contato com Netlify Forms (v114)
+- Novos arquivos: **`contato.html`** (formulário) e **`obrigado.html`** (confirmação, `noindex`).
+- Visual: mesma navbar (com `menu.js`), faixa rosa com título + ícone de envelope, layout em 2 colunas (aside + form), responsivo.
+- Form: `name="contact"`, `method="POST"`, `data-netlify="true"`, `netlify-honeypot="bot-field"`, `action="/obrigado.html"`, hidden `form-name`.
+- Campos: nome, e-mail, empresa (opcional), assunto (select), mensagem, consentimento (obrigatório). Todos com `label`, `autocomplete` e `required` onde aplicável.
+- **Destinatário do e-mail não vai no HTML**: precisa ser configurado no painel do Netlify (Site configuration → Forms → Form notifications → Email notification → `alemedacedo@gmail.com`).
+- Netlify Forms só funciona hospedado no Netlify; no preview local o envio retorna erro (esperado).
+- Não há link para `contato.html` no sistema ainda (página interna). Pode ser ligada no menu ou na seção de contato do index quando o usuário quiser.
+
+### Rolagem nas páginas novas (v116)
+- O CSS global tem `body { overflow: hidden }` e quem libera a rolagem é o script do loader (`document.body.style.overflow = "auto"`), que existe só nas páginas com `.container-loading`.
+- `contato.html` e `obrigado.html` não têm loader → a página não rolava no mobile.
+- Correção: `.contact-page, .thanks-page { overflow-y: auto; }` e `class="contact-page"` no body de `contato.html`.
+- Atenção para páginas futuras: ou incluem o loader, ou precisam dessa classe/regra.
+
+### Ícones sociais do index (v117)
+- `.container-contato .icone`: `border-radius` 12px → **50%**, tamanho 44px, padding 10px.
+- Hover igual ao da página de contato: fundo `#111` e ícone branco (`stroke/fill` trocados no hover); antes era fundo rosa `#ffdada`.
+- Tooltips e animações dos ícones (Instagram, Behance, WhatsApp) continuam iguais.
+
+### Cursor dos projetos (v118)
+- O antigo "+" (duas barras com `proj-plus`) virou um chevron ">" feito com `border-right` + `border-bottom` e `rotate(-45deg)` no `::before` do `span`.
+- Animação `proj-chev` (1,4s): o chevron desliza 3px para a direita e volta. Com `prefers-reduced-motion`, fica parado (já centralizado).
+- O `translate(-2.2px, 0)` compensa o centro óptico do ">" (a forma visível fica deslocada +2,16px após a rotação).
+- O `::after` e o keyframe `proj-plus` foram removidos.
+
+### Tooltips compartilhados e redes da página de contato (v119)
+- O módulo de tooltip (digitação + foco só de teclado + `setText`) saiu do inline do `index.html` e virou **`tooltip.js`**, incluído no `index.html`, `contato.html` e (se precisar) em novas páginas.
+- A página de contato ganhou tooltips nos três ícones sociais, com o mesmo visual: `tooltip-text right` (alinhado à esquerda do ícone, abre para a direita — centralizado cortaria na borda).
+- `.contact-socials` ganhou `margin-top: 40px` para o tooltip caber acima dos ícones sem encostar na linha do `REPLY TIME`. **Atenção:** valores menores que 28px não fazem efeito por colapso de margem com `.contact-facts`.
+- Textos: Instagram, Behance, WhatsApp.
+
+### Hover dos botões (v120)
+- Regra única no fim do CSS: `.button-small`, `.div-downloadcv button`, `#botao-topo`, `.contact-submit`, `.contact-soc`, `.container-contato .icone` e `.mmenu__soc` sobem **2px** no hover (`translateY(-2px)`), com a mesma curva `cubic-bezier(.22,1,.36,1)` de 0,25s.
+- `:active` volta para `translateY(0)`; `prefers-reduced-motion` desliga a subida.
+- Acordeões e abas (`button` genérico) ficaram de fora de propósito — não devem "pular".
+- As **cores** de hover continuam por contexto: redes → preto; botão de envio → vermelho; filtros/botões comuns → cinza `#444`.
+
+### "Clique" no hover dos cards (v121)
+- Keyframe `card-click`: 0% → translate 0, 40% → 2px para baixo, 100% → 0 (0,5s).
+- Aplicado em `.portfolio-item`, `.skills-grid .level-counter`, `#Timelinesection .container-timeline`, `.stat` e `.front` (lista de fronts do projeto Select).
+- Usa a propriedade **`translate`** (não `transform`) de propósito: os cards da timeline já usam `transform: scale(var(--s))` na pilha e os projetos têm transforms próprios; assim não há conflito nem "pulo" no fim da animação.
+- `prefers-reduced-motion`: animação desligada.
+
+### Som de click no hover (v122 — REMOVIDO na v124)
+- **`sound.js`**: sintetiza o som com Web Audio (ruído curto + bandpass/highpass + gain 0,06), sem arquivo de áudio.
+- Dispara no `mouseenter` dos cards (mesmos seletores do press: portfolio, skills, timeline, stat, front), com throttle de 110ms.
+- Só roda em dispositivos com `(hover: hover) and (pointer: fine)`.
+- Botão `.sound-toggle` (orador / orador cortado) é injetado dentro do `.container-toogle` quando existe (index); nas outras páginas vai num `.sound-dock` fixo no canto inferior esquerdo.
+- Estado ligado/desligado salvo em `localStorage` (`amc-hover-sound`), `aria-pressed` e `aria-label` atualizados.
+- **Limite do navegador:** áudio só é liberado depois de um gesto do usuário (clique/tecla). Antes disso, o hover fica silencioso; `pointerdown`/`keydown` fazem o `resume()` do AudioContext.
+- Incluído em `index.html` e `projeto_select.html` (páginas que têm cards).
+
+### Som nos ícones do hero (v123)
+- A grade `.hero-icons` é decorativa, fica atrás do texto e tem `pointer-events: none`; o efeito de rastro dela é calculado por coordenadas.
+- Para o som, o `sound.js` faz o mesmo: no `pointermove` do `#hero`, procura o tile sob o cursor usando rects em cache (recalculados no `pointerenter`, `resize` e `scroll`) e dispara o clique quando o tile muda.
+- Assim o som funciona em toda a área do hero, inclusive sobre o texto — coerente com o rastro rosa.
+- O CSS dos tiles não foi alterado (nada de `pointer-events: auto`), então seleção de texto e cliques no hero seguem iguais.
+- Respeita o botão liga/desliga do som e o throttle de 110ms.
+
+### Estado do idioma (v126)
+- **Somente português no ar:** 10 páginas na raiz (`index`, `contato`, `obrigado`, 7 projetos), todas `lang="pt-BR"`.
+- **Seletor `ENG | PORT` removido** de todas as páginas. O CSS de `.nav-left` e `.lang-switch` continua no `mystyle.css` (sem uso) para facilitar quando o inglês voltar.
+- **Inglês pausado** em `_backup/en-pausado/` (10 arquivos + `LEIA-ME.txt` com instruções). É um snapshot: não acompanha edições posteriores do PT; ao retomar, traduzir de novo a partir do PT final.
+- Ao voltar o inglês: copiar os arquivos de volta para a raiz, reaplicar o seletor e revisar tradução.
+
+### Versão PT e ajustes de conteúdo (v124)
+- **Estrutura i18n (pausada na v126):** PT na raiz e inglês com sufixo `-en`. O EN foi movido para `_backup/en-pausado/`; ao retornar, copiar de volta para a raiz (os links internos já são auto-consistentes).
+- **Seletor de idioma:** `ENG | PORT` ao lado do logo (`#my-logo`), dentro de `.nav-left`; o idioma atual fica com `is-active` + `aria-current="page"`. Presente nas 20 páginas.
+- **`menu.js` bilíngue:** lê `document.documentElement.lang` e usa "Open/Close menu" ou "Abrir/Fechar menu".
+- **Páginas:** 10 PT na raiz e 10 EN com `-en`. Formulário PT posta em `/obrigado.html` e o EN em `/obrigado-en.html`, ambos com `name="contact"` (mesma caixa de entrada do Netlify).
+- **`<html lang>`:** EN = `en`; PT = `pt-BR`. `<title>`s traduzidos.
+- **Som removido:** `sound.js`, botão `.sound-toggle`, `.sound-dock` e CSS correspondente foram apagados; os includes saíram de `index.html` e `projeto_select.html`.
+- **"Soon" removido** dos 7 cards de projeto (index e index-pt).
+- **Menu:** "Jobs" → "Projects" (EN) e "Projetos" (PT); "Início" do EN virou "Home".
+- **Seção de contato removida do index** (a "porta" duplicada). A página `contato.html` é o único caminho de contato. A seção saiu também do array do toggle.
+- **CTA no hero:** "See projects" / "Ver projetos" → `#Jobssection`, com subida no hover.
+- **Tipografia:** `p { font-weight: 100 }` → **400**.
+
+### Hierarquia de títulos (v127)
+- Títulos dentro de `.container-titulo` viraram **h2** no index (5) e nos 7 projetos (2 cada = 14). O h1 do hero e os títulos de página (Contato, Mensagem enviada) continuam h1.
+- CSS: seletores `.container-titulo > h1` passaram a `.container-titulo > :is(h1, h2)` e `h1 .sec-ico` para `:is(h1, h2) .sec-ico`.
+- Foi adicionado `font-size: 32px` na regra dos títulos de seção (o h2 global é 24px); o clamp do hero de contato continua vencendo por vir depois.
+- Resultado: index e projetos com **1 h1** cada; visual dos títulos inalterado.
+
+### Grid de projetos (v129)
+- O card do SGP tinha `grid-column: 1 / -1` + `aspect-ratio: 1700/985`, ocupando a linha inteira quando ficava sozinho.
+- Removido: agora todos os cards usam `.portfolio-item { aspect-ratio: 938 / 519 }`, a proporção das thumbs padrão, e `object-fit: cover` corta o mínimo da thumb do SGP (1700x985).
+- Medido: 1440 → 453×251 (3 colunas); 1024 → 482×267 (2); 800 → 370×205 (2); 390 → 350×194 (1). Todos os cards com a mesma largura e altura.
+- A classe `is-sgp` saiu do HTML e do CSS.
+
+### Tipografia: Fraunces no hero e títulos (v131)
+- Origem do Arial: `button` nunca teve `font-family` no CSS; botões não herdam a fonte do body, então o navegador usava o padrão (Arial no Chrome/macOS). Afetava filtros, "Baixar CV", acordeão de Skills e envio do contato.
+- **Fraunces** (variável `opsz,wght@9..144,400..900`) no `@import`, variável `--font-serif`.
+- Aplicada só em:
+  - `.hero-phrase` — 600, `letter-spacing: -0.015em` (6vh no desktop / 30px no mobile);
+  - `.container-titulo > :is(h1, h2)` — 700, 34px, `letter-spacing: -0.01em`.
+- Botões: `button { font-family: var(--font-padrao); font-weight: 600; letter-spacing: 0.03em; }` — resolve o Arial e mantém a sans do site. `.hero-cta` e `.contact-submit` voltaram a Montserrat 700.
+- Mobile: em `max-width: 600px`, `.button-small` fica 12px/padding 13px e `.div-btscategoria` ganha `flex-wrap: wrap` (390px cabe em 1 linha; 360px quebra em 2).
+- Corpo, navegação, abas do How I work e acordeões seguem em Montserrat.
+- O guia `_check/tipografia.png` é anterior a esta mudança — regenerar depois.
+- Origem do Arial: `button` nunca teve `font-family` no CSS; como botões não herdam a fonte do body, o navegador usava o padrão (Arial no Chrome/macOS). Afetava filtros, "Baixar CV", acordeão de Skills e o botão de envio do contato.
+- **Fraunces** (variável, `opsz,wght@9..144,400..900`) adicionada ao `@import` e à variável `--font-serif`.
+- Aplicada em:
+  - `.container-titulo > :is(h1, h2)` — títulos de seção, agora 34px / 700 / `letter-spacing: -0.01em`;
+  - `button` (base) — 600, resolve o Arial em todos os botões;
+  - `.hero-cta` e `.contact-submit` — 600, 13px;
+  - `.button-small` — 13px, padding 18px.
+- Mobile: em `max-width: 600px`, `.button-small` volta a 12px/padding 13px e `.div-btscategoria` ganha `flex-wrap: wrap` (390px cabe em 1 linha; 360px quebra em 2).
+- Hero, navegação, texto corrido e abas do How I work continuam em Montserrat.
+- O guia `_check/tipografia.png` é anterior a esta mudança — regenerar depois de fechar a decisão.
+
+### Contraste das tags (v132)
+- `.tags` usava `color: #777` sobre `#ffdada` (~3,5:1, abaixo de 4,5:1 para texto pequeno). Agora `#333` (~9:1), mesmo fundo rosa.
+- Vale para as tags da Linha do tempo e das páginas de projeto (`.tags` é a mesma classe).
+- Na revisão, achei rótulos que escaparam da tradução por serem repetidos: `<h4>Period tags:</h4>` em 7 cards → "Tags do período:" e a tag "Art direction" → "Direção de arte".
+- Termos mantidos em inglês por uso corrente: "UX Design", "Design System", "Workshops", "Branding", "Key visual".
+
+### Cursor dos projetos: chevron (v133)
+- O chevron deixou de ser `::before` do círculo e virou elemento próprio: `.proj-cursor__chev` (um `<i>` dentro de `.proj-cursor`).
+- Cor: `var(--cor-apoio01)` (#ff0000) no `border-right`/`border-bottom`.
+- **Inércia própria:** o círculo segue o mouse com lerp `0.25`; o chevron ganha um deslocamento no sentido oposto ao movimento, com lerp `0.16` e limite de ±8px. Assim ele "atrasa" em relação ao círculo e volta ao centro quando o mouse para.
+- `prefers-reduced-motion`: sem inércia (chevron fixo) e sem a animação `proj-chev`.
+- O centro óptico continua corrigido com `translate(-2.2px, 0)`.
+
+### Frases do Como trabalho (v134)
+- `.how__quote`: família Montserrat 900 → **Fraunces 600**; tamanhos mantidos (28px desktop, 24px tablet, 22px celular).
+- `line-height` 1.5 → 1.4 no desktop (a serifada ficava solta); no celular continua 1.45.
+- As frases rotativas, os indicadores e o restante da seção não mudaram.
+
+### Redes sociais no fim dos projetos (v135)
+- A seção de contato saiu do index na v124, levando junto os ícones. Voltaram como uma faixa compacta **abaixo da grade de projetos**: rótulo "Vamos conversar" (Fraunces 600, 26px), os três ícones redondos (`.contact-soc`, 46px) com tooltip e o e-mail `alemacedo@gmail.com` (mailto).
+- Reaproveita as classes da página de contato e o `tooltip.js` (já carregado no index).
+- `.portfolio-grid` tinha `margin-bottom: 150px` (desktop) / 100px (mobile); agora **64px / 56px** para a faixa ficar perto dos cards.
+- `.social-strip` tem `padding-bottom: 64px` no desktop (o `#Jobssection` só tem 20px de margem lá) e 0 no mobile (a seção já tem 100px).
+- O rótulo tem `margin-bottom: 30px` (somado ao gap de 14px) para o tooltip não encostar nele no hover.
+
+### Cards: título serifado e filtro animado (v136)
+- `.caption h3` (título que aparece no hover): Fraunces 600, 20px (tamanho do h3 global mantido).
+- Filtro deixou de trocar `display` na hora:
+  1. os cards que saem ganham `.is-leaving` (opacidade 0 + `scale(.96)`) por 180ms;
+  2. depois recebem `.hide` e os demais fazem **FLIP** (mede posição antiga, aplica `translate` inverso e anima até 0) — a grade se reorganiza deslizando;
+  3. cards que estavam escondidos entram com `.is-entering` → `.is-in`, em cascata de 40ms por card.
+- `.portfolio-item` trocou `transition: all .3s` por `opacity .2s` + `transform .3s cubic-bezier(.22,1,.36,1)`.
+- `prefers-reduced-motion`: filtro volta ao toggle instantâneo de `.hide`.
+
+### Sem animação de clique no hover (v137)
+- Removido o bloco `@keyframes card-click` (press de 2px para baixo) e a regra que o aplicava em `.portfolio-item`, `.skills-grid .level-counter`, `#Timelinesection .container-timeline`, `.stat` e `.front`.
+- O hover dos cards agora não move nada (`animation: none`, `translate: none`, transform identidade).
+- O hover de botões (lift de 2px) e as demais animações seguem intactos.
+
+### Faixa social sem rótulo (v138)
+- Removido o `<p class="social-strip__label">Vamos conversar</p>` e as regras `.social-strip__label` (incluindo o ajuste de 22px no mobile).
+- A faixa agora tem só os três ícones e o e-mail; o tooltip do hover usa o espaço acima sem colidir com texto.
+
+### Espaçamento do Como trabalho (v139)
+- `.how__grid`: `gap: 32px` → **`gap: 32px 56px`** no desktop (56px entre a coluna das frases e as colunas de accordeons; era 32px).
+- Tablet (≤1024): `gap: 40px 32px` → **`48px 32px`** (as frases ficam em largura total, então o respiro é vertical).
+- Celular (≤600): `gap: 40px` → **`48px`**.
+- O espaçamento entre as duas colunas de accordeons (UX e UI) acompanha o mesmo column-gap.
+
+### Local na Linha do tempo (v140)
+- Cada um dos 8 cards ganhou, acima de "Tags do período:", um bloco `.timeline-local` com `<h4>Local:</h4>` e o nome da empresa em `<p>`.
+- Mapeamento: 2022/2026 Banco BV · 2021/2022 Dock meios de pagamentos · 2020 Banco BV · 2019 Secretaria Municipal de educação de SP · 2018 Dr. Consulta · 2016 Tellus · 2014 Dois design (empresa própria) · 2012 Tempo Design.
+- CSS: `.timeline-local { width: 100% }`, `h4` com margem 15px/4px, `p` 15px/600.
+- Só no index (as páginas de projeto não têm cards de linha do tempo).
+
+### Hierarquia do Local (v141)
+- Rótulos `.div-right > h4` e `.timeline-local h4`: 18px → **11px, caixa alta, letter-spacing .08em, #777** (mesmo padrão dos labels do formulário de contato).
+- Nome da empresa `.timeline-local p`: 15px/600 → **18px/700** (17px no mobile).
+- Resultado: a informação (empresa) domina; "LOCAL:" e "TAGS DO PERÍODO:" viram apoio.
+
+### Texto dos cards da timeline (v142)
+- `.container-timeline .div-left p`: 16px → **15px**, `line-height` 1.7 (antes 1.8).
+- Mobile (≤800): **14px** com `line-height` 1.7 — 14px é o piso; abaixo disso a leitura piora.
+- O bloco de texto ficou ~6% mais compacto, o que dá mais ar relativo para "LOCAL:" e as tags.
+
+### Seção Idiomas (v143)
+- Inserida em `#Idiomassection`, entre o bloco de Competências (About) e a Linha do tempo.
+- Título "Idiomas" com ícone de globo (`.sec-ico--globe`, gira devagar em 18s; para com `prefers-reduced-motion`).
+- Dois cards (`.idioma`): nome do idioma em Fraunces 26px, nome nativo em itálico ("English"/"Français"), nível "Intermediário / Avançado" e um medidor de 4 segmentos (Básico · Intermediário · Avançado · Fluente) com os dois do meio preenchidos em rosa.
+- Mobile: uma coluna, cards empilhados.
+- A seção entra na lista do toggle "Ver só projetos" (some junto com Intro/About/How/Timeline/CV).
+
+### Cards de Idiomas no padrão Skills (v144)
+- `.idioma` agora espelha `.skills-grid .level-counter`: fundo `whitesmoke`, borda `var(--cinza-03)`, raio 14px, sombra `0 -4px 14px rgba(0,0,0,.04)`, padding 16px 18px, gap 10px.
+- Cabeçalho: ícone de globo 18px + nome em Montserrat 700 15px + nome nativo em Fraunces itálico 12px à direita.
+- Barra reutiliza `.level-bar` / `.level-progress` (10px, rosa `var(--cor-apoio02)`), com 72% de preenchimento.
+- Nível "Intermediário / Avançado" em 12px abaixo da barra.
+- Grade: 3 colunas no desktop (os dois idiomas ocupam as duas primeiras, alinhados com os cards de Skills acima), 2 no tablet, 1 no celular.
+- Sem `:hover` — cards não interativos.
+- Correção: o preenchimento era um `<span>` inline (não renderizava); virou `<div>`.
+
+### Idiomas removida (v145)
+- Removido o `<section id="Idiomassection">`, o bloco CSS (.idioma, .idiomas__grid, globo animado) e a referência no array do toggle "Ver só projetos".
+- A ordem de seções voltou a: Hero → Intro → Como trabalho → Competências → Linha do tempo → CV → Projetos.
+- Sobrou o guia `_check/idiomas-*.png` como registro do que foi experimentado.
+
+### Texto dos cards em preto (v146)
+- `.container-timeline .div-left p` ganhou `color: #000`; antes herdava `var(--cinza-02)` (#444) do card.
+- Contraste sobre o fundo `whitesmoke` sobe de ~9:1 para ~19:1.
+
+### Duotone das thumbs (v147)
+- Técnica: `.portfolio-item` ganhou `background-color: var(--cor-apoio01)` (vermelho) + `isolation: isolate`; a thumb recebe `filter: grayscale(1) contrast(1.05)` e `mix-blend-mode: screen`.
+- Resultado do `screen` sobre vermelho: preto → vermelho, meio-tom → rosa, branco → branco.
+- `.thumbnail-img` ganhou `background-color: #fff` para os PNGs com transparência (SGP) não mostrarem o vermelho chapado do fundo.
+- Vale para as 7 thumbs do index (mobile inclusive). A legenda do hover continua sobreposta normalmente.
+
+### Duotone com filtro SVG (v148)
+- O `mix-blend-mode: screen` sobre vermelho puro deixava a grade vermelha demais. Trocado por um filtro SVG inline (`#duotone-pink`, definido logo após `<body>` no index).
+- Mapeamento tonal (feColorMatrix saturate 0 + feComponentTransfer table):
+  - R: 1 → 1 → 1
+  - G: 0.14 → 0.502 → 1
+  - B: 0.18 → 0.576 → 1
+  - ou seja: sombra → vermelho suave (~#ff242e), meio-tom → **#fc8093** (o rosa das barras de Skills), branco → branco.
+- CSS: `.portfolio-item .thumbnail-img { filter: url(#duotone-pink); background-color: #fff; }`; o fundo vermelho e o `isolation` do card saíram.
+- Só o index usa `.thumbnail-img`, então o filtro não afeta outras páginas.
+
+### Pontos do header nos cards (v149)
+- O header usa `assets/img_bgmenu.png` (tile 3×3 com um ponto `#ff264e` a 50%) repetido.
+- Nos cards, `.portfolio-item::after` repete o mesmo arquivo com `background-size: 6px 6px` e `opacity: .4` (o dobro do tamanho do header, para o ponto aparecer na escala do card), `pointer-events: none` e `z-index: 1`.
+- `.caption` ganhou `z-index: 2` para a legenda do hover continuar acima da textura.
+- No hover, a legenda cobre os pontos com o fundo rosa (a textura fica só no estado normal).
+
+### Teste: cores originais + pontos (v150)
+- O `filter: url(#duotone-pink)` do `.thumbnail-img` está **comentado** no CSS; os pontos do header (`.portfolio-item::after`) continuam.
+- Para voltar ao duotone: descomentar a linha `filter: url(#duotone-pink);` no bloco `.portfolio-item .thumbnail-img`. O SVG do filtro segue no index.
+- Comparação visual: `_check/original-dots.png` (cores originais) vs `_check/duotone-rosa.png` (duotone).
+
+### Accordeon do Como trabalho animado (v151)
+- `.how__panel` ganhou `max-height: 0`, `opacity: 0`, `overflow: hidden`, `box-sizing: border-box` e `transition: max-height .38s cubic-bezier(.22,1,.36,1), opacity .26s`.
+- JS do accordeon reescrito: ao abrir, mede `scrollHeight`, anima até ele e depois fixa `max-height: none`; ao fechar, mede a altura atual, anima até 0 e só então aplica `hidden`.
+- `hidden` e `aria-expanded` continuam sendo aplicados (acessibilidade preservada); o guard `is-open` evita que o timeout de fechamento esconda um painel reaberto.
+- `prefers-reduced-motion`: abre/fecha sem animação.
+- Chevron continua girando 180° via `transform` (0.3s).
+
+### Accordeon: animação igual à de Skills (v152)
+- Causa do "soquinho": o `.how__panel` tinha `padding: 18px 16px 20px` e `max-height` animava até 0, mas o box parava em **38px** (padding) e só então o `hidden` zerava — um salto.
+- Correção: o padding saiu do painel animado e foi para um `.how__panel-inner` (8 painéis envolvidos). O painel anima de `scrollHeight` até 0 de verdade.
+- CSS agora espelha o `.panel` de Skills: `max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out;` (sem opacidade, sem `none`).
+- JS espelha o de Skills: abre com `maxHeight = scrollHeight + "px"`, fecha com `maxHeight = null` (o CSS anima até 0) e aplica `hidden` após 220ms.
+- Listener de resize recalcula a altura dos painéis abertos (como o `refreshOpenPanels` de Skills).
+- Medição: fechando 152 → 131 → 112 → … → 0 e abrindo 0 → 25 → 47 → … → 182, sem degraus.
+
+### Fechar todas as abas do Como trabalho (v153)
+- Clicar na aba já aberta fecha ela (estado "tudo fechado"); clicar em outra abre a nova e fecha a anterior — no máximo 1 aberta.
+- Implementação: `setOpen(t, !isOpen)` para a aba clicada e fechamento das demais.
+- Testado: abre Define → fecha Define (todas fechadas) → abre Design → abre Discover (Design fecha) → fecha Discover (todas fechadas), sem erro.
+
+### Sem subida no hover (v154)
+- Removido `transform: translateY(...)` do hover/active de: `.button-small`, `.div-downloadcv button`, `#botao-topo`, `.contact-submit`, `.contact-soc`, `.container-contato .icone`, `.mmenu__soc` (bloco unificado) e também das regras individuais de `.contact-soc`, `.mmenu__soc`, `.contact-submit` e `.hero-cta`.
+- O bloco unificado agora só transiciona cor (background/color/border).
+- Movimentos horizontais seguem: seta do CTA (`translateX(3px)`) e label do menu mobile (`translateX(10px)`).
+- Verificado no navegador: hover em filtro, ícone social e botão de contato com `transform: none` e a cor mudando normalmente.
+
+### Inércia de scroll (v155)
+- Novo `scroll-inertia.js`, incluído nas 10 páginas antes de `</body>`.
+- Intercepta `wheel` (passive: false) e anima `scrollY` com lerp `EASE = 0.13` via `scrollTo({ behavior: "instant" })` (para não brigar com o `scroll-behavior: smooth` do CSS, que continua valendo para âncoras).
+- Não roda em telas de toque (`hover: hover` + `pointer: fine`), nem com `prefers-reduced-motion`.
+- Não intercepta elementos com scroll próprio (textarea, listas) — sobe a árvore checando `overflow-y` + `scrollHeight`.
+- Pulado quando o documento não tem scroll (`maxScroll() <= 0`); ressincroniza se a posição mudar por barra/teclado/âncora.
+- Teste: rodando o wheel para baixo, `scrollY` 0 → 78 → 146 → … → 597 em ~600ms; para cima, 546 → … → 200. Sem erro de JS.
+- Ajuste fino: `EASE` (menor = mais molenga; maior = mais seco).
+
+### Inércia mais molenga (v156)
+- `scroll-inertia.js`: `EASE` de `0.13` para **`0.08`** — o scroll continua por mais tempo depois do último tique.
+- Medição: um wheel de 600px leva ~1.2s para assentar (antes ~0.6s).
+- Para calibrar: `EASE` menor = mais molenga; maior = mais seco.
+
+### Cards sem sombra (v157)
+- Removido `box-shadow: 0 -4px 14px rgba(0,0,0,.04)` de `.skills-grid .level-counter` e `#Timelinesection .container-timeline` (inclusive no hover), e `box-shadow` da transição do card da timeline.
+- Os cards de projeto **não têm sombra CSS**: `.portfolio-item`/`.thumbnail-img`/`.caption` computam `box-shadow: none`; as sombras que aparecem nas thumbs (mockups de laptop/tablet) fazem parte das imagens.
+- Se o teste for para os cards de projeto, a alternativa seria remover borda/raio ou trocar as imagens — não há sombra de CSS a tirar.
+
+### Cards brancos com outline preto (v158)
+- `.skills-grid .level-counter`: `background-color: #fff` e `border: 1px solid #000` (era `whitesmoke` + `var(--cinza-03)`).
+- `#Timelinesection .container-timeline`: idem — `background-color: #fff` e `border: 1px solid #000`.
+- O hover rosa (`#ffeced`) dos dois continua valendo.
+- Os cards de projeto seguem como estavam (fundo vem da imagem).
+
+### Linha do tempo: só linha superior (v159)
+- `#Timelinesection .container-timeline`: `border: 0; border-top: 1px solid #000; border-radius: 0;` — fundo branco mantido.
+- O contorno lateral/inferior e o raio de 20px saíram; cada card vira uma faixa separada por uma régua superior.
+- No empilhamento (sticky), a régua do próximo card marca a transição entre os períodos.
+
+### Accordeon com réguas (v160)
+- `.how__tab`: fundo `#fff`, hover `#f5f5f5`, `border-top: 1px solid #000` e `border-bottom: 1px solid #000` (sem laterais).
+- `.how__panel` e `.how__panel-inner`: fundo `#fff`.
+- `.how__item + .how__item { margin-top: -1px; }` colapsa as réguas adjacentes quando os painéis estão fechados (senão ficaria 2px entre abas).
+- Sem painel aberto: cada aba fica entre duas réguas; com painel aberto, a régua de baixo da aba fica antes do conteúdo e a próxima régua vem depois do painel.
+
+### Competências sem outline (v161)
+- `.skills-grid .level-counter`: `border: 0` (era `1px solid #000`); fundo branco, raio 14px e hover rosa mantidos.
+- Os cards ficam definidos só pelo branco sobre o painel cinza do accordeon.
+
+### Competências com cantos retos (v162)
+- `.skills-grid .level-counter`: `border-radius: 0` (era 14px).
+- Os cards da Linha do tempo já estavam sem raio (v159).
+- Os cards de projeto seguem com `border-radius: 20px` em `.portfolio-item` (não mexidos).
+
+### Cursor dos projetos: "Ver" (v163)
+- Chevron removido (HTML, CSS, keyframes e a lógica de inércia no JS).
+- `.proj-cursor`: 56px → **72px** (left/top -36px); `.proj-cursor span` agora tem fundo **#000**, texto **branco**, 13px/600, centralizado.
+- O círculo contém o texto "Ver" diretamente: `<span>Ver</span>`.
+- `.portfolio-item` e `.portfolio-item a`: `cursor: pointer` (era `none`) — o ponteiro nativo volta a aparecer junto do círculo.
+
+### Accordion de Competências (v164)
+- `.accordion`: fundo `#fff`, hover `#f5f5f5`, `border-top` + `border-bottom` de 1px preto, sem laterais (igual às abas do Como trabalho). O `border: none` antigo foi removido (ele sobrescrevia as réguas).
+- `.panel-content`: fundo `#fff` (era `var(--cinza-05)`), então a área interna também é branca.
+- Os cards de Skills (brancos, sem borda) agora se fundem com o painel branco: a grade lê como uma lista de competências com as barras rosa. Se quiser os cards de volta visíveis, é só devolver o fundo cinza ao painel ou dar um tom aos cards.
+
+### Box do CV (v165)
+- `.div-downloadcv`: `background-color: #fff`, `border-top: 1px solid #000`, `border-right: 1px solid #000`; sem linhas à esquerda/embaixo.
+- Padding de 40px e o botão "Baixar CV" mantidos.
+
+### Box do CV completo (v166)
+- `.div-downloadcv`: `border: 1px solid #000` (topo, direita, esquerda e base), fundo branco mantido.
+
+## 5. Pendências e pontos em aberto
+- **Pasta de trabalho agora é local:** `/Users/alexandreribeiromcosta/Desktop/Site/claude 2` (sessão no DSH, com escrita direta na máquina). Backup dos arquivos pré-v105 em `_backup/pre-v105/`.
+- **Texto das seções placeholder** dos projetos (`projeto_*.html`): ainda faltam os textos definitivos.
+- **Páginas internas em andamento:** o usuário está terminando; o SGP já entrou na grade da home.
+- **Integração do componente Lifeline** (adiada; exige seis arquivos `lifeline-utils` e build React/TS).
+- **Exportação para Figma:** não é possível aqui (sem conector). Alternativas: PNG por seção, SVG, zip — sem escolha do usuário.
+- **Ícones/`.div-left > h1`:** o seletor usa `--font-titulo` (Merriweather), mas nenhuma página usa hoje; a fonte saiu do `@import` (fallback serif). Se algum projeto voltar a usar, reimportar.
+- **Favicon:** falta `favicon.ico` (404 inofensivo).
+
+### Resolvido na v105
+- Contato agora usa `--content-max` (1440px) e `width: 100%` + `padding` lateral.
+- SGP adicionado à grade de jobs (`assets/projetos/sgp/img_thumb_sgp.png`), ocupando a linha inteira (`grid-column: 1/-1`, `aspect-ratio: 1700/985`) para não ficar sozinho encolhido na 3ª linha.
+- Espaçamento mobile unificado em **100px** entre todas as seções (era 100/50/20/20). Causa raiz: o `margin-top: 100px` do `.container-titulo` vazava do `.how`. Agora o título encosta no início da seção e o respiro é da seção.
+- Fontes mortas removidas do `@import`: Muli, Quicksand, Roboto, VT323 e Merriweather. Montserrat passou a carregar 400/500/600/700/800/900 (antes só 500/800/900; 400/600/700 eram sintetizados).
+- Heros que faltavam geradas: `img_bg_sgp.jpg` (a partir de `img_thumb-04_sgp.png`), `img_bg_cia.jpg` (a partir de `img_thumb-02_cia.png`) e `img_bg_bvopen.jpg` (a partir de `thumb_site_bv.jpg`) — fundo rosa `#F9CCCF`, mockup centralizado com sombra, 1876×1038.
+
+## 6. Histórico resumido das versões publicadas
+- 86–88: sectors com troca animada (testada) e reversão.
+- 89–91: sectors em grade com seta; seta igual às dos números; fonte dos setores.
+- 92–93: duplo diamante em cinza claro; frases do How I work em 20px.
+- 94: grifo na frase de IA.
+- 95–96: ícones nos setores (8px, depois 12px).
+- 97–98: caixa preta na metade; diamante estático; diamante removido.
+- 99: hero em preto.
+- 100: toggle também oculta How I work.
+- 101: título "Short resume".
+- 102: Skills com altura recalculada (cards não cortados).
+- 103: How I work em abas, uma aberta por vez, em inglês.
+- 104: espaço igual acima e abaixo de How I work (desktop).
+- 105: contato em `--content-max`, SGP na grade, espaçamento mobile unificado (100px), limpeza de fontes e heras de SGP/Cia/BV Open.
+- 106: tooltip redesenhado (caixa preta reta, mono, rabicho triangular) com digitação letra por letra.
+- 106.1: nos cards de Skills o tooltip passou a abrir ao entrar no card inteiro (não só na barra), mantendo a ancoragem.
+- 107: menu mobile novo (overlay em tela cheia, texto grande, redes sociais, animações).
+- 108: How I work — clicar na aba aberta agora fecha (todas podem ficar fechadas); Discover continua aberta por padrão.
+- 109: tooltip do toggle show/hide agora muda com o estado (2 textos).
+- 110: tooltip não fica mais "aceso" após clique (foco de mouse não abre; só teclado).
+- 111: menu mobile sem a numeração (01–05); itens alinhados à esquerda.
+- 112: filtros de projetos com 8px, ícone↔título com 24px e 1º card da Time capsule em 2022/2026.
+- 113: título "Dear jobs" → "Projects"; ícone↔título em 16px; padding lateral da seção Jobs passa a acompanhar o `<main>` (50px desktop / 20px mobile).
+- 114: página interna de contato com Netlify Forms (`contato.html` + `obrigado.html`).
+- 115: link "Contact" do menu (desktop e mobile) aponta para `contato.html` em vez da âncora `#Contatosection`.
+- 116: rolagem liberada nas páginas de contato (o `body` global é `overflow: hidden` e só o loader do index liberava).
+- 117: ícones de redes sociais do index agora são redondos, com o mesmo hover preto da página de contato.
+- 118: cursor de hover dos projetos trocou o "+" por um chevron ">" animado.
+- 119: tooltip do módulo virou `tooltip.js` (compartilhado) e a página de contato ganhou tooltips nas redes sociais.
+- 120: hover dos botões unificado com o da página de contato (subida de 2px).
+- 121: "clique" leve (press de 2px) no hover de todos os cards.
+- 122: som de click no hover dos cards, com botão liga/desliga (`sound.js`).
+- 123: som de click também nos ícones animados do hero.
+- 124: versão em português com seletor de idioma; remoção do som; "Soon" fora; menu Jobs→Projects; seção de contato removida do index; CTA no hero; font-weight dos parágrafos.
+- 125: português passa a ser o idioma padrão (na raiz); inglês vai para arquivos `-en`.
+- 126: site fica **somente em português**; seletor de idioma removido e inglês pausado em `_backup/en-pausado/`.
+- 127: títulos de seção passam de `<h1>` para `<h2>` (hierarquia: um h1 por página).
+- 128: títulos PT ajustados: Breve histórico, Como trabalho, Linha do tempo, Projetos.
+- 129: cards de projeto com tamanho/proporção padrão; SGP deixa de ocupar a linha inteira.
+- 130: experimento tipográfico — Fraunces (serifada) nos títulos de seção e botões; Arial eliminada.
+- 131: serifada fica só no hero e nos títulos de seção; botões voltam para Montserrat (sem Arial).
+- 132: contraste das tags (`#777` → `#333`) e correção de rótulos que ficaram em inglês ("Period tags", "Art direction").
+- 133: chevron do cursor dos projetos em vermelho e com inércia própria (diferente do círculo).
+- 134: frases do "Como trabalho" em Fraunces, mantendo os tamanhos (28/24/22).
+- 135: faixa de redes sociais restaurada abaixo dos cards de projetos.
+- 136: título dos cards em Fraunces (hover) e filtro de projetos animado (saída, reordenação e entrada).
+- 137: removida a animação de "clique" (press de 2px) que rodava no hover dos cards.
+- 138: removido o rótulo "Vamos conversar" da faixa de redes sociais.
+- 139: mais espaço entre as frases e os accordeons do Como trabalho.
+- 140: "Local:" (empresa) em todos os 8 cards da Linha do tempo, acima das tags.
+- 141: hierarquia invertida — rótulos "Local"/"Tags" pequenos e nome da empresa em destaque.
+- 142: texto corrido dos cards da timeline de 16px para 15px no desktop (mobile segue 14px).
+- 143: seção "Idiomas" (inglês e francês intermediário/avançado) entre Competências e Linha do tempo.
+- 144: cards de Idiomas no visual dos cards de Skills (cinza, borda, barra rosa), sem hover.
+- 145: seção Idiomas removida (HTML, CSS e entrada no toggle).
+- 146: texto corrido dos cards da timeline em preto (#000).
+- 147: thumbs dos projetos em duotone vermelho/rosa/branco via CSS.
+- 148: duotone refeito com filtro SVG, mapeando para o rosa #fc8093 (mais próximo das barras de Skills).
+- 149: textura de pontos do header sobreposta nos cards de projeto.
+- 150: teste — pontos mantidos com as cores originais das thumbs (duotone comentado no CSS).
+- 151: abertura/fechamento do accordeon "Como trabalho" animados (altura + opacidade).
+- 152: animação do accordeon refeita no padrão do accordeon de Skills; corrigido o "soquinho" (painel parava em 38px por causa do padding).
+- 153: accordeon permite fechar todas as abas (máximo de 1 aberta por vez).
+- 154: removida a subida (translateY) do hover de todos os botões; sobra só a mudança de cor.
+- 155: inércia de scroll (lerp) no desktop, para cima e para baixo.
+- 156: inércia mais "molenga" (EASE 0.13 → 0.08).
+- 157: sombra removida dos cards de Competências e da Linha do tempo (teste).
+- 158: cards de Competências e Linha do tempo com fundo branco e outline preto (teste).
+- 159: cards da Linha do tempo só com linha superior de 1px preta e sem border-radius (teste).
+- 160: accordeon com fundo branco, hover cinza claro e réguas de 1px acima/abaixo de cada aba (teste).
+- 161: cards de Competências sem outline (só fundo branco sobre o painel cinza).
+- 162: cards de Competências sem border-radius (cantos retos).
+- 163: cursor dos projetos vira círculo preto maior com "Ver" branco; pointer nativo de volta; chevron removido.
+- 164: accordion de Competências com o mesmo tratamento dos accordions de Como trabalho.
+- 165: box de download do CV com fundo branco e linhas de 1px no topo e na direita.
+- 166: box do CV com outline completo (1px preto nas quatro laterais).

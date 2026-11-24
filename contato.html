@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Contato — Alexandre Macedo Costa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fale com Alexandre Macedo Costa, designer sênior de UX/UI baseado em São Paulo. Disponível para projetos, colaborações e posições full-time.">
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body class="contact-page">
+
+    <!-- Menu -->
+    <nav>
+        <div id="navbar">
+            <div id="my-logo"></div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html#Herosection">Início</a></li>
+                    <li><a href="index.html#Aboutsection">Sobre</a></li>
+                    <li><a href="index.html#Timelinesection">Trajetória</a></li>
+                    <li><a href="index.html#Jobssection">Projetos</a></li>
+                    <li><a href="contato.html" aria-current="page">Contato</a></li>
+                </ul>
+                <div class="menu-icon">
+                    <button class="icone" id="hamburguer" aria-label="Open menu">
+                        <img src="assets/ico_hamburguer_branco.svg" alt="">
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="contact-hero" id="Herosection">
+        <div class="contact-hero__inner">
+            <div class="container-titulo">
+                <h1>
+                    <svg class="sec-ico" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2.5" y="5" width="19" height="14" rx="2" />
+                        <path d="M3 6.5l9 6 9-6" />
+                    </svg>
+                    Contato
+                </h1>
+            </div>
+            <p class="contact-hero__lead">
+                Aberto a novos projetos, colaborações e posições full-time. Me conte no que você está trabalhando
+                e eu retorno.
+            </p>
+        </div>
+    </header>
+
+    <!-- Conteúdo -->
+    <main class="contact-main">
+        <div class="contact-grid">
+
+            <aside class="contact-aside">
+                <p class="contact-aside__lead">
+                    Prefere e-mail? Você pode falar comigo diretamente em
+                    <a href="mailto:alemacedo@gmail.com">alemacedo@gmail.com</a>.
+                </p>
+
+                <dl class="contact-facts">
+                    <div>
+                        <dt>Baseado em</dt>
+                        <dd>São Paulo, Brasil</dd>
+                    </div>
+                    <div>
+                        <dt>Disponibilidade</dt>
+                        <dd>Aberto a remoto e híbrido</dd>
+                    </div>
+                    <div>
+                        <dt>Tempo de resposta</dt>
+                        <dd>Normalmente em até 2 dias úteis</dd>
+                    </div>
+                </dl>
+
+                <div class="contact-socials">
+                    <div class="tooltip">
+                        <a class="contact-soc" href="https://www.instagram.com/alemacedocosta/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="dot" cx="17.3" cy="6.7" r="0.9"/></svg>
+                        </a>
+                        <span class="tooltip-text right">Instagram</span>
+                    </div>
+                    <div class="tooltip">
+                        <a class="contact-soc" href="https://www.behance.net/alexandremacedocosta" target="_blank" rel="noopener" aria-label="Behance">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h6.5a3 3 0 0 1 0 6H3zM3 11h7a3.2 3.2 0 0 1 0 6.4H3z"/><path d="M14 9h7M14.3 13.5a3.7 3.7 0 1 0 6.9 1.2h-6.9"/></svg>
+                        </a>
+                        <span class="tooltip-text right">Behance</span>
+                    </div>
+                    <div class="tooltip">
+                        <a class="contact-soc" href="https://api.whatsapp.com/send?phone=5511991371188" target="_blank" rel="noopener" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.1 19z"/><path d="M9 8.5c.3 2.6 2.6 5.2 5.4 6l1.2-1.2 2 .9-.5 1.6c-.3.6-1 .9-1.6.7-3.6-1-6.1-3.6-6.8-6.8-.2-.6.1-1.3.7-1.6l1.5-.5.9 2z"/></svg>
+                        </a>
+                        <span class="tooltip-text right">WhatsApp</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Netlify Forms: o Netlify detecta este form no deploy -->
+            <form class="contact-form" name="contact" method="POST" action="/obrigado.html"
+                data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact">
+
+                <p class="contact-hp" hidden>
+                    <label>Do not fill this out if you are human: <input name="bot-field"></label>
+                </p>
+
+                <div class="contact-row">
+                    <div class="contact-field">
+                        <label for="c-name">Nome</label>
+                        <input id="c-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="contact-field">
+                        <label for="c-email">E-mail</label>
+                        <input id="c-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                </div>
+
+                <div class="contact-row">
+                    <div class="contact-field">
+                        <label for="c-company">Empresa <span class="contact-opt">(opcional)</span></label>
+                        <input id="c-company" name="company" type="text" autocomplete="organization">
+                    </div>
+                    <div class="contact-field">
+                        <label for="c-subject">Assunto</label>
+                        <select id="c-subject" name="subject" required>
+                            <option value="" disabled selected>Escolha um</option>
+                            <option>Novo projeto</option>
+                            <option>Oportunidade de trabalho</option>
+                            <option>Colaboração</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="contact-field">
+                    <label for="c-message">Mensagem</label>
+                    <textarea id="c-message" name="message" required
+                        placeholder="Um resumo do briefing, o prazo e o que seria sucesso para você."></textarea>
+                </div>
+
+                <label class="contact-consent">
+                    <input type="checkbox" name="consent" value="yes" required>
+                    <span>Concordo em ser contatado sobre esta mensagem.</span>
+                </label>
+
+                <button class="contact-submit" type="submit">Enviar mensagem</button>
+
+                <p class="contact-note">Costumo responder em até 2 dias úteis.</p>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Criado e codificado por mim - Copyright 2022</p>
+    </footer>
+
+    <script src="tooltip.js"></script>
+    <script src="menu.js"></script>
+    <script src="scroll-inertia.js"></script>
+</body>
+
+</html>
