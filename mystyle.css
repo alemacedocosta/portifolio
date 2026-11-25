@@ -17,6 +17,8 @@
     --cinza-03: #ccc;
     --cinza-04: #eee;
     --cinza-05: #f7f7f7;
+    /* sombra rosa suave dos cards (referência) */
+    --sombra-rosa: 0 24px 50px -20px rgba(255, 120, 145, 0.42);
 }
 
 * {
@@ -26,6 +28,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -487,6 +490,8 @@ section:nth-of-type(2) {
 }
 
 .accordion {
+    z-index: 1; /* mantém a régua inferior acima do fundo do painel */
+    box-sizing: border-box;
     background-color: #fff;
     border: 0;
     border-top: 1px solid #000;
@@ -531,15 +536,28 @@ section:nth-of-type(2) {
     position: absolute;
     top: 50%;
     right: 18px;
-    transform: translateY(-50%);
     height: 16px;
     width: 16px;
+    --rot: 0deg;
+    --tx: 0px;
+    transform: translateY(-50%) translateX(var(--tx)) rotate(var(--rot));
     transition: transform 0.4s;
 }
 
 .rotate {
     /* Configurando a transição de giro */
-    transform: translateY(-50%) rotate(180deg);
+    --rot: 180deg;
+}
+
+.acc-label {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.accordion:hover .acc-label {
+    transform: translateX(6px);
+}
+.accordion:hover .icon {
+    --tx: -6px;
 }
 
 /* level counter Skills */
@@ -687,11 +705,10 @@ section:nth-of-type(2) {
 
 .container-titulo > :is(h1, h2) {
     font-family: var(--font-serif);
-    font-size: 34px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--cor-apoio01);
-    border-bottom: 1px solid black;
     text-align: left;
     line-height: 1.15;
 }
@@ -724,6 +741,23 @@ section:nth-of-type(2) {
 .container-full > p {
     margin-top: 30px;
 }
+
+/* ===== Páginas de projeto: etapas com texto corrido ===== */
+.container-full.proj-step {
+    display: block;
+    width: 100%;
+    margin: 32px 0 40px;
+}
+.container-titulo > .proj-step {
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+.proj-step p {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.proj-step p:last-child { margin-bottom: 0; }
 
 .panel-content > .container-full {
     border-bottom: 1px solid black;
@@ -840,15 +874,21 @@ section:nth-of-type(2) {
     color: #111;
 }
 
+.div-downloadcv:hover {
+    background-color: #ffdada;
+}
 .div-downloadcv {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     align-items: center;
     align-content: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    text-align: left;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1.5px solid #000;
+    border-radius: 22px;
+    transition: background-color 0.4s ease;
     gap: 15px;
     padding: 40px;
     max-width: var(--content-max);
@@ -997,12 +1037,10 @@ input:checked + .slider:before {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 20px;
-    padding: 0px;
-    margin-bottom: 64px;
-    margin-right: 20px;
-    margin-left: 20px;
+    /* 3 colunas ocupando a largura toda do navegador */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0 20px 64px;
 }
 
 .portfolio-item {
@@ -1245,42 +1283,38 @@ footer {
 
 /* Estilos da galeria */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    /* Distribui os itens com espaçamento igual */
-    align-items: left;
-    /* Centraliza verticalmente */
-    padding: 10px;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0;
+    margin: 0;
 }
-
 .gallery-item {
-    width: 150px;
-    height: 150px;
-    margin: 5px;
-    background-size: cover;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow:
-        0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.gallery-item img {
+    display: block;
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease;
-    /* Adiciona transição suave */
+    aspect-ratio: 962 / 1111;
+    object-fit: cover;
+    margin: 0;
+    background: #f1f1f1;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid #e6e6e6;
+    box-shadow: none;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-item:hover {
+    transform: scale(1.02);
 }
 
-.gallery-item:hover img {
-    transform: scale(1.1);
-    /* Aumenta em 10% a imagem */
+@media (max-width: 800px) {
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
 }
 
-/* Estilos da janela modal */
 .modal {
     display: none;
     position: fixed;
@@ -1531,10 +1565,7 @@ footer {
     }
 
     .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 20px;
-        padding: 0px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .container-contato a {
@@ -1568,19 +1599,15 @@ footer {
 }
 
 #Timelinesection .container-timeline {
-    /* teste: só a linha superior, sem raio */
+    /* cards em fluxo normal (sem empilhar); só a linha superior */
     border: 0;
     border-top: 1px solid #000;
-    border-radius: 0;
-    position: sticky;
-    top: calc(110px + var(--i, 0) * 18px);
-    z-index: calc(var(--i, 0) + 1);
+    border-radius: 0 0 24px 24px;
+    position: static;
     margin-bottom: 0;
     background-color: #fff;
-    box-shadow: none;
-    transform: scale(var(--s, 1));
-    transform-origin: 50% 0;
-    transition: transform 0.2s linear, background-color 0.4s ease;
+    box-shadow: var(--sombra-rosa);
+    transition: background-color 0.4s ease;
 }
 
 /* Hover rosinha no card da timeline */
@@ -1593,18 +1620,29 @@ footer {
     background-color: #fff;
 }
 
+#Timelinesection .container-timeline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    column-gap: 30px;
+    align-items: start;
+}
 #Timelinesection .container-timeline + .container-timeline {
     margin-top: 18px;
+}
+@media (max-width: 800px) {
+    #Timelinesection .container-timeline {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 18px;
+    }
 }
 
 /* ===== Linha de progresso da pilha (largura do card) ===== */
 #Timelinesection .stack-progress {
-    position: sticky;
-    top: 90px;
-    z-index: 60;
+    position: static;
     width: 100%;
     height: 4px;
-    margin-bottom: 14px;
+    margin-top: 28px;
+    margin-bottom: 0;
     border-radius: 4px;
     background-color: rgba(255, 218, 218, 0.7);
     overflow: hidden;
@@ -1625,32 +1663,73 @@ footer {
     transform: scaleX(0);
 }
 
-/* ===== Hero com grade de ícones animados ===== */
+/* ===== Hero: carrossel 3D de ícones animados, girando com o scroll ===== */
 #hero.hero-icons-bg {
     background-image: none;
     background-color: var(--cor-apoio03);
-    overflow: hidden;
+    overflow: visible;
     isolation: isolate;
+}
+
+/* a espiral pode vazar para fora do hero, por cima da seção seguinte */
+#Herosection {
+    position: relative;
+    z-index: 2;
 }
 
 #hero.hero-icons-bg::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: -2;
     background: linear-gradient(160deg, #ffdada 0%, #fff0f0 100%);
 }
 
-.hero-icons {
+.hero-carousel {
     position: absolute;
-    inset: -40px;
+    inset: 0;
     z-index: -1;
-    display: grid;
-    grid-template-columns: repeat(var(--cols, 8), 96px);
-    gap: 22px;
-    justify-content: center;
-    align-content: center;
+    perspective: 2400px;
+    perspective-origin: 50% 50%;
     pointer-events: none;
+}
+
+.hero-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    transform: rotateZ(-10deg) rotateX(-8deg);
+}
+
+.hero-ring__spin {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+}
+
+.hero-ring .hi {
+    position: absolute;
+    --tile: clamp(76px, 10.4vw, 150px);
+    left: calc(var(--tile) / -2);
+    top: calc(var(--tile) / -2);
+    width: var(--tile);
+    height: var(--tile);
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(255, 255, 255, 0.85);
+    color: rgba(232, 57, 90, 0.68);
+    box-shadow: 0 18px 40px rgba(190, 40, 60, 0.08);
+}
+
+.hero-ring .hi svg {
+    width: calc(var(--tile) * 0.36);
+    height: calc(var(--tile) * 0.36);
 }
 
 .hi {
@@ -1807,16 +1886,16 @@ footer {
 :is(h1, h2) .sec-ico {
     display: inline-block;
     box-sizing: border-box;
-    width: 42px;
-    height: 42px;
-    padding: 9px;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
     margin-right: 0;
-    border: 1.5px solid #000;
-    border-radius: 12px;
+    border: 1px solid #000;
+    border-radius: 8px;
     vertical-align: middle;
     fill: none;
     stroke: #000;
-    stroke-width: 1.5;
+    stroke-width: 1.2;
     stroke-linecap: round;
     stroke-linejoin: round;
     overflow: visible;
@@ -2076,7 +2155,6 @@ footer {
 }
 /* Skills: o tooltip do número aparece ao entrar no card inteiro (não só na barra),
    mas continua ancorado na barra, no mesmo lugar de antes. */
-.skills-grid .level-counter:hover .tooltip-text,
 .skills-grid .level-counter .tooltip.is-focus .tooltip-text {
     opacity: 1;
     visibility: visible;
@@ -2152,10 +2230,11 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     padding: 18px;
-    background-color: transparent;
-    border: 1.5px solid #000;
+    background-color: #fff;
+    border: 0;
     border-radius: 22px;
     color: #000;
+    box-shadow: var(--sombra-rosa);
     transition: background-color 0.4s ease;
 }
 .stat:hover {
@@ -2329,7 +2408,6 @@ footer {
     letter-spacing: 0.04em;
 }
 /* evita a rolagem horizontal causada pelos ícones flutuantes do hero */
-main { overflow-x: clip; }
 
 /* ícone do título: mesmo padrão dos outros títulos (tile preto, traço preto) */
 .sec-ico--flow .n1 { animation: flow-pop 2.4s ease-in-out infinite; }
@@ -2387,7 +2465,7 @@ main { overflow-x: clip; }
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    column-gap: 16px;
+    column-gap: 12px;
 }
 .container-titulo > :is(h1, h2) > svg,
 .div-left > h1 > svg { flex: none; }
@@ -2498,17 +2576,36 @@ main { overflow-x: clip; }
 .sectors__icon { width: 12px; height: 12px; flex: 0 0 12px; fill: none; stroke: #111; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Apresentação do hero em preto */
-.hero-intro { color: #000; }
+.hero-intro { color: #951B1D; font-weight: 800; }
 
 /* ===== How I work: frase em destaque + duas colunas de abas (uma aberta por vez) ===== */
 .how { position: relative; padding-bottom: 96px; }
 .how .container-titulo { margin-bottom: 48px; }
 .how__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr);
+    /* a citação ocupa a primeira coluna; o texto de abertura + os dois accordions ficam na segunda */
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 2fr);
     /* mais respiro entre as frases e as colunas de accordeons */
     gap: 32px 56px;
     align-items: start;
+}
+.how__cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px 56px;
+    align-items: start;
+    min-width: 0;
+}
+/* texto de abertura: fica só sobre as duas colunas de accordions */
+.how__intro {
+    grid-column: 1 / -1;
+    margin: 0;
+    max-width: 62ch;
+    font-family: var(--font-padrao);
+    font-size: 17px;
+    line-height: 1.62;
+    letter-spacing: -0.005em;
+    color: #333;
 }
 .how__quotes-col { min-width: 0; }
 .how__quotes { display: grid; }
@@ -2555,6 +2652,9 @@ main { overflow-x: clip; }
     flex-direction: column;
 }
 .how__tab {
+    position: relative;
+    z-index: 1; /* mantém a régua inferior acima do fundo do painel */
+    box-sizing: border-box;
     width: 100%;
     display: flex;
     align-items: center;
@@ -2576,6 +2676,24 @@ main { overflow-x: clip; }
 }
 .how__tab:hover { background: #f5f5f5; }
 .how__tab:focus-visible { outline: 2px solid #111; outline-offset: -2px; }
+.how__num {
+    flex: 0 0 auto;
+    min-width: 22px;
+    font-family: "Doto", ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #111;
+    text-transform: none;
+}
+.how__label {
+    flex: 1 1 auto;
+    transition: transform 0.3s ease;
+}
+.how__tab:hover .how__label {
+    transform: translateX(6px);
+}
+
 .how__chev {
     width: 16px;
     height: 16px;
@@ -2585,9 +2703,13 @@ main { overflow-x: clip; }
     stroke-width: 1.6;
     stroke-linecap: round;
     stroke-linejoin: round;
+    --rot: 0deg;
+    --tx: 0px;
+    transform: translateX(var(--tx)) rotate(var(--rot));
     transition: transform 0.3s ease;
 }
-.how__tab[aria-expanded="true"] .how__chev { transform: rotate(180deg); }
+.how__tab[aria-expanded="true"] .how__chev { --rot: 180deg; }
+.how__tab:hover .how__chev { --tx: -6px; }
 .how__panel {
     background: #fff;
     padding: 0; /* o padding fica no inner, senão o painel para em 38px ao fechar */
@@ -2617,6 +2739,7 @@ main { overflow-x: clip; }
 @media (max-width: 1024px) {
     .how__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px 32px; }
     .how__quotes-col { grid-column: 1 / -1; }
+    .how__cols { grid-column: 1 / -1; gap: 32px; }
     .how__quote { font-size: 24px; }
 }
 
@@ -2624,6 +2747,8 @@ main { overflow-x: clip; }
 @media (max-width: 600px) {
     .how .container-titulo { margin-bottom: 32px; }
     .how__grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .how__cols { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .how__intro { font-size: 16px; max-width: none; }
     .how__quote { font-size: 22px; line-height: 1.45; }
     .how__col-title { font-size: 22px; }
     .how__tab { font-size: 13px; padding: 13px 14px; }
@@ -2690,7 +2815,9 @@ main { overflow-x: clip; }
     gap: 12px;
     min-width: 0;
     padding: 24px 22px 26px;
-    background: #f1f1f1;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: var(--sombra-rosa);
 }
 .front__num {
     font-family: "Doto", monospace;
@@ -2714,6 +2841,15 @@ main { overflow-x: clip; }
     font-size: 15px;
     line-height: 1.6;
     color: #111;
+}
+
+/* Variante da linha do tempo com 4 etapas */
+.fronts.fronts--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1024px) {
+    .fronts.fronts--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    .fronts.fronts--4 { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Lista de verificação com setas (mesmo padrão da lista de setores da home) */
@@ -3184,9 +3320,11 @@ main { overflow-x: clip; }
     display: grid;
     gap: 18px;
     padding: 30px;
-    background-color: var(--cinza-05);
-    border: 1px solid var(--cinza-03);
-    border-radius: 20px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
 }
 .contact-row {
     display: grid;
@@ -3220,10 +3358,13 @@ main { overflow-x: clip; }
     font-size: 16px;
     font-weight: 400;
     color: #111;
-    background-color: #fff;
-    border: 1px solid var(--cinza-03);
+    background-color: #f5f5f5;
+    border: 1px solid #e6e6e6;
     border-radius: 12px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 .contact-field select {
     appearance: none;
@@ -3238,12 +3379,27 @@ main { overflow-x: clip; }
     resize: vertical;
     line-height: 1.6;
 }
+.contact-field input:hover,
+.contact-field select:hover,
+.contact-field textarea:hover {
+    background-color: #ededed;
+    border-color: #cfcfcf;
+}
+.contact-field input:active,
+.contact-field select:active,
+.contact-field textarea:active {
+    background-color: #e6e6e6;
+}
 .contact-field input:focus,
 .contact-field select:focus,
 .contact-field textarea:focus {
     outline: none;
-    border-color: var(--cor-apoio01);
-    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.12);
+    background-color: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+.contact-field:focus-within label {
+    color: #000;
 }
 .contact-consent {
     display: flex;
@@ -3525,3 +3681,91 @@ main { overflow-x: clip; }
 }
 /* a legenda do hover precisa ficar acima da textura */
 .portfolio-item .caption { z-index: 2; }
+
+/* Aberto: a régua inferior do cabeçalho some (fica branca), unindo cabeçalho e painel */
+.how__tab[aria-expanded="true"] {
+    border-bottom-color: #fff;
+}
+.accordion.active {
+    border-bottom-color: #fff;
+}
+
+@media (max-width: 640px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Tratamento único dos botões de ação (base: CTA do hero) ===== */
+.hero-cta,
+.div-downloadcv button,
+.contact-submit,
+.button-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border: 0;
+    border-radius: 50px;
+    background-color: #111;
+    color: #fff;
+    font-family: var(--font-padrao);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+.hero-cta:hover,
+.div-downloadcv button:hover,
+.contact-submit:hover,
+.button-small:hover {
+    background-color: var(--cor-apoio01);
+    color: #fff;
+}
+/* filtros: mesmo tratamento, um degrau menor para caber na barra */
+.button-small {
+    padding: 10px 16px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+.button-small.active {
+    background-color: var(--cor-apoio01);
+}
+@media (max-width: 600px) {
+    .button-small {
+        padding: 10px 13px;
+        font-size: 12px;
+    }
+}
+
+/* ===== Entrada dos cards de projeto (scroll-linked, como na fita do claude 4) ===== */
+.portfolio-grid { perspective: 1400px; }
+
+/* Hero com carrossel: no mobile o texto volta a ficar centralizado e o carrossel fica atrás */
+@media (max-width: 1024px) {
+    /* no mobile a espiral fica mais baixa e discreta, atrás do texto */
+    .hero-carousel { perspective: 1100px; }
+    .hero-ring { top: 52%; }
+    .hero-ring .hi { background: rgba(255, 255, 255, 0.34); }
+}
+
+/* O texto da linha do tempo fica sempre visível (o ScrollReveal não lida bem com o sticky) */
+#Timelinesection .container-titulo .container-full {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Números e hover dos accordions: ajustes finos */
+@media (max-width: 600px) {
+    .how__num { font-size: 13px; min-width: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .how__label, .how__chev, .acc-label, .icon { transition: none; }
+    .how__tab:hover .how__label, .accordion:hover .acc-label { transform: none; }
+    .how__tab:hover .how__chev, .accordion:hover .icon { --tx: 0px; }
+}

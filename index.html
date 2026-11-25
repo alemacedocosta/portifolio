@@ -73,7 +73,11 @@
         </header>
         <section id="Herosection">
             <div id="hero" class="div-hero hero-icons-bg">
-                <div class="hero-icons" aria-hidden="true"></div>
+                <div class="hero-carousel" aria-hidden="true">
+                    <div class="hero-ring">
+                        <div class="hero-ring__spin"></div>
+                    </div>
+                </div>
                 <h1 class="hero-phrase">
                     <span class="hero-intro">Olá, meu nome é Alexandre. Sou UX/UI designer e adoro criar experiências digitais centradas nas pessoas.</span> <span class="hero-hl">Estou aberto a fazer parte do seu time em São Paulo ou remotamente.</span>
                 </h1>
@@ -111,7 +115,7 @@
                     <div class="container-titulo">
                         <h2><svg class="sec-ico sec-ico--book" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2z"/><path class="pg" d="M22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>Breve histórico</h2>
                         <div class="container-full">
-                            <p>Nos últimos 20 anos trabalhando como designer, me tornei especialista em editorial digital (para tablets), depois conheci o Design thinking que mudou a forma como eu enxergava e fazia design, atuei como designer de marca em uma grande empresa e, por fim, me tornei designer UX quando pude ajudar a Secretaria de Educação de São Paulo, a Dock Means of Payments e o BV Bank a criar experiências incríveis.<mark class="grifo">Hoje, a IA faz parte do meu trabalho diário, me ajudando a explorar ideias mais rápido e a construir produtos melhores.</mark>
+                            <p>Nos últimos 20 anos como designer, me tornei especialista em editorial digital para tablets. Depois conheci o design thinking, que mudou a forma como eu enxergava e fazia design. Fui designer de marca em uma grande empresa e, por fim, me tornei designer de UX ao ajudar a Secretaria de Educação de São Paulo, a Dock Means of Payments e o BV a criar experiências incríveis. <mark class="grifo">Hoje, a IA faz parte do meu trabalho diário: me ajuda a explorar ideias mais rápido e a construir produtos melhores.</mark>
                             </p>
                             <div class="sectors">
                                 <hr class="sectors__rule">
@@ -126,20 +130,23 @@
             <section class="how" id="metodo">
                 <div class="how__inner">
                     <div class="container-titulo">
-                        <h2><svg class="sec-ico sec-ico--flow" viewBox="0 0 24 24" aria-hidden="true"><rect class="n1" x="2.5" y="2.5" width="6" height="6" rx="1.2"/><rect class="n2" x="15.5" y="2.5" width="6" height="6" rx="1.2"/><rect class="n3" x="9" y="15.5" width="6" height="6" rx="1.2"/><path class="c1" d="M8.5 5.5h7M12 8.5v7"/></svg>Como trabalho</h2>
+                        <h2><svg class="sec-ico sec-ico--flow" viewBox="0 0 24 24" aria-hidden="true"><rect class="n1" x="2.5" y="2.5" width="6" height="6" rx="1.2"/><rect class="n2" x="15.5" y="2.5" width="6" height="6" rx="1.2"/><rect class="n3" x="9" y="15.5" width="6" height="6" rx="1.2"/><path class="c1" d="M8.5 5.5h7M12 8.5v7"/></svg>Processos</h2>
                     </div>
                     <div class="how__grid">
                         <div class="how__quotes-col">
                             <div class="how__quotes" aria-live="polite"><p class="how__quote is-active">&ldquo;Os processos mudam a cada cenário, mas é importante ter uma base: um caminho seguro que nos permita, no fim, entregar algo que realmente faça diferença e esteja 100% conectado aos interesses do negócio e dos seus usuários.&rdquo;</p><p class="how__quote">&ldquo;Transitar entre dados, negócio e tecnologia é uma &ldquo;arte&rdquo; que precisa ser tratada com cuidado e leveza. Um produto não se entrega sem a visão plural de todo o ecossistema de desenvolvimento.&rdquo;</p><p class="how__quote">&ldquo;O usuário é a chave para todas as respostas, seja pela interação, pelos dados ou pelas evidências.&rdquo;</p></div>
                             <div class="how__dots"><button type="button" class="is-active" aria-label="Quote 1" aria-pressed="true"></button><button type="button" class="" aria-label="Quote 2" aria-pressed="false"></button><button type="button" class="" aria-label="Quote 3" aria-pressed="false"></button></div>
                         </div>
+                        <div class="how__cols">
+                            <p class="how__intro">Sabemos que processos mudam de tempos em tempos e de casa para casa, e que nem sempre conseguimos colocar em prática todas as ferramentas de que dispomos. É normal — e está tudo bem. Mas conhecer os caminhos possíveis é parte de um bom profissional.</p>
                         <div class="how__col">
                             <h3 class="how__col-title">UX / Design de produto</h3>
-                            <div class="how__acc"><div class="how__item"><button type="button" class="how__tab" id="t-discover" aria-controls="p-discover" aria-expanded="true"><span>Descobrir</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-discover" role="region" aria-labelledby="t-discover"><div class="how__panel-inner"><ul><li>Entender o negócio</li><li>Pesquisa com stakeholders</li><li>Pesquisa com usuários</li><li>Análise de experiência</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-define" aria-controls="p-define" aria-expanded="false"><span>Definir</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-define" role="region" aria-labelledby="t-define" hidden><div class="how__panel-inner"><ul><li>Workshops</li><li>Síntese de pesquisa</li><li>Definição do problema</li><li>Definição de oportunidade</li><li>Definição de solução</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-design" aria-controls="p-design" aria-expanded="false"><span>Design</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-design" role="region" aria-labelledby="t-design" hidden><div class="how__panel-inner"><p>Eu rabisco rápido e itero aberto, com feedback a cada rodada.</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-test" aria-controls="p-test" aria-expanded="false"><span>Testar</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-test" role="region" aria-labelledby="t-test" hidden><div class="how__panel-inner"><p>Usuários reais veem o trabalho cedo, enquanto mudanças ainda são baratas.</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-delivery" aria-controls="p-delivery" aria-expanded="false"><span>Entrega</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-delivery" role="region" aria-labelledby="t-delivery" hidden><div class="how__panel-inner"><p>Entregar, medir, aprender e repetir. Um produto nunca está realmente pronto.</p></div></div></div></div>
+                            <div class="how__acc"><div class="how__item"><button type="button" class="how__tab" id="t-discover" aria-controls="p-discover" aria-expanded="true"><span class="how__num">01</span><span class="how__label">Descobrir</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-discover" role="region" aria-labelledby="t-discover"><div class="how__panel-inner"><ul><li>Entender o negócio</li><li>Pesquisa com stakeholders</li><li>Pesquisa com usuários</li><li>Análise de experiência</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-define" aria-controls="p-define" aria-expanded="false"><span class="how__num">02</span><span class="how__label">Definir</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-define" role="region" aria-labelledby="t-define" hidden><div class="how__panel-inner"><ul><li>Workshops</li><li>Síntese de pesquisa</li><li>Definição do problema</li><li>Definição de oportunidade</li><li>Definição de solução</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-design" aria-controls="p-design" aria-expanded="false"><span class="how__num">03</span><span class="how__label">Design</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-design" role="region" aria-labelledby="t-design" hidden><div class="how__panel-inner"><p>Eu rabisco rápido e itero aberto, com feedback a cada rodada.</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-test" aria-controls="p-test" aria-expanded="false"><span class="how__num">04</span><span class="how__label">Testar</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-test" role="region" aria-labelledby="t-test" hidden><div class="how__panel-inner"><p>Usuários reais veem o trabalho cedo, enquanto mudanças ainda são baratas.</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-delivery" aria-controls="p-delivery" aria-expanded="false"><span class="how__num">05</span><span class="how__label">Entrega</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-delivery" role="region" aria-labelledby="t-delivery" hidden><div class="how__panel-inner"><p>Entregar, medir, aprender e repetir. Um produto nunca está realmente pronto.</p></div></div></div></div>
                         </div>
                         <div class="how__col">
                             <h3 class="how__col-title">UI</h3>
-                            <div class="how__acc"><div class="how__item"><button type="button" class="how__tab" id="t-design-system" aria-controls="p-design-system" aria-expanded="false"><span>Design system</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-design-system" role="region" aria-labelledby="t-design-system" hidden><div class="how__panel-inner"><ul><li>Paleta de cores e tokens</li><li>Escalas tipográficas</li><li>Botões e estados</li><li>Inputs e formulários</li><li>Cards e componentes</li><li>Grid e espaçamento</li><li>Estados de erro, carregamento e sucesso</li><li>Componentes responsivos</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-documentation" aria-controls="p-documentation" aria-expanded="false"><span>Documentação</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-documentation" role="region" aria-labelledby="t-documentation" hidden><div class="how__panel-inner"><p>Handoff: documentação e entrega para o desenvolvimento</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-governance" aria-controls="p-governance" aria-expanded="false"><span>Governança</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-governance" role="region" aria-labelledby="t-governance" hidden><div class="how__panel-inner"><ul><li>Contraste de cores</li><li>Hierarquia visual</li><li>Legibilidade</li><li>Estados de foco</li><li>Navegação por teclado</li><li>Feedback de interação</li><li>Acessibilidade</li></ul></div></div></div></div>
+                            <div class="how__acc"><div class="how__item"><button type="button" class="how__tab" id="t-design-system" aria-controls="p-design-system" aria-expanded="false"><span class="how__num">01</span><span class="how__label">Design system</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-design-system" role="region" aria-labelledby="t-design-system" hidden><div class="how__panel-inner"><ul><li>Paleta de cores e tokens</li><li>Escalas tipográficas</li><li>Botões e estados</li><li>Inputs e formulários</li><li>Cards e componentes</li><li>Grid e espaçamento</li><li>Estados de erro, carregamento e sucesso</li><li>Componentes responsivos</li></ul></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-documentation" aria-controls="p-documentation" aria-expanded="false"><span class="how__num">02</span><span class="how__label">Documentação</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-documentation" role="region" aria-labelledby="t-documentation" hidden><div class="how__panel-inner"><p>Handoff: documentação e entrega para o desenvolvimento</p></div></div></div><div class="how__item"><button type="button" class="how__tab" id="t-governance" aria-controls="p-governance" aria-expanded="false"><span class="how__num">03</span><span class="how__label">Governança</span><svg class="how__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button><div class="how__panel" id="p-governance" role="region" aria-labelledby="t-governance" hidden><div class="how__panel-inner"><ul><li>Contraste de cores</li><li>Hierarquia visual</li><li>Legibilidade</li><li>Estados de foco</li><li>Navegação por teclado</li><li>Feedback de interação</li><li>Acessibilidade</li></ul></div></div></div></div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -243,7 +250,7 @@
                     </div>
                     <!-- First Accordion Panel -->
                     <div class="container-accordion">
-                        <button class="accordion">Competências<span class="icon"
+                        <button class="accordion"><span class="acc-label">Competências</span><span class="icon"
                                 ><img src="assets/ico_setadown_preta.svg" alt="Inverter ordem"
                             /></span>
                         </button>
@@ -377,11 +384,11 @@
                         <div class="container-full">
                             <p>Aqui eu falo um pouco de cada período da minha trajetória como designer, desde o começo, quando eu trabalhava mais como designer gráfico, até o momento atual, depois da transição para o design de produto. De forma resumida, vou compartilhar cada fase e, dentro de cada fase, as atividades que realizei.</p>
                         </div>
+                        <div class="stack-progress" aria-hidden="true"><span></span></div>
                     </div>
 
                     <!-- Timeline -->
                     <div>
-                        <div class="stack-progress" aria-hidden="true"><span></span></div>
                         <div class="container-primary">
                             <div class="container-timeline" style="--i: 0">
                                 <div class="div-left">
@@ -606,16 +613,16 @@
                 </div>
                 <div class="div-btscategoria">
                     <button class="btn button-small active" data-filter="todos">Todos</button>
-                    <button class="btn button-small" data-filter="editorial">Editorial</button>
+                    <button class="btn button-small" data-filter="editorial">Editorial digital</button>
                     <button class="btn button-small" data-filter="web">Web</button>
-                    <button class="btn button-small" data-filter="digital">Digital</button>
+                    <button class="btn button-small" data-filter="app">App</button>
                 </div>
             </div>
 
             <!-- Jobs Grid -->
             <div id="Gridprincipal">
                 <div class="portfolio-grid" id="Jobs">
-                    <div class="portfolio-item digital">
+                    <div class="portfolio-item editorial">
                         <img src="assets/thumb_tablet_select.jpg" class="thumbnail-img" />
                         <a href="projeto_select.html" target="_self">
                             <div class="caption">
@@ -639,7 +646,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="portfolio-item digital">
+                    <div class="portfolio-item editorial">
                         <img src="assets/thumb_super_cia.jpg" class="thumbnail-img" />
                         <a href="projeto_super.html" target="_self">
                             <div class="caption">
@@ -647,7 +654,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="portfolio-item digital">
+                    <div class="portfolio-item editorial">
                         <img src="assets/thumb_plataforma.jpg" class="thumbnail-img" />
                         <a href="projeto_plataforma.html" target="_self">
                             <div class="caption">
@@ -655,7 +662,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="portfolio-item digital">
+                    <div class="portfolio-item app">
                         <img src="assets/thumb_app_escolaaqui.jpg" class="thumbnail-img" />
                         <a href="projeto_escolaaqui.html" target="_self">
                             <div class="caption">
@@ -663,7 +670,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="portfolio-item digital">
+                    <div class="portfolio-item web">
                         <img src="assets/projetos/sgp/img_thumb_sgp.png" class="thumbnail-img" />
                         <a href="projeto_sgp.html" target="_self">
                             <div class="caption">
@@ -873,11 +880,11 @@
         </script>
         <!-- Accordion icon rotation js code -->
 
-        <!-- Hero: grade de ícones animados (substitui o slideshow) -->
+        <!-- Hero: carrossel 3D de ícones animados (gira com o scroll) -->
         <script>
             (function () {
-                var grid = document.querySelector(".hero-icons");
-                if (!grid) return;
+                var spin = document.querySelector(".hero-ring__spin");
+                if (!spin) return;
                 var ICONS = [
                     { anim: "check", svg: '<circle class="ring" cx="12" cy="12" r="9"/><path class="d" d="M8 12.5l2.6 2.6L16 9.6"/>' },
                     { anim: "swap", svg: '<path class="pp-play" d="M8 5v14l11-7z"/><path class="pp-pause" d="M8 5v14M16 5v14"/>' },
@@ -892,72 +899,53 @@
                     { anim: "menu", svg: '<path class="l1" d="M5 6h14"/><path class="l2" d="M5 12h14"/><path class="l3" d="M5 18h14"/>' },
                     { anim: "spin", svg: '<circle cx="12" cy="12" r="9" opacity="0.25"/><path class="arc" d="M12 3a9 9 0 0 1 9 9"/>' }
                 ];
+                var N = 30;
+                var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                var R = 340;
+                var H = 280;
+
                 function build() {
-                    var w = grid.parentNode.clientWidth;
-                    var h = grid.parentNode.clientHeight;
-                    var size = 96, gap = 22, step = size + gap;
-                    var cols = Math.ceil(w / step) + 1;
-                    var rows = Math.ceil(h / step) + 1;
-                    grid.style.setProperty("--cols", cols);
-                    grid.innerHTML = "";
-                    var k = 0;
-                    for (var r = 0; r < rows; r++) {
-                        for (var c = 0; c < cols; c++) {
-                            var ic = ICONS[k % ICONS.length];
-                            var tile = document.createElement("span");
-                            tile.className = "hi hi--" + ic.anim;
-                            tile.style.setProperty("--dl", ((r + c) * 0.18).toFixed(2) + "s");
-                            tile.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ic.svg + "</svg>";
-                            grid.appendChild(tile);
-                            k++;
-                        }
+                    var vw = window.innerWidth;
+                    var vh = window.innerHeight;
+                    var mobile = vw < 720;
+                    R = Math.min(mobile ? 230 : 660, Math.max(170, vw * (mobile ? 0.5 : 0.45)));
+                    H = Math.min(mobile ? 300 : 700, vh * 0.78);
+                    var n = mobile ? 20 : N;
+                    spin.innerHTML = "";
+                    for (var i = 0; i < n; i++) {
+                        var ic = ICONS[i % ICONS.length];
+                        var tile = document.createElement("span");
+                        tile.className = "hi hi--" + ic.anim;
+                        tile.style.setProperty("--dl", (i * 0.13).toFixed(2) + "s");
+                        tile.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ic.svg + "</svg>";
+                        var angle = (i / n) * 540;
+                        var y = -((i / n) - 0.5) * H;
+                        tile.style.transform = "rotateY(" + angle + "deg) translateZ(" + R + "px) translateY(" + y + "px)";
+                        spin.appendChild(tile);
                     }
+                    render();
                 }
-                build();
+
+                function render() {
+                    if (reduce) {
+                        spin.style.transform = "rotateY(0rad)";
+                        return;
+                    }
+                    var p = window.scrollY / Math.max(1, window.innerHeight);
+                    spin.style.transform = "rotateY(" + (p * Math.PI * 1.2).toFixed(4) + "rad)";
+                }
+
+                var raf = 0;
+                function onScroll() {
+                    if (raf) return;
+                    raf = requestAnimationFrame(function () { raf = 0; render(); });
+                }
+
+                window.addEventListener("scroll", onScroll, { passive: true });
                 var t;
                 window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(build, 150); });
-
-                // Efeito de lastro: o ícone sob o cursor fica rosa escuro e volta ao branco aos poucos
-                if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-                var hero = document.getElementById("hero");
-                var px = -9999, py = -9999, pointerOn = false, running = false;
-                var DARK = [240, 138, 156];
-                function paint(tile, h) {
-                    var r = Math.round(255 + (DARK[0] - 255) * h);
-                    var g = Math.round(255 + (DARK[1] - 255) * h);
-                    var b = Math.round(255 + (DARK[2] - 255) * h);
-                    tile.style.color = "rgba(" + r + "," + g + "," + b + "," + (0.9 + 0.1 * h).toFixed(3) + ")";
-                    // contorno: branco no estado padrão, rosa só quando o cursor passa
-                    tile.style.borderColor = "rgba(" + r + "," + g + "," + b + "," + (0.45 + 0.4 * h).toFixed(3) + ")";
-                }
-                function frame() {
-                    var tiles = grid.children;
-                    var any = false;
-                    for (var i = 0; i < tiles.length; i++) {
-                        var tile = tiles[i];
-                        var h = tile._h || 0;
-                        if (pointerOn) {
-                            var rc = tile.getBoundingClientRect();
-                            if (px >= rc.left && px <= rc.right && py >= rc.top && py <= rc.bottom) h = 1;
-                        }
-                        h = h * 0.955;               // decai devagar: o rastro some aos poucos
-                        if (h < 0.01) h = 0;
-                        if (h !== tile._h) {
-                            tile._h = h;
-                            paint(tile, h);
-                        }
-                        if (h > 0) any = true;
-                    }
-                    if (any || pointerOn) requestAnimationFrame(frame);
-                    else running = false;
-                }
-                function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
-                hero.addEventListener("pointermove", function (e) {
-                    px = e.clientX; py = e.clientY; pointerOn = true; kick();
-                });
-                hero.addEventListener("pointerleave", function () {
-                    pointerOn = false; kick();
-                });
+                build();
+                window.addEventListener("load", render);
             })();
         </script>
         <!-- Cursor dos projetos: círculo outline com um "+" pulsando dentro -->
@@ -1009,7 +997,7 @@
                         clearInterval(intervalId);
                         var containerLoading = document.querySelector(".container-loading");
                         containerLoading.style.display = "none"; // Oculta a div de carregamento
-                        document.body.style.overflow = "auto"; // Ativa a rolagem da página
+                        document.body.style.overflow = "visible"; // o documento rola (sticky da timeline volta a funcionar)
                         window.__loaderDone = true;
                         document.dispatchEvent(new Event("loader-done")); // avisa que o loading acabou
                     } else {
@@ -1145,11 +1133,10 @@
         <!-- Linha de progresso da pilha de cards da timeline -->
         <script>
             (function () {
+                var section = document.getElementById("Timelinesection");
                 var container = document.querySelector("#Timelinesection .container-primary");
-                // A barra fica no bloco da timeline (inclui a nota final), não só nos cards
-                var block = container && container.parentElement;
-                var bar = block && block.querySelector(":scope > .stack-progress");
-                if (!bar) return;
+                var bar = document.querySelector("#Timelinesection .stack-progress");
+                if (!container || !bar) return;
                 var fill = bar.querySelector("span");
                 var cards = Array.prototype.slice.call(container.querySelectorAll(".container-timeline"));
                 var BASE = 110, STEP = 18, GAP = 18;
@@ -1168,9 +1155,9 @@
                     var end = tops[n - 1] - (BASE + (n - 1) * STEP);
                     return { start: start, end: Math.max(end, start + 1) };
                 }
-                var r = ranges();
                 function update() {
                     ticking = false;
+                    var r = ranges();
                     var y = window.scrollY;
                     var p = (y - r.start) / (r.end - r.start);
                     p = Math.min(Math.max(p, 0), 1);
@@ -1178,13 +1165,15 @@
                     fill.style.transform = "scaleX(" + p.toFixed(4) + ")";
                     // Some antes de o último card (2012) chegar à posição fixa, para não sobrepô-lo
                     var lastTop = cards[cards.length - 1].getBoundingClientRect().top;
-                    bar.classList.toggle("is-on", y >= r.start - 40 && lastTop > 300);
+                    var secDoc = section.getBoundingClientRect().top + y;
+                    bar.classList.toggle("is-on", y >= secDoc - 40);
                 }
                 function onScroll() {
                     if (!ticking) { ticking = true; requestAnimationFrame(update); }
                 }
                 window.addEventListener("scroll", onScroll, { passive: true });
-                window.addEventListener("resize", function () { r = ranges(); onScroll(); });
+                window.addEventListener("resize", onScroll);
+                window.addEventListener("load", onScroll);
                 update();
             })();
         </script>
@@ -1318,6 +1307,86 @@
                 sync();
             })();
         </script>
+    <script>
+        // Entrada/saída dos cards de projeto ligada ao scroll (como na fita do claude 4)
+        (function () {
+            var grid = document.querySelector(".portfolio-grid");
+            if (!grid) return;
+            var cards = Array.prototype.slice.call(grid.querySelectorAll(".portfolio-item"));
+            if (!cards.length) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+            var cols = 3;
+            var dirs = cards.map(function (card, i) {
+                var col = i % cols;
+                var row = Math.floor(i / cols);
+                var d = { x: 0, y: 0, off: col * 0.05 };
+                if (row > 0) d.y = 0.55;
+                else if (col === 0) d.x = -0.6;
+                else if (col === cols - 1) d.x = 0.6;
+                else d.y = -0.45;
+                return d;
+            });
+
+            function update() {
+                var vh = window.innerHeight;
+                for (var i = 0; i < cards.length; i++) {
+                    var card = cards[i];
+                    var d = dirs[i];
+                    var op = card.offsetParent || document.body;
+                    var top = op.getBoundingClientRect().top + card.offsetTop;
+                    var t = (vh - top - d.off * vh) / (vh * 0.45);
+                    t = t < 0 ? 0 : t > 1 ? 1 : t;
+                    t = 1 - Math.pow(1 - t, 3); // easeOut
+
+                    if (t >= 0.995) {
+                        if (card._reveal) {
+                            card.style.transform = "";
+                            card.style.opacity = "";
+                            card.style.filter = "";
+                            card.style.transition = "";
+                            card._reveal = false;
+                        }
+                        continue;
+                    }
+
+                    var k = 1 - t;
+                    var w = card.offsetWidth;
+                    var h = card.offsetHeight;
+                    card.style.transition = "none";
+                    card.style.transform =
+                        "translate3d(" + (d.x * w * k).toFixed(1) + "px," + (d.y * h * k).toFixed(1) + "px,0) " +
+                        "rotateX(" + (16 * k).toFixed(2) + "deg) scale(" + (1 + 0.4 * k).toFixed(3) + ")";
+                    card.style.opacity = String(Math.min(1, t * 3));
+                    card.style.filter = t > 0 ? "blur(" + (7 * k).toFixed(2) + "px)" : "";
+                    card._reveal = true;
+                }
+            }
+
+            var raf = 0;
+            function onScroll() {
+                if (raf) return;
+                raf = requestAnimationFrame(function () {
+                    raf = 0;
+                    update();
+                });
+            }
+
+            window.addEventListener("scroll", onScroll, { passive: true });
+            window.addEventListener("resize", onScroll);
+            // os filtros mudam o layout da grade: remede depois das animações
+            Array.prototype.forEach.call(document.querySelectorAll(".div-btscategoria .btn"), function (btn) {
+                btn.addEventListener("click", function () {
+                    window.setTimeout(update, 350);
+                    window.setTimeout(update, 950);
+                });
+            });
+
+            update();
+            window.addEventListener("load", update);
+            window.setTimeout(update, 1200);
+        })();
+    </script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body>

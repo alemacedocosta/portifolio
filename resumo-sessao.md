@@ -14,7 +14,7 @@
 - **Verificação visual:** Playwright com servidor local (`python3 -m http.server <porta>`). Elementos com `opacity: 0` / `visibility: hidden` (scroll reveal, ScrollReveal bloqueado offline) precisam ser forçados visíveis só para captura. O erro "ScrollReveal is not defined" é esperado e pode ser ignorado.
 - **Estilo de aprovação do usuário:** ele revisa cada mudança no preview e costuma pedir ajustes curtos e diretos. Quando aprova, pede "arquivos para atualizar".
 
-## 2. Estado atual (versão publicada: 166 — sessão no DSH, 23/11/2026)
+## 2. Estado atual (versão publicada: 178 — sessão no DSH, 24/11/2026)
 
 ### Hero
 - Texto de apresentação "Hi, my name is Alexandre…" em **preto** (`.hero-intro`). A frase sobre São Paulo continua com o grifo amarelo animado (`.hero-hl`).
@@ -434,6 +434,82 @@
 ### Box do CV completo (v166)
 - `.div-downloadcv`: `border: 1px solid #000` (topo, direita, esquerda e base), fundo branco mantido.
 
+### Ajustes v167
+- Accordions: `.how__tab` e `.accordion` ganharam `position: relative; z-index: 1;` e `box-sizing: border-box`, garantindo que a régua inferior (1px preto) fique acima do fundo branco do painel quando aberto.
+- Título "Como trabalho" renomeado para **"Processos"**.
+- Projetos: `.portfolio-grid` com margens laterais de **50px** no desktop (20px no mobile), alinhando os cards à largura do título. Título e grid agora medem 50..1390.
+- Caixa do CV: `justify-content: space-between` + `text-align: left` — texto à esquerda, botão "Baixar CV" à direita (antes tudo ia para a direita por causa do `flex-end`).
+
+### Régua inferior do accordion aberto (v168)
+- `.how__tab[aria-expanded="true"] { border-bottom-color: #fff; }` e `.accordion.active { border-bottom-color: #fff; }`.
+- Aberto: cabeçalho e painel ficam brancos e se fundem; só a régua superior do cabeçalho permanece.
+- Fechado: a régua inferior continua preta.
+
+### Páginas de projeto: efeito do hero e texto no scroll (v169)
+- Causa do "título sem efeito" na Select: o ScrollReveal iniciava na hora e a animação de entrada do hero rodava **atrás do loader** (1s de overlay). Nas outras páginas sobrava um resquício porque tinham `reset: true`.
+- Agora as 7 páginas:
+  - o loader dispara `app:ready` quando termina; o ScrollReveal só inicializa nesse evento, então a animação do hero aparece;
+  - `reset: false` em todas (mesma correção que só a Select tinha) — o texto não some mais ao rolar de volta;
+  - fallback: se a lib do CDN não carregar, `.hero-phrase`/`.container-full` são forçados visíveis;
+  - guard `window.__revealInit` evita inicialização dupla entre o evento e o timeout de segurança.
+
+### Novo site conceito — `claude 3` (v170)
+- A pasta `claude 2` foi duplicada para `claude 3` (459MB).
+- `claude 3/index.html` foi **reescrito do zero** com uma linguagem editorial/bold: Anton para display, Fraunces itálico para o editorial, Space Grotesk para texto; papel/tinta/vermelho/rosa.
+- Seções: hero de nome gigante (linha sólida + contornada), marquee, manifesto/Sobre com retrato de olhos que seguem o cursor, trabalhos em lista com preview que segue o mouse, processo em bloco preto, trajetória em lista e contato em bloco vermelho.
+- Novos arquivos: `claude 3/concept.css`, `claude 3/concept.js`, `claude 3/LEIA-ME.md`.
+- Preview em `http://127.0.0.1:8124/` (servidor job bash-4d8b998f0cb94048).
+- **Pendente:** as páginas internas de projeto ainda estão no visual antigo; próximo passo é redesenhá-las com a mesma linguagem.
+
+### Conceito kinética — `claude 3` (v171)
+- O conceito anterior (papel/vermelho) foi substituído por uma direção mais de galeria: preto `#0a0a0a`, verde ácido `#d9ff3d`, Syne + Instrument Serif + Space Mono.
+- **Scroll com GSAP/ScrollTrigger:** letras do hero em cascata, hero some ao rolar, manifesto acende palavra por palavra (scrub), trabalhos com **pin horizontal** (desktop) e imagens em máscara, processo em cascata, linha da trajetória desenhada, contato crescendo.
+- **Cursor próprio** (ponto + anel, esconde o nativo) e barra de progresso.
+- Retrato em P&B com olhos que seguem o cursor.
+- `claude 3/index.html`, `kinetic.css`, `kinetic.js`, `LEIA-ME.md` atualizado.
+- Preview: `http://127.0.0.1:8124/`.
+- Pendente: páginas internas de projeto continuam no visual antigo.
+
+### Conceito inspirado no Chrome — `claude 3` (v172)
+- O usuário rejeitou as duas tentativas anteriores (papel/vermelho e preto/ácido) e pediu inspiração no site do Google Chrome.
+- Nova home: branco + `#f8f9fa`, azul `#1a73e8`, amarelo, verde e vermelho em fundos pastel, DM Sans, cards de 24px, botões-pílula e mockup de navegador no hero.
+- Seções: hero com CTA e números, Sobre (retrato com olhos), 4 cards de serviços, 7 projetos em cards pastel, 5 etapas de processo, trajetória e contato em card com gradiente.
+- Arquivos: `claude 3/index.html`, `chrome.css`, `chrome.js`, `LEIA-ME.md`.
+- Preview: `http://127.0.0.1:8124/`.
+- Pendente: páginas internas de projeto ainda no visual antigo.
+
+### Títulos menores (v173)
+- `.container-titulo > :is(h1, h2)`: **34px → 22px**, e **removida a `border-bottom: 1px solid black`**.
+- Ícones dos títulos (`:is(h1,h2) .sec-ico`): **42px → 28px**, `padding 9 → 6`, borda `1.5 → 1px`, raio `12 → 8px`, stroke `1.5 → 1.2`; gap ícone-texto `16 → 12px`.
+- Vale para o index e as páginas de projeto (mesma regra).
+- O título "Projetos" também ficou em 22px, alinhado aos demais.
+
+### Caixa do CV no padrão dos números (v174)
+- `.div-downloadcv`: `border: 1.5px solid #000`, `border-radius: 22px`, `transition: background-color .4s` e `:hover { background: #ffdada }` — igual aos `.stat`.
+- O download continua **exclusivo do botão** "Baixar CV" (a caixa é uma `div` sem link/handler; o `onclick` fica no `<button>`).
+
+### Botões com um único tratamento (v175)
+- Base: CTA do hero — fundo `#111`, pílula 50px, 13px/700, `letter-spacing .06em`, uppercase, hover `var(--cor-apoio01)`.
+- Aplicado a: `.hero-cta`, `.div-downloadcv button` ("Baixar CV"), `.contact-submit` ("Enviar mensagem") e `.button-small` (filtros).
+- Filtros mantêm um degrau menor de padding/fonte (10/16px, 12px) para caber na barra — mesmo tratamento, escala de contexto. `active` continua vermelho.
+- Botões só de ícone (topo, redes sociais) ficam como estão: são circulares, não CTAs de texto.
+
+### Formulário de contato (v176)
+- `.contact-form`: fundo branco, `border-radius: 0`, `border-top`/`border-bottom` de 1px preto (sem laterais).
+- Campos (`input`, `select`, `textarea`): fundo `#f5f5f5`, borda `#e6e6e6`, raio 12px; transição de fundo/borda/sombra.
+- **Hover:** fundo `#ededed` + borda `#cfcfcf`. **Active:** `#e6e6e6`. **Focus:** fundo branco, borda preta e anel `rgba(0,0,0,.08)`; o label do campo fica preto via `:focus-within`.
+
+### Projetos: 3 colunas e cards maiores (v177)
+- `.portfolio-grid`: `repeat(auto-fit, minmax(400px, 1fr))` → **`repeat(3, minmax(0, 1fr))`**.
+- A grade era fora do `<main>` e ocupava a janela inteira (em telas largas virava 4–6 colunas). Agora tem `max-width: var(--content-max)`, `margin: 0 auto` e `padding: 0 50px`, alinhada ao título.
+- Responsivo: ≤1024 → 2 colunas; ≤640 → 1 coluna.
+- Medido: 1440 e 1920 → 3 colunas de **433×240**; em 1920 a grade fica centralizada (240..1680) em vez de esticar.
+
+### Projetos em largura total (v178)
+- `.portfolio-grid`: removidos `max-width` e `padding: 0 50px`; agora `margin: 0 20px 64px` e `repeat(3, minmax(0, 1fr))`.
+- Medido: 1440 → 3 cards de **453×251** (grade 20..1420); 1920 → **613×339** (20..1900).
+- O título "Projetos" e os filtros continuam na largura de conteúdo (max 1440, padding 50), então em telas largas a grade passa ~20px além deles.
+
 ## 5. Pendências e pontos em aberto
 - **Pasta de trabalho agora é local:** `/Users/alexandreribeiromcosta/Desktop/Site/claude 2` (sessão no DSH, com escrita direta na máquina). Backup dos arquivos pré-v105 em `_backup/pre-v105/`.
 - **Texto das seções placeholder** dos projetos (`projeto_*.html`): ainda faltam os textos definitivos.
@@ -526,3 +602,48 @@
 - 164: accordion de Competências com o mesmo tratamento dos accordions de Como trabalho.
 - 165: box de download do CV com fundo branco e linhas de 1px no topo e na direita.
 - 166: box do CV com outline completo (1px preto nas quatro laterais).
+- 167: correção da régua inferior dos accordions, "Como trabalho" → "Processos", largura do título de Projetos e alinhamento da caixa do CV.
+- 168: quando o accordion está aberto, a régua inferior do cabeçalho fica branca (some).
+- 169: ScrollReveal padronizado nas páginas de projeto — inicia após o loader e com `reset:false`.
+- 170: criada a pasta `claude 3` com um **novo site conceito** (home refeita do zero, pegada editorial/bold).
+- 171: conceito refeito para **kinética** (preto/ácido, scroll coreografado, carrossel horizontal pinado, cursor próprio).
+- 172: conceito trocado por uma linguagem **inspirada no site do Chrome** (claro, arredondado, colorido, produto em destaque).
+- 173: títulos de seção de 34px para 22px, sem a linha embaixo, ícones de 42px para 28px.
+- 174: caixa do CV com o mesmo tratamento dos cards de números (raio 22 + hover rosa); download só pelo botão.
+- 175: todos os botões de ação unificados no tratamento do CTA do hero (preto, pílula, 13/700, hover vermelho).
+- 176: formulário de contato com fundo branco, sem raio e réguas no topo/base; campos cinza com hover/focus animados.
+- 177: grade de projetos limitada a 3 colunas e à largura do conteúdo (cards maiores em telas largas).
+- 178: grade de projetos volta a ocupar toda a largura do navegador (3 colunas, margens de 20px).
+- 179: inversão no hero — o retrato com os olhos que seguem o cursor vira o fundo do hero, em escala grande, sangrando até a borda direita; frase, CTA e dica passam para a coluna da esquerda, sobre o fundo rosa da própria foto.
+- 180: a antiga grade de ícones animados do hero vira uma faixa na seção Competências, no lugar da foto (tiles inteiros, sem cortar fileiras; lastro rosa no hover mantido).
+- 181: responsivo do novo hero — abaixo de 1100px o retrato vira faixa no topo e o texto desce para baixo; no toque a dica dos olhos some e a grade de ícones usa menos tiles.
+- 182: hero refeito — efeito dos olhos removido; a foto ganhou uma interferência de TV (tranco, faixas rasgadas, scanlines, chiado e linha de tracking) que dispara rápido a cada 10s (1ª vez ~4s, 260ms de duração); o texto do hero voltou ao tamanho original (6vh), agora sobrepondo o rosto, com CTA alinhado à esquerda.
+- 183: **home refeita** com o hero "helix ribbon" (porta do componente React para HTML/CSS/JS): nome gigante em Anton sobre campo vermelho, retrato ao lado da saudação, e ao rolar as duas linhas se abrem, a fita 3D de projetos sobe girando e a grade de 7 projetos se acomoda (segura no fim para dar tempo de clicar). Arquivos novos: `helix.css` e `helix-hero.js`.
+- 184: o restante do site (estatísticas, breve histórico, processos, competências, linha do tempo e CV) foi para a página interna **`sobre.html`**; o menu de lá aponta de volta para a home. O efeito de glitch/olhos saiu de vez.
+- 185: a versão "helix ribbon" (183/184) foi copiada para a pasta **`claude 4`**; o `claude 2` volta ao estado anterior à inversão do hero — hero com a grade de ícones animados e a foto com os olhos em Competências.
+- 186: texto de abertura acima das duas colunas de accordions em Processos (só sobre elas; a citação continua na coluna da esquerda), com ajuste leve de redação e quebra responsiva própria.
+- 187: projeto Escola Aqui ganhou os textos de percurso — desafio, descoberta, fluxo do usuário, wireframes, UI/design system e aprendizados — com etiquetas de etapa, alt texts nas imagens e largura de leitura própria (`.proj-step`).
+- 188: projeto Escola Aqui — etapas com o título padrão do site (h2 Fraunces vermelho), textos na largura total (sem o limite de 1040px) e nova "Linha do tempo do projeto" com 4 caixas numeradas no mesmo componente `.fronts` usado no Select.
+- 189: projeto Select reorganizado — "O desafio" ganhou texto de verdade, linha do tempo com 4 caixas numeradas no topo, o corpo virou 4 etapas com título padrão (acervo, recomposição, interação e consistência), checklist dentro da etapa de recomposição, aprendizados em 3 parágrafos e alt texts revisados.
+- 190: projeto Super Interessante reorganizado no mesmo padrão — desafio, linha do tempo com 4 caixas numeradas, 4 etapas com título do site (edição inteira, narrativa, dados e acabamento), intro dividida e aprendizados em dois parágrafos.
+- 191: projeto Plataforma escrito e reorganizado — intro com o contexto (revista digital de arte contemporânea, criada do zero para tablets, projeto gráfico interativo com Tempo Design e Ricardo Van Steen), desafio, linha do tempo com 4 caixas, 4 etapas (do zero à tela, projeto gráfico, conteúdo navegável e curadoria/artigos), galeria de páginas maior em grade e aprendizados; alts revisados.
+- 192: filtro de projetos — "Editorial" virou "Editorial digital" e Select, Super Interessante e Plataforma passaram a ter a categoria `editorial` além de `digital`.
+- 193: filtro "Digital" virou "App" e só o Escola Aqui ficou nessa categoria; Select, Super e Plataforma ficaram só em Editorial digital, e o SGP passa a aparecer apenas em "Todos".
+- 194: SGP entra também na categoria Web (junto de BV e Cia.).
+- 195: cards de projeto ganharam a animação de entrada da fita do claude 4 (escala 1.4→1, rotateX 16°→0, blur 7px→0, vindo da borda da coluna ou de baixo, com stagger de 90ms por coluna), disparada por IntersectionObserver ao entrar na tela; visual dos cards mantido. Travei o overflow horizontal (html) para as entradas laterais não abrirem barra de rolagem.
+- 196: entrada dos cards virou scroll-linked (como a fita do claude 4) — a animação é função da posição do scroll e reverte ao subir, em vez de acontecer uma única vez.
+- 197: hero ganhou um carrossel 3D com os próprios ícones animados (16 tiles, giro ligado ao scroll), substituindo a grade de ícones de fundo; o texto foi para a coluna da esquerda e o carrossel para a direita. No mobile/tablet o carrossel é escondido e o texto volta ao centro.
+- 198: o hero ganhou uma espiral grande atrás do texto (30 tiles de ícones, 1,5 volta, raio ~660px), girando com o scroll; a frase voltou para a largura total/centralizada. No mobile/tablet a espiral continua escondida.
+- 199: tiles da espiral do hero quase dobraram de tamanho (84 → 150px, ícones 30 → 54px).
+- 200: timeline com título + texto + barra de progresso fixos (sticky) enquanto os cards passam; a barra foi para baixo do texto; colunas internas dos cards padronizadas (1fr + 190px). O empilhamento dos cards ficou desligado de vez (como estava gostando) e o main perdeu o overflow-x: clip que quebrava o sticky.
+- 201: o preto da frase do hero virou #C0272A (só o texto base; o trecho destacado continua no vermelho vivo).
+- 202: o texto base do hero passou de #C0272A para #951B1D (mais vinho, separa melhor do vermelho vivo do destaque).
+- 203: accordions de Processos ganharam números em Doto (01–05 na coluna UX, 01–03 na UI) e hover com o rótulo indo 6px para a direita e o chevron 6px para a esquerda; o mesmo hover foi aplicado ao accordion de Competências.
+- 204: texto do "Breve histórico" reescrito (frases mais curtas, "design thinking" minúsculo, BV em vez de BV Bank, dois-pontos na frase da IA), mantendo o grifo.
+- 205: a frase inicial do hero ficou em Fraunces 800 (o trecho destacado segue em 600, com a cor/grifo).
+- 206: espiral do hero voltou a aparecer no mobile/tablet (estava com display:none): menos tiles (20), tiles fluidos (76px no celular, 150px no desktop), opacidade menor e posição mais baixa para não atrapalhar a leitura.
+- 207: limpada a base da foto dos olhos (fx/foto_base.png): a íris/pupila original que ficava aparecendo atrás da íris que se move foi removida, mantendo a sombra da pálpebra. Backup em _check/foto_base_original.png.
+- 209: a espiral do hero agora vaza para fora da área do hero (overflow visível + seção acima da seguinte), sem mudar posição, tamanho ou animação.
+- 210: removido o giro 360° (rotateY) dos números dos cards de estatística no hover — no meio do giro o número sumia/espelhava, o que parecia uma piscada.
+- 211: giro 360° dos números restaurado; piscada dos cards de competências resolvida tirando o balão do número do hover do card inteiro (agora só na barra). Cards ganharam a referência: números = branco + sombra rosa (hover rosa), timeline = como estava + sombra rosa, cards de fases das páginas internas = branco + raio 24px + sombra rosa (--sombra-rosa).
+- 212: cards da linha do tempo ganharam raio só nas duas quinas de baixo (24px).

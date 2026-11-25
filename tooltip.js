@@ -81,9 +81,9 @@
             else inner.textContent = value;
         };
 
-        // nos cards de Skills o gatilho do mouse é o card inteiro, não só a barra;
-        // o tooltip continua ancorado na barra, no mesmo lugar
-        var trigger = box.closest(".level-counter") || box;
+        // o tooltip do número abre só na barra (não no card inteiro), para não
+        // piscar um balão preto a cada hover nos cards de competências
+        var trigger = box;
         trigger.addEventListener("mouseenter", type);
         trigger.addEventListener("mouseleave", reset);
 
