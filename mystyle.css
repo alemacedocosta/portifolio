@@ -289,7 +289,7 @@ nav a {
 
 p {
     font-size: medium;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.8;
 }
 
@@ -509,7 +509,7 @@ section:nth-of-type(2) {
 }
 
 .accordion:hover {
-    background-color: #f5f5f5;
+    background-color: #ffdada;
 }
 
 .panel {
@@ -1721,9 +1721,9 @@ footer {
     width: var(--tile);
     height: var(--tile);
     backface-visibility: hidden;
-    background: rgba(255, 255, 255, 0.42);
-    border-color: rgba(255, 255, 255, 0.85);
-    color: rgba(232, 57, 90, 0.68);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 18px 40px rgba(190, 40, 60, 0.08);
 }
 
@@ -2147,7 +2147,7 @@ footer {
     padding: 16px 18px;
     background-color: #fff;
     border: 0;
-    border-radius: 0;
+    border-radius: 22px;
     transition: background-color 0.4s ease;
 }
 .skills-grid .level-counter:hover {
@@ -2155,6 +2155,7 @@ footer {
 }
 /* Skills: o tooltip do número aparece ao entrar no card inteiro (não só na barra),
    mas continua ancorado na barra, no mesmo lugar de antes. */
+.skills-grid .level-counter:hover .tooltip-text,
 .skills-grid .level-counter .tooltip.is-focus .tooltip-text {
     opacity: 1;
     visibility: visible;
@@ -2674,7 +2675,7 @@ footer {
     text-align: left;
     cursor: pointer;
 }
-.how__tab:hover { background: #f5f5f5; }
+.how__tab:hover { background: #ffdada; }
 .how__tab:focus-visible { outline: 2px solid #111; outline-offset: -2px; }
 .how__num {
     flex: 0 0 auto;

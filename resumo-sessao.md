@@ -647,3 +647,9 @@
 - 210: removido o giro 360° (rotateY) dos números dos cards de estatística no hover — no meio do giro o número sumia/espelhava, o que parecia uma piscada.
 - 211: giro 360° dos números restaurado; piscada dos cards de competências resolvida tirando o balão do número do hover do card inteiro (agora só na barra). Cards ganharam a referência: números = branco + sombra rosa (hover rosa), timeline = como estava + sombra rosa, cards de fases das páginas internas = branco + raio 24px + sombra rosa (--sombra-rosa).
 - 212: cards da linha do tempo ganharam raio só nas duas quinas de baixo (24px).
+- 213: nos cards da timeline, "Local:" virou "Empresa:".
+- 214: hover dos accordions (Processos e Competências) passou a ser o mesmo rosa dos cards de números (#ffdada).
+- 215: cards de competências com o mesmo raio dos cards de números (22px) e o tooltip do número voltou a abrir assim que o mouse entra no card.
+- 216: experimento: ícones da espiral do hero em branco (tiles mais transparentes para os ícones aparecerem).
+- 217: frase final do texto de Processos reescrita e com o mesmo grifo animado do "Breve histórico".
+- 218: parágrafos corridos passaram de Montserrat 400 para 500 (mais peso no mobile e no desktop).

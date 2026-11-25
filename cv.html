@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Alexandre Ribeiro de Macedo Costa — Currículo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Fraunces:opsz,wght@9..144,400..900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --ink: #141414;
+        --muted: #5c5c5c;
+        --red: #b3121c;
+        --pink: #fff0f0;
+        --pink-line: #ffdada;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ececec; }
+    body {
+        font-family: "Montserrat", sans-serif;
+        color: var(--ink);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 8.6pt;
+        line-height: 1.45;
+    }
+    .sheet {
+        width: 210mm;
+        height: 297mm;
+        background: #fff;
+        margin: 8mm auto;
+        padding: 12mm 14mm 10mm;
+        position: relative;
+        overflow: hidden;
+    }
+    /* ---------- cabeçalho ---------- */
+    .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10mm;
+        padding-bottom: 4mm;
+        border-bottom: 1.4pt solid var(--ink);
+    }
+    .top h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 800;
+        font-size: 25pt;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        margin: 0 0 2.6mm;
+        max-width: 128mm;
+    }
+    .headline {
+        font-size: 7.2pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        color: var(--red);
+        margin: 0;
+        max-width: 128mm;
+    }
+    .top-right {
+        text-align: right;
+        font-size: 7.4pt;
+        line-height: 1.65;
+        color: var(--muted);
+        white-space: nowrap;
+        padding-top: 1mm;
+    }
+    .top-right strong { color: var(--ink); font-weight: 700; }
+    /* ---------- estrutura ---------- */
+    .cols {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 46mm;
+        column-gap: 9mm;
+        padding-top: 5mm;
+    }
+    .section-title {
+        font-size: 7pt;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        margin: 0 0 3.2mm;
+        padding-top: 2.2mm;
+        border-top: 0.8pt solid var(--ink);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+    .section-title span { color: var(--red); font-family: "Doto", ui-monospace, monospace; font-weight: 700; font-size: 8.4pt; letter-spacing: 0; }
+    /* ---------- perfil ---------- */
+    .perfil p {
+        margin: 0 0 6mm;
+        font-size: 8.6pt;
+        line-height: 1.5;
+    }
+    .perfil p mark {
+        background: var(--pink-line);
+        color: inherit;
+        padding: 0 2px;
+    }
+    /* ---------- experiência ---------- */
+    .job {
+        display: grid;
+        grid-template-columns: 22mm minmax(0, 1fr);
+        column-gap: 5mm;
+        padding: 3.4mm 0 3.8mm;
+        border-top: 0.5pt solid #dcdcdc;
+        break-inside: avoid;
+    }
+    .job:first-of-type { border-top: 0; padding-top: 0; }
+    .when {
+        font-family: "Doto", ui-monospace, monospace;
+        font-weight: 700;
+        font-size: 8pt;
+        line-height: 1.35;
+        color: var(--red);
+        letter-spacing: 0.02em;
+    }
+    .when small {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 6.6pt;
+        letter-spacing: 0.02em;
+        color: #8a8a8a;
+        margin-top: 1mm;
+        text-transform: uppercase;
+    }
+    .job h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 700;
+        font-size: 10.6pt;
+        line-height: 1.15;
+        margin: 0 0 0.8mm;
+        letter-spacing: -0.005em;
+    }
+    .job .role {
+        font-size: 7.4pt;
+        font-weight: 700;
+        color: var(--red);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0 0 1.6mm;
+    }
+    .job p {
+        margin: 0;
+        font-size: 8pt;
+        line-height: 1.45;
+        color: #222;
+    }
+    .job ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .job li {
+        position: relative;
+        padding-left: 4mm;
+        font-size: 8pt;
+        line-height: 1.45;
+        color: #222;
+    }
+    .job li + li { margin-top: 1mm; }
+    .job li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.55mm;
+        width: 1.5mm;
+        height: 1.5mm;
+        background: var(--red);
+    }
+    /* ---------- coluna lateral ---------- */
+    .side .block { margin-bottom: 6.5mm; }
+    .pills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+    .pill {
+        font-size: 6.6pt;
+        font-weight: 600;
+        line-height: 1;
+        padding: 1.4mm 2mm;
+        border-radius: 999px;
+        background: var(--pink);
+        border: 0.5pt solid var(--pink-line);
+        color: #333;
+        white-space: nowrap;
+    }
+    .side p { margin: 0; font-size: 7.6pt; line-height: 1.5; color: #333; }
+    .side .small { font-size: 7.2pt; color: var(--muted); }
+    .side .links a {
+        display: block;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 6.7pt;
+        line-height: 1.5;
+        border-bottom: 0.5pt solid var(--pink-line);
+        padding: 1.1mm 0;
+        overflow-wrap: anywhere;
+    }
+    .side .links a strong { color: var(--red); font-weight: 700; }
+    /* ---------- rodapé / página 2 ---------- */
+    .foot {
+        position: absolute;
+        left: 14mm;
+        right: 14mm;
+        bottom: 7mm;
+        display: flex;
+        justify-content: space-between;
+        font-size: 6.4pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        border-top: 0.5pt solid #e2e2e2;
+        padding-top: 2mm;
+    }
+    .page2-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: 1.4pt solid var(--ink);
+        padding-bottom: 2.5mm;
+        margin-bottom: 5mm;
+    }
+    .page2-head strong {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 700;
+        font-size: 13pt;
+        letter-spacing: -0.01em;
+    }
+    .page2-head span {
+        font-size: 6.8pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--red);
+    }
+    .page2 .job { grid-template-columns: 22mm minmax(0, 1fr); }
+    .proj { margin-top: 7mm; }
+    .proj-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5mm;
+    }
+    .proj-item {
+        background: #fff;
+        border: 0.5pt solid var(--pink-line);
+        border-radius: 3mm;
+        padding: 3mm 3.4mm;
+        break-inside: avoid;
+    }
+    .proj-item h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 700;
+        font-size: 9.6pt;
+        margin: 0 0 1mm;
+        letter-spacing: -0.005em;
+    }
+    .proj-item p {
+        margin: 0;
+        font-size: 7.6pt;
+        line-height: 1.42;
+        color: #333;
+    }
+    /* ---------- tela ---------- */
+    @media screen {
+        body { background: #e9e9e9; }
+        .sheet { box-shadow: 0 12px 40px rgba(0,0,0,0.14); }
+    }
+    /* ---------- impressão ---------- */
+    @page { size: A4; margin: 0; }
+    @media print {
+        html, body { background: #fff; }
+        .sheet { margin: 0; box-shadow: none; page-break-after: always; }
+        .sheet:last-child { page-break-after: auto; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ================= PÁGINA 1 ================= -->
+<div class="sheet page1">
+    <header class="top">
+        <div>
+            <h1>Alexandre Ribeiro<br>de Macedo Costa</h1>
+            <p class="headline">Senior Product Designer · UX Estratégico &amp; Discovery<br>Design Systems &amp; Métricas de Usabilidade</p>
+        </div>
+        <div class="top-right">
+            <strong>São Paulo, Brasil</strong><br>
+            +55 11 99137-1188<br>
+            alemacedo@gmail.com
+        </div>
+    </header>
+
+    <div class="cols">
+        <main>
+            <section class="perfil">
+                <h2 class="section-title">Perfil <span>01</span></h2>
+                <p>Designer formado em Desenho Industrial, com <strong>20 anos de mercado</strong> e mais de <strong>7 anos dedicados a produtos digitais</strong>. Transformo fluxos complexos em experiências simples e intuitivas: descubro o problema com pesquisa, organizo a informação, desenho a solução e acompanho a entrega de perto. Trabalho junto de produto, tecnologia e negócio — e uso IA no dia a dia para explorar ideias mais rápido.</p>
+            </section>
+
+            <section class="exp">
+                <h2 class="section-title">Experiência <span>02</span></h2>
+
+                <article class="job">
+                    <div class="when">nov 2022<br>atual<small>4 anos</small></div>
+                    <div>
+                        <h3>banco BV</h3>
+                        <p class="role">UX/UI Designer · Product Designer Sênior</p>
+                        <ul>
+                            <li>Discovery e research em ecossistemas financeiros de alta complexidade: oficinas de descoberta, entrevistas e testes de usabilidade com protótipos estáticos e navegáveis.</li>
+                            <li>Governança de UX/UI nos produtos SaaS do banco, garantindo consistência visual, acessibilidade e escalabilidade entre múltiplos produtos.</li>
+                            <li>Tradução de regras de negócio complexas em fluxos limpos e intuitivos, reduzindo fricção para o usuário final.</li>
+                            <li>Uso consistente de IA para acelerar processos e direcionar as soluções.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="when">nov 2022<br>abr 2025</div>
+                    <div>
+                        <h3>BRQ Digital Solutions</h3>
+                        <p class="role">UX/UI Designer</p>
+                        <p>Consultoria alocada no banco BV, com as mesmas atribuições; posteriormente internalizado pelo banco.</p>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="when">set 2021<br>nov 2022</div>
+                    <div>
+                        <h3>Dock</h3>
+                        <p class="role">Product Designer</p>
+                        <ul>
+                            <li>Design de produto no backoffice da Dock Means of Payments, junto a PO e PM, equilibrando visão de negócio e de usuário.</li>
+                            <li>Discovery, definição, prototipação e testes até a entrega.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="when">set 2020<br>nov 2021</div>
+                    <div>
+                        <h3>BRQ Digital Solutions</h3>
+                        <p class="role">Product Designer · Banco Votorantim</p>
+                        <ul>
+                            <li>Levantamento de informações e critérios para produtos do banco; oficinas de descoberta e protótipos estáticos e navegáveis.</li>
+                            <li>Testes de usabilidade com usuários e guardião de produtos, aplicando boas práticas de UI nos produtos trabalhados.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job">
+                    <div class="when">set 2019<br>set 2020</div>
+                    <div>
+                        <h3>AMcom Sistemas de Informação</h3>
+                        <p class="role">Designer UX/UI · Secretaria Municipal de Educação de SP</p>
+                        <ul>
+                            <li>Protótipos de alta e baixa fidelidade para o Sistema de Gestão Pedagógica usado por mais de 40 mil professores da rede municipal.</li>
+                            <li>Testes de usabilidade com usuários internos, protótipos navegáveis e manutenção do style guide.</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <aside class="side">
+            <div class="block">
+                <h2 class="section-title">Competências</h2>
+                <div class="pills">
+                    <span class="pill">UX Research</span>
+                    <span class="pill">Discovery</span>
+                    <span class="pill">Design Systems</span>
+                    <span class="pill">UI Design</span>
+                    <span class="pill">Prototipagem</span>
+                    <span class="pill">Testes de Usabilidade</span>
+                    <span class="pill">Acessibilidade</span>
+                    <span class="pill">Métricas de Usabilidade</span>
+                    <span class="pill">Facilitação</span>
+                    <span class="pill">Branding</span>
+                    <span class="pill">IA aplicada a Design</span>
+                </div>
+            </div>
+
+            <div class="block">
+                <h2 class="section-title">Formação</h2>
+                <p><strong>FAAP</strong><br>Desenho Industrial<br><span class="small">1998 – 2002 · São Paulo</span></p>
+            </div>
+
+            <div class="block">
+                <h2 class="section-title">Idiomas</h2>
+                <p>Português <span class="small">(nativo)</span><br>Inglês<br>Francês</p>
+            </div>
+
+            <div class="block">
+                <h2 class="section-title">Links</h2>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/alexandre-ribeiro-de-macedo-costa-72ba3314"><strong>LinkedIn</strong><br>linkedin.com/in/<wbr>alexandre-ribeiro-de-macedo-costa</a>
+                    <a href="https://www.behance.net/alexandremacedocosta"><strong>Behance</strong><br>behance.net/<wbr>alexandremacedocosta</a>
+                    <a href="https://alemacedocosta.github.io/portifolio/"><strong>Portfólio</strong><br>alemacedocosta.github.io/<wbr>portifolio</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="foot">
+        <span>Alexandre Ribeiro de Macedo Costa · Currículo</span>
+        <span>01 / 02</span>
+    </div>
+</div>
+
+<!-- ================= PÁGINA 2 ================= -->
+<div class="sheet page2">
+    <div class="page2-head">
+        <strong>Experiência · continuação</strong>
+        <span>2009 — 2019</span>
+    </div>
+
+    <section class="exp">
+        <article class="job">
+            <div class="when">mai 2018<br>jun 2019<small>1 ano 2 meses</small></div>
+            <div>
+                <h3>Cia da Consulta</h3>
+                <p class="role">Designer Lead · Branding</p>
+                <p>Gestão dos pontos de contato da marca e liderança do novo posicionamento — valores, territórios, mensagens e guias visuais — com foco em vendas, fidelidade e participação de mercado.</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">fev 2017<br>abr 2018</div>
+            <div>
+                <h3>dr.consulta</h3>
+                <p class="role">Supervisor de Marca</p>
+                <p>Supervisão da marca e suporte às agências externas; reposicionamento e nova identidade visual conduzidos pela Interbrand, incluindo a campanha “Saúde como ninguém pensa” (Wieden+Kennedy).</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">out 2015<br>fev 2017</div>
+            <div>
+                <h3>Grupo Tellus</h3>
+                <p class="role">Designer Lead</p>
+                <p>Gestão do fluxo de design gráfico de projetos institucionais: relatórios, livros, jornadas, blueprints, infográficos, apresentações e identidades visuais.</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">ago 2012<br>out 2015<small>3 anos 3 meses</small></div>
+            <div>
+                <h3>Estúdio Dois</h3>
+                <p class="role">Diretor Criativo</p>
+                <p>Direção criativa de projetos digitais e editoriais: revistas Select e Efêmero Concreto para iPad, aplicativos mobile/tablet, sites, landing pages e marcas.</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">jul 2011<br>ago 2012</div>
+            <div>
+                <h3>Arizona — Making Marketing Flow</h3>
+                <p class="role">Diretor de Arte</p>
+                <p>Projeto gráfico/digital da revista IstoÉ para iPad/Tablet desde a primeira edição: mais de 50 edições publicadas, com supervisão de interatividade, diagramação e adaptação gráfica.</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">mai 2010<br>jun 2011</div>
+            <div>
+                <h3>Tempo design</h3>
+                <p class="role">Diretor de Arte</p>
+                <p>Projetos gráficos das revistas Planeta, Select e IstoÉ Dinheiro, incluindo as versões para tablet.</p>
+            </div>
+        </article>
+
+        <article class="job">
+            <div class="when">out 2009<br>mai 2010</div>
+            <div>
+                <h3>Editora Três</h3>
+                <p class="role">Designer</p>
+                <p>Diagramação das revistas IstoÉ Dinheiro e IstoÉ Rural.</p>
+            </div>
+        </article>
+    </section>
+
+    <section class="proj">
+        <h2 class="section-title">Projetos selecionados <span>03</span></h2>
+        <div class="proj-grid">
+            <div class="proj-item">
+                <h3>Select</h3>
+                <p>Revista digital para tablets: projeto gráfico interativo que recompõe cada edição para a tela, sem abrir mão de legibilidade e navegação.</p>
+            </div>
+            <div class="proj-item">
+                <h3>Plataforma</h3>
+                <p>Revista de arte contemporânea 100% digital, criada do zero para tablets — projeto gráfico interativo com Tempo Design e Ricardo Van Steen.</p>
+            </div>
+            <div class="proj-item">
+                <h3>Escola Aqui · SGP</h3>
+                <p>Sistema de Gestão Pedagógica da Secretaria Municipal de Educação de São Paulo, usado por mais de 40 mil professores.</p>
+            </div>
+            <div class="proj-item">
+                <h3>BV Open</h3>
+                <p>Website para desenvolvedores e parceiros sobre as APIs do Banco BV — guias, possibilidades de integração e o caminho para se tornar parceiro.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="foot">
+        <span>Alexandre Ribeiro de Macedo Costa · Currículo</span>
+        <span>02 / 02</span>
+    </div>
+</div>
+
+</body>
+</html>
