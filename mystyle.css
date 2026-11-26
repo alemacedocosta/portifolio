@@ -123,7 +123,6 @@ body {
 }
 
 #navbar a:hover {
-    background-color: white;
     color: var(--cinza-02);
 }
 
@@ -179,8 +178,27 @@ nav a {
 }
 
 .menu ul li a {
+    position: relative;
+    z-index: 0;
     color: white;
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+/* wipe rápido do fundo branco no hover e no leave do menu */
+.menu ul li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+    pointer-events: none;
+}
+.menu ul li a:hover::before,
+.menu ul li a:focus-visible::before {
+    transform: scaleX(1);
 }
 
 .menu-icon {
@@ -3365,8 +3383,9 @@ footer {
     font-weight: 400;
     color: #111;
     background-color: #f5f5f5;
-    border: 1px solid #e6e6e6;
+    border: 0;
     border-radius: 12px;
+    outline: none;
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -3374,7 +3393,7 @@ footer {
 }
 .contact-field select {
     appearance: none;
-    background-image: linear-gradient(45deg, transparent 50%, #111 50%), linear-gradient(135deg, #111 50%, transparent 50%);
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
     background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
@@ -3389,7 +3408,6 @@ footer {
 .contact-field select:hover,
 .contact-field textarea:hover {
     background-color: #ededed;
-    border-color: #cfcfcf;
 }
 .contact-field input:active,
 .contact-field select:active,
@@ -3400,9 +3418,13 @@ footer {
 .contact-field select:focus,
 .contact-field textarea:focus {
     outline: none;
-    background-color: #fff;
-    border-color: #000;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    background-color: #555;
+    color: #fff;
+    box-shadow: none;
+}
+.contact-field input:focus::placeholder,
+.contact-field textarea:focus::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 .contact-field:focus-within label {
     color: #000;
@@ -3426,6 +3448,9 @@ footer {
 }
 .contact-submit {
     justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     padding: 14px 26px;
     border: 0;
     border-radius: 50px;
@@ -3438,6 +3463,19 @@ footer {
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.25s ease;
+}
+.contact-submit svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s ease;
+}
+.contact-submit:hover svg {
+    transform: translateX(3px);
 }
 .contact-submit:hover {
     background-color: var(--cor-apoio01);

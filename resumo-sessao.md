@@ -698,3 +698,6 @@
 - 261: a barra da timeline agora preenche no ritmo dos anos (0% em 2026; o topo do preenchimento encosta no tick do ano a cada card, interpolando 2026→2022→2020→…→2012 e 100% no 2012). O nome/empresa da timeline é acionado quando a régua/nome entram na tela no scroll da página (Banco BV já aparece digitando na chegada da seção).
 - 262: corrigida a distorção do slider do Ecossistema ao reduzir a janela: a imagem passou de height fixo (68vh) + max-width para max-width/max-height com dimensões automáticas (mantém a proporção); no mobile, width 100% e sem max-height.
 - 263: removido o backdrop-filter (efeito vidro) da navbar no celular (≤800px).
+- 264: campos do contato sem outline; no estado selecionado (focus) fundo cinza escuro (#555) com texto branco e sem sombra/efeito; a seta do select acompanha a cor do texto; botão "Enviar mensagem" com ícone de seta.
+- 265: os campos do contato ficaram sem a borda/outline também no estado default (border: 0), mantendo só o fundo cinza claro; hover sem borda e foco cinza escuro com texto branco.
+- 266: menu principal da navbar (desk) ganhou uma animação rápida de hover/leave: o fundo branco entra com wipe da esquerda (0.22s cubic-bezier) e a cor do texto transita em 0.2s; no rollout o wipe recolhe.
