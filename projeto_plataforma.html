@@ -120,17 +120,12 @@
         <!-- Corpo do projeto -->
         <section id="Aboutsection">
             <div class="container-titulo">
-                <h2>O desafio</h2>
+                <h2>Processo de design e direção de arte para tablet</h2>
                 <div class="container-full proj-step">
-                    <p>
-                        Sem uma edição impressa de referência, não havia página para adaptar: tudo precisava ser
-                        inventado — o formato, a grade, a tipografia, a navegação e o jeito de ler arte na tela.
-                    </p>
-                    <p>
-                        O desafio era fazer a revista comportar conteúdos muito diferentes — textos curatoriais,
-                        entrevistas, vídeos, índices de artistas, galerias de obras — sem que cada um parecesse um
-                        produto separado. E, ao mesmo tempo, explorar a fundo o que só o tablet permite.
-                    </p>
+                    <h4>Cenário</h4>
+                    <p>A Plataforma era uma revista de arte contemporânea criada do zero para o digital, sem versão impressa, em inglês, para dar visibilidade ao artista brasileiro também fora do país. Sem uma edição de referência, não havia página para adaptar: formato, grade, tipografia, navegação e o jeito de ler arte na tela precisavam ser inventados.</p>
+                    <h4>Objetivo</h4>
+                    <p>Fazer a revista comportar conteúdos muito diferentes — textos curatoriais, entrevistas, vídeos, índices de artistas e galerias de obras — sem que cada um parecesse um produto separado, e explorar a fundo o que só o tablet permite.</p>
                 </div>
             </div>
 
@@ -273,24 +268,27 @@
                         produção brasileira contemporânea em um recorte internacional. O design entrava para
                         organizar essa curadoria, não para competir com ela.
                     </p>
-                    <p>Seleção de páginas da edição — clique para ampliar.</p>
                 </div>
             </div>
-            <div class="gallery">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_01.jpg" alt="Capa CONCRETE da Plataforma, com tipografia preenchida por imagens e o índice lateral." onclick="openModal(this)">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_02.jpg" alt="Artigo 'Critical and curatorial training in Brazil', com foto de uma sala de aula e palavras destacadas." onclick="openModal(this)">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_03.jpg" alt="Artigo 'The reinvention of the magazine: a conversation', com a capa de uma revista." onclick="openModal(this)">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_04.jpg" alt="Projeto curatorial 'Kotler's Lessons', de Ana Maria Maia, com grade de imagens de obras." onclick="openModal(this)">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_05.jpg" alt="Artigo 'The Biennale in Brazil: from international to global', com foto histórica da Bienal." onclick="openModal(this)">
-                <img class="gallery-item" src="assets/projetos/plataforma/img_galery_plataforma_06.jpg" alt="Ensaio 'Critical and curatorial training in Brazil', com foto em verde e o índice lateral." onclick="openModal(this)">
+            <div class="ipad-showcase">
+                <div class="ipad-showcase__stage">
+                    <div class="ipad">
+                        <div class="ipad__screen">
+                            <img class="ipad__page" src="assets/projetos/plataforma/paginas/Curadoria_pagina.jpg"
+                                alt="Página da Plataforma dentro do iPad." loading="lazy" />
+                        </div>
+                    </div>
+                    <button type="button" class="ipad-showcase__arrow ipad-showcase__arrow--prev" aria-label="Página anterior">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+                    </button>
+                    <button type="button" class="ipad-showcase__arrow ipad-showcase__arrow--next" aria-label="Próxima página">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+                <div class="ipad-showcase__dots how__dots" role="tablist" aria-label="Páginas da edição"></div>
             </div>
         </section>
 
-        <!-- Janela modal -->
-        <div id="modal" class="modal">
-            <button class="icone close" id="modal-close" onclick="closeModal()"><img src="assets/ico_close_branco.svg" alt="Menu"></button>
-            <img class="modal-content" id="modal-image">
-        </div>
 
         <!-- Aprendizados -->
         <section id="Aboutsection">
@@ -405,43 +403,6 @@
         });
     </script><!-- Código JavaScript do carregamento -->
 
-    <script>
-        var images = document.getElementsByClassName("gallery-item");
-        var modal = document.getElementById("modal");
-        var modalImage = document.getElementById("modal-image");
-        var currentIndex;
-
-        // Função para abrir a janela modal com a imagem selecionada
-        function openModal(element) {
-            modal.style.display = "block";
-            modalImage.src = element.src;
-            currentIndex = Array.from(images).indexOf(element);
-        }
-
-        // Função para fechar a janela modal
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // Função para ir para a próxima imagem na galeria
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            modalImage.src = images[currentIndex].src;
-        }
-
-        // Função para retornar para a imagem anterior na galeria
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            modalImage.src = images[currentIndex].src;
-        }
-
-        // Event listener para fechar a janela modal ao clicar fora da imagem
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        };
-    </script><!-- Galeria com modal -->
     
     <script>
                 function initReveal() {
@@ -475,4 +436,6 @@
     <script src="hero-blur.js"></script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
+    <script src="projeto-nav.js"></script>
+    <script src="plataforma-ipad.js"></script>
 </body></html>

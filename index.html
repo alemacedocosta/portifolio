@@ -407,6 +407,8 @@
                             <p>Aqui eu falo um pouco de cada período da minha trajetória como designer, desde o começo, quando eu trabalhava mais como designer gráfico, até o momento atual, depois da transição para o design de produto. De forma resumida, vou compartilhar cada fase e, dentro de cada fase, as atividades que realizei.</p>
                         </div>
                         <div class="stack-progress" aria-hidden="true"><span></span></div>
+                        <div class="timeline-scale" aria-hidden="true"></div>
+                        <p class="timeline-company"><span class="timeline-company__text"></span><span class="timeline-company__caret" aria-hidden="true"></span></p>
                     </div>
 
                     <!-- Timeline -->
@@ -1157,44 +1159,147 @@
                 update();
             })();
         </script>
-        <!-- Linha de progresso da pilha de cards da timeline -->
+        <!-- Linha do tempo: barra de anos, régua e nome da empresa -->
         <script>
             (function () {
                 var section = document.getElementById("Timelinesection");
+                var title = document.querySelector("#Timelinesection .container-titulo");
                 var container = document.querySelector("#Timelinesection .container-primary");
                 var bar = document.querySelector("#Timelinesection .stack-progress");
-                if (!container || !bar) return;
+                var scale = document.querySelector("#Timelinesection .timeline-scale");
+                var companyBox = document.querySelector("#Timelinesection .timeline-company");
+                var companyText = document.querySelector("#Timelinesection .timeline-company__text");
+                var caret = document.querySelector("#Timelinesection .timeline-company__caret");
+                if (!container || !bar || !scale || !companyText) return;
                 var fill = bar.querySelector("span");
                 var cards = Array.prototype.slice.call(container.querySelectorAll(".container-timeline"));
-                var BASE = 110, STEP = 18, GAP = 18;
+                var GAP = 18;
                 var ticking = false;
-                function ranges() {
-                    var cRect = container.getBoundingClientRect();
-                    var cDoc = cRect.top + window.scrollY;
-                    var y = cDoc;
-                    var tops = [];
-                    for (var i = 0; i < cards.length; i++) {
-                        tops.push(y);
-                        y += cards[i].offsetHeight + GAP;
-                    }
-                    var n = cards.length;
-                    var start = tops[0] - BASE;
-                    var end = tops[n - 1] - (BASE + (n - 1) * STEP);
-                    return { start: start, end: Math.max(end, start + 1) };
+                var current = -1;
+                var typeTimer = null;
+                var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+                // régua de anos: 2026 até 2012
+                var ANO_INICIAL = 2026, ANO_FINAL = 2012, SPAN = ANO_INICIAL - ANO_FINAL;
+                var years = [];
+                for (var yr = ANO_INICIAL; yr >= ANO_FINAL; yr--) years.push(yr);
+                years.forEach(function (y) {
+                    var el = document.createElement("span");
+                    el.textContent = y;
+                    el.setAttribute("data-year", y);
+                    scale.appendChild(el);
+                });
+
+                var names = cards.map(function (card) {
+                    var p = card.querySelector(".timeline-local p");
+                    return p ? p.textContent.trim() : "";
+                });
+                var cardYears = cards.map(function (card) {
+                    var h = card.querySelector(".div-left h2");
+                    var nums = h ? (h.textContent.match(/\d{4}/g) || []) : [];
+                    return nums.length ? Number(nums[nums.length - 1]) : 0;
+                });
+
+                function yearPos(year) {
+                    return (ANO_INICIAL - year) / SPAN;
                 }
+
+                function metrics() {
+                    var cDoc = container.getBoundingClientRect().top + window.scrollY;
+                    var tops = [];
+                    var acc = cDoc;
+                    for (var i = 0; i < cards.length; i++) {
+                        tops.push(acc);
+                        acc += cards[i].offsetHeight + GAP;
+                    }
+                    var sticky = window.matchMedia("(min-width: 801px)").matches ? 110 : 0;
+                    var barBottom = sticky + bar.offsetTop + bar.offsetHeight;
+                    // a barra começa a preencher quando o título gruda; depois, em cada card que encosta na barra
+                    var seg = [tops[0] - sticky];
+                    for (var j = 1; j < cards.length; j++) {
+                        seg.push(tops[j] - barBottom);
+                    }
+                    for (var k = 1; k < seg.length; k++) {
+                        if (seg[k] <= seg[k - 1]) seg[k] = seg[k - 1] + 1;
+                    }
+                    return { seg: seg, barBottom: barBottom };
+                }
+
+                function activeAt(y, m) {
+                    var idx = 0;
+                    for (var i = 0; i < m.seg.length; i++) {
+                        if (y >= m.seg[i] - 2) idx = i;
+                    }
+                    return idx;
+                }
+
+                function fillAt(y, m) {
+                    var n = m.seg.length;
+                    if (y <= m.seg[0]) return 0;
+                    if (y >= m.seg[n - 1]) return 1;
+                    for (var i = 0; i < n - 1; i++) {
+                        if (y < m.seg[i + 1]) {
+                            var t = (y - m.seg[i]) / (m.seg[i + 1] - m.seg[i]);
+                            var a = yearPos(cardYears[i]);
+                            var b = yearPos(cardYears[i + 1]);
+                            return a + (b - a) * t;
+                        }
+                    }
+                    return 1;
+                }
+
+                function markYear(idx) {
+                    var year = cardYears[idx] || 0;
+                    Array.prototype.forEach.call(scale.children, function (el) {
+                        el.classList.toggle("is-active", Number(el.getAttribute("data-year")) === year);
+                    });
+                }
+
+                function typeCompany(text) {
+                    clearTimeout(typeTimer);
+                    caret.classList.add("is-typing");
+                    if (reduced) {
+                        companyText.textContent = text;
+                        return;
+                    }
+                    companyText.textContent = "";
+                    var i = 0;
+                    function step() {
+                        i++;
+                        companyText.textContent = text.slice(0, i);
+                        if (i < text.length) typeTimer = setTimeout(step, 45);
+                        else typeTimer = null;
+                    }
+                    typeTimer = setTimeout(step, 80);
+                }
+
                 function update() {
                     ticking = false;
-                    var r = ranges();
                     var y = window.scrollY;
-                    var p = (y - r.start) / (r.end - r.start);
-                    p = Math.min(Math.max(p, 0), 1);
+                    var m = metrics();
+                    var p = fillAt(y, m);
                     fill.style.setProperty("--p", p.toFixed(4));
                     fill.style.transform = "scaleX(" + p.toFixed(4) + ")";
-                    // Some antes de o último card (2012) chegar à posição fixa, para não sobrepô-lo
-                    var lastTop = cards[cards.length - 1].getBoundingClientRect().top;
-                    var secDoc = section.getBoundingClientRect().top + y;
-                    bar.classList.toggle("is-on", y >= secDoc - 40);
+
+                    // ativa pelo scroll da página: quando a barra, a régua e o nome entram na tela
+                    var vh = window.innerHeight || 1;
+                    var barOn = bar.getBoundingClientRect().top < vh - 40;
+                    var scaleOn = scale.getBoundingClientRect().top < vh - 20;
+                    var compOn = companyBox.getBoundingClientRect().top < vh - 20;
+                    bar.classList.toggle("is-on", barOn);
+                    scale.classList.toggle("is-on", scaleOn);
+                    companyBox.classList.toggle("is-on", compOn);
+
+                    if (compOn) {
+                        var idx = activeAt(y, m);
+                        if (idx !== current) {
+                            current = idx;
+                            markYear(idx);
+                            typeCompany(names[idx] || "");
+                        }
+                    }
                 }
+
                 function onScroll() {
                     if (!ticking) { ticking = true; requestAnimationFrame(update); }
                 }
