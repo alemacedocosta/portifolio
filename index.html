@@ -81,8 +81,11 @@
                 <h1 class="hero-phrase">
                     <span class="hero-intro">Olá, meu nome é Alexandre. Sou UX/UI designer e adoro criar experiências digitais centradas nas pessoas.</span> <span class="hero-hl">Estou aberto a fazer parte do seu time em São Paulo ou remotamente.</span>
                 </h1>
-                <a class="hero-cta" href="#Jobssection">Ver projetos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
+                <div class="hero-actions">
+                    <a class="hero-cta" href="#Jobssection">Ver projetos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="hero-cta hero-cta--ghost" href="CV%20Alexandre%20Costa.pdf" target="_blank" rel="noopener">Baixar CV<img class="hero-cta__ico" src="assets/ico_download_preto.svg" alt=""></a>
+                </div>
                 <div>[ Role a página para ver mais ]</div>
                 <div class="seta-animada">
                     <a href="#Aboutsection"><img src="assets/anima-seta.svg" /></a>
@@ -630,21 +633,17 @@
                             </div>
                         </a>
                     </div>
-                    <div class="portfolio-item web">
+                    <div class="portfolio-item web is-soon">
                         <img src="assets/thumb_site_bv.jpg" class="thumbnail-img" />
-                        <a href="projeto_bvopen.html" target="_self">
-                            <div class="caption">
-                                <h3>Site Open banking BV Bank</h3>
-                            </div>
-                        </a>
+                        <div class="caption">
+                            <h3>Site Open banking BV Bank</h3>
+                        </div>
                     </div>
-                    <div class="portfolio-item web">
+                    <div class="portfolio-item web is-soon">
                         <img src="assets/thumb_site_cia.jpg" class="thumbnail-img" />
-                        <a href="projeto_cia.html" target="_self">
-                            <div class="caption">
-                                <h3>Site Cia. da Consulta</h3>
-                            </div>
-                        </a>
+                        <div class="caption">
+                            <h3>Site Cia. da Consulta</h3>
+                        </div>
                     </div>
                     <div class="portfolio-item editorial">
                         <img src="assets/thumb_super_cia.jpg" class="thumbnail-img" />
@@ -670,11 +669,17 @@
                             </div>
                         </a>
                     </div>
+                    <div class="portfolio-item web is-soon">
+                        <img src="assets/projetos/sgp/img_thumb_sgp_secretariasp.png" class="thumbnail-img" />
+                        <div class="caption">
+                            <h3>Sistema de gestão pedagógica (SGP)</h3>
+                        </div>
+                    </div>
                     <div class="portfolio-item web">
-                        <img src="assets/projetos/sgp/img_thumb_sgp.png" class="thumbnail-img" />
-                        <a href="projeto_sgp.html" target="_self">
+                        <img src="assets/projetos/bvecossistema/img_thumb_ecossistemabv.jpg" class="thumbnail-img" />
+                        <a href="projeto_ecossistemabv.html" target="_self">
                             <div class="caption">
-                                <h3>Sistema de gestão pedagógica (SGP)</h3>
+                                <h3>Ecossistema Solar BV</h3>
                             </div>
                         </a>
                     </div>
@@ -969,6 +974,9 @@
                     it.addEventListener("pointerenter", function (e) {
                         on = true;
                         tx = e.clientX; ty = e.clientY; x = tx; y = ty;
+                        var soon = it.classList.contains("is-soon");
+                        cur.classList.toggle("is-soon", soon);
+                        cur.querySelector("span").textContent = soon ? "Em breve" : "Ver";
                         cur.classList.add("is-on");
                         kick();
                     });

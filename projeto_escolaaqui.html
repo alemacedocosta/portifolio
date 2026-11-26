@@ -8,7 +8,7 @@
         <script src="https://unpkg.com/scrollreveal"></script>
     </head>
 
-    <body>
+    <body class="proj-page">
         <script>
             function trocarSVGMenu() {
                 var screenWidth = window.innerWidth;
@@ -55,7 +55,7 @@
                 <div
                     id="hero"
                     class="div-heroprojetos"
-                    style="background-image: url(assets/projetos/escolaaqui/img_bg_escolaaqui.jpg)">
+                    style="background-image: url(assets/thumb_app_escolaaqui.jpg)">
                     <h1 class="hero-phrase">Aplicativo Escola Aqui</h1>
                     <div>[ Role a página para ver mais ]</div>
                     <div class="seta-animada">
@@ -158,12 +158,8 @@
                 <div class="container-titulo">
                     <h2>Descoberta</h2>
                 </div>
-                <div class="fotoprojetos">
-                    <img
-                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-04.jpg"
-                        alt="Mapa da fase de descoberta: três oficinas (visão do produto, definição de usuários e roadmap), canvas de produto e serviço, mapa de empatia e jornada do usuário." />
-                </div>
-                <div class="container-full proj-step">
+
+            <div class="container-full proj-step">
                     <p>
                         Começamos pela descoberta, com três oficinas de trabalho junto à equipe da SME. Na
                         primeira, alinhamos a visão do produto e o que era essencial para o primeiro lançamento;
@@ -177,15 +173,17 @@
                     </p>
                 </div>
 
+            <div class="fotoprojetos">
+                    <img
+                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-04.jpg"
+                        alt="Mapa da fase de descoberta: três oficinas (visão do produto, definição de usuários e roadmap), canvas de produto e serviço, mapa de empatia e jornada do usuário." />
+                </div>
+
                 <div class="container-titulo">
                     <h2>Fluxo do usuário</h2>
                 </div>
-                <div class="fotoprojetos">
-                    <img
-                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-05.jpg"
-                        alt="Fluxo simplificado do usuário: telas do app (login, dashboard, notas e faltas, mensagens e configurações) e a origem das mensagens no sistema SGP (UE, turma e SME)." />
-                </div>
-                <div class="container-full proj-step">
+
+            <div class="container-full proj-step">
                     <p>
                         Com o escopo acordado, desenhei o fluxo simplificado do app conversando com o SGP. Do lado
                         da família: login, seleção do estudante, dashboard com o resumo do ano, informações de
@@ -199,15 +197,17 @@
                     </p>
                 </div>
 
+            <div class="fotoprojetos">
+                    <img
+                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-05.jpg"
+                        alt="Fluxo simplificado do usuário: telas do app (login, dashboard, notas e faltas, mensagens e configurações) e a origem das mensagens no sistema SGP (UE, turma e SME)." />
+                </div>
+
                 <div class="container-titulo">
                     <h2>Wireframes</h2>
                 </div>
-                <div class="fotoprojetos">
-                    <img
-                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-06.jpg"
-                        alt="Wireframes de baixa fidelidade das telas do app: menu, login, seleção do estudante, dashboard, mensagens, notas, frequência e configurações." />
-                </div>
-                <div class="container-full proj-step">
+
+            <div class="container-full proj-step">
                     <p>
                         Na baixa fidelidade, testei a estrutura antes de investir no visual: menu drawer, login e
                         recuperação de senha, seleção do estudante, dashboard, mensagens, notas, frequência e
@@ -222,15 +222,17 @@
                     </p>
                 </div>
 
+            <div class="fotoprojetos">
+                    <img
+                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-06.jpg"
+                        alt="Wireframes de baixa fidelidade das telas do app: menu, login, seleção do estudante, dashboard, mensagens, notas, frequência e configurações." />
+                </div>
+
                 <div class="container-titulo">
                     <h2>UI e design system</h2>
                 </div>
-                <div class="fotoprojetos">
-                    <img
-                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-07.jpg"
-                        alt="Design system no Figma: botões, paleta de cores, tipografia Roboto, ícones, cards, componentes e o kit de ilustrações do Escola Aqui." />
-                </div>
-                <div class="container-full proj-step">
+
+            <div class="container-full proj-step">
                     <p>
                         Na camada visual, montei o design system no Figma: paleta com escalas de cor para estados
                         e categorias, tipografia Roboto em uma escala única, botões, cards e componentes
@@ -241,6 +243,12 @@
                         tokens e componentes. As ilustrações entraram para deixar o assunto mais leve — o app
                         falava de notas e faltas, mas também de acompanhamento e cuidado.
                     </p>
+                </div>
+
+            <div class="fotoprojetos">
+                    <img
+                        src="assets/projetos/escolaaqui/arte-app-acompanhamento-escolar-07.jpg"
+                        alt="Design system no Figma: botões, paleta de cores, tipografia Roboto, ícones, cards, componentes e o kit de ilustrações do Escola Aqui." />
                 </div>
             </section>
 
@@ -351,7 +359,7 @@
                         clearInterval(intervalId);
                         var containerLoading = document.querySelector(".container-loading");
                         containerLoading.style.display = "none"; // Oculta a div de carregamento
-                        document.body.style.overflow = "auto"; // Ativa a rolagem da página
+                        document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
                         document.dispatchEvent(new Event("app:ready"));
                     } else {
                         progress += 1;
@@ -389,7 +397,8 @@
             setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
         </script>
         <!-- Scroll Reveal -->
-        <script src="menu.js"></script>
+        <script src="hero-blur.js"></script>
+    <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body>
 </html>

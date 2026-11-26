@@ -653,3 +653,29 @@
 - 216: experimento: ícones da espiral do hero em branco (tiles mais transparentes para os ícones aparecerem).
 - 217: frase final do texto de Processos reescrita e com o mesmo grifo animado do "Breve histórico".
 - 218: parágrafos corridos passaram de Montserrat 400 para 500 (mais peso no mobile e no desktop).
+- 219: cards de competências ganharam a mesma sombra rosa (--sombra-rosa) dos cards de números.
+- 220: caixa "Baixar CV" com o mesmo tratamento dos cards de números (branco, raio 22, sombra rosa, hover rosa).
+- 221: nas páginas de projeto, a intro virou uma grade de 6 colunas: período/empresa/texto/lista em 5 e a coluna de tags na última (1/6), à direita; no mobile empilha.
+- 222: hero ganhou botão secundário "Baixar CV" ao lado de "Ver projetos" — pill branco com sombra rosa e hover rosa.
+- 223: novo projeto "Ecossistema Solar BV" (projeto_ecossistemabv.html) seguindo o Figma: intro 2025/2026 + Banco BV, cenário/objetivo, processo em 4 etapas, artefatos de discovery, telas do produto, resultado da simulação e aprendizados. Card novo (web) na home. Textura de pontos do header aplicada no hero de todos os projetos.
+- 224: heroes dos 8 projetos passaram a usar a mesma imagem dos thumbs da home; um véu rosa suave (gradiente) mantém o título legível e a textura de pontos continua por cima.
+- 225: no projeto Ecossistema Solar BV o texto de abertura virou um parágrafo único; a lista de atividades ganhou 28px de respiro (em todos os projetos) e o fim dos Aprendizados ganhou 96px de espaço branco antes do rodapé (em todas as páginas de projeto).
+- 226: heroes dos projetos ganharam blur progressivo conforme o scroll (volta ao foco ao subir): camada .hero-blur herda a imagem e recebe filter blur via hero-blur.js, com o hero recortando a camada.
+- 227: parallax leve nos heroes dos projetos: a camada .hero-blur também desliza ~4,5% do scroll (além do blur), mantendo o enquadramento sem bordas.
+- 228: navbar com backdrop blur (header "fosco"): como a barra é translúcida (só os pontos), tudo que passa por baixo dela fica desfocado; vale para todas as páginas que usam a navbar.
+- 229: blur da navbar reduzido de 12px para 3px (bem mais sutil).
+- 230: cards da Cia da Consulta e do SGP ficaram sem link para a página interna e o cursor no hover virou um círculo vermelho "Em breve" (texto branco); os demais continuam com o "Ver" preto.
+- 231: thumb do SGP trocado para assets/projetos/sgp/img_thumb_sgp_secretariasp.png (no card da home e no hero do projeto).
+- 232: no Ecossistema Solar BV, a seção "Resultado da simulação" (título + imagem) saiu; as 6 telas do protótipo ficaram numa galeria horizontal presa ao scroll (entram pela direita, saem pela esquerda, com legendas; depois a página volta a rolar na vertical). Legendas remapeadas (03 = dimensionamento + configuração, 04 = kits, 05 = resultado). O loader das páginas de projeto passou a liberar o scroll via documento (para o sticky da galeria funcionar).
+- 233: a fileira horizontal do protótipo virou um slider com bullets no mesmo estilo dos bullets das frases de Processos (quadradinhos 14px, ativo preenchido); navegação por clique + swipe no mobile. Sem auto-rotação.
+- 234: seção do protótipo renomeada para "Prototipação", bullets centralizados, legenda centralizada sob a imagem e imagens do slider maiores (68vh).
+- 235: unificada a seção de Prototipação (um título só), sem a imagem "Mapa de conexões"; o texto de abertura do slider ficou em largura total e o slider vem logo abaixo.
+- 236: slider do protótipo ganhou arraste no desktop (cursor mãozinha grab/grabbing), setas circulares nas laterais e swipe no touch; os wrappers .fotoprojetos passaram a ter fundo #F5F5F5 (imagens menores que a largura total ficam como os slides da referência).
+- 237: Cenário e Objetivo viraram subtítulos acima do texto, no mesmo estilo do rótulo "Tags do projeto" (11px, caixa alta, cinza, espaçado).
+- 238: todos os títulos das páginas de projeto ganharam a setinha fina preta (↗) antes do texto, sem animação, no mesmo desenho das setas do index.
+- 239: setinha dos títulos de projeto virou uma seta para a direita (→), 18px.
+- 240: espaço acima dos títulos das páginas de projeto dobrou (30 → 60 no desktop; 100 → 200 no mobile).
+- 241: varredura nas páginas de projeto: os textos que ficavam abaixo das imagens foram movidos para cima delas (21 seções em BV Ecossistema, Escola Aqui, Plataforma, Select e Super). As legendas do slider seguem abaixo das imagens, como legenda.
+- 242: seta dos títulos de projeto agora fica dentro de um quadradinho (28px, borda preta, raio 8, fundo branco), no mesmo desenho dos ícones dos títulos do index.
+- 243: fundo #F5F5F5 dos conteúdos de imagem agora é só no projeto Ecossistema Solar BV (classe .proj-ecossistema); demais projetos voltaram ao branco.
+- 244: card do Site BV Open também ficou "Em breve" (sem link, cursor vermelho).

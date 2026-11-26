@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
-<body>
+<body class="proj-page">
 
     <script>
         function trocarSVGMenu() {
@@ -52,7 +52,7 @@
     <!-- Header -->
     <header>
         <section id="Herosection">
-            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/super/img_bg_super.jpg)">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/thumb_super_cia.jpg)">
                 <h1 class="hero-phrase">Revista Super Interessante para tablet</h1>
                 <div>[ Role a página para ver mais ]</div>
                 <div class="seta-animada">
@@ -155,11 +155,7 @@
             <div class="container-titulo">
                 <h2>A edição inteira</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/super/img_super_01.jpg"
-                    alt="Dois tablets com a capa da Super Interessante sobre criatividade e a página do guia prático." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     A capa e o guia prático sobre criatividade abriam a edição. A partir dali, cada seção tinha
@@ -171,20 +167,16 @@
                 </p>
             </div>
 
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/super/img_super_01.jpg"
+                    alt="Dois tablets com a capa da Super Interessante sobre criatividade e a página do guia prático." />
+            </div>
+
             <div class="container-titulo">
                 <h2>Narrativa e ritmo</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/super/img_super_02.jpg"
-                    alt="Dois tablets com páginas da edição: um artigo de texto corrido e a abertura 'cultura inútil é útil'." />
-            </div>
-            <br />
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/super/img_super_03.jpg"
-                    alt="Dois tablets com a reportagem sobre sequestros de avião: abertura ilustrada e página de texto com destaque." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     As reportagens longas ganharam aberturas ilustradas, pull quotes e páginas que quebravam o
@@ -196,20 +188,22 @@
                 </p>
             </div>
 
-            <div class="container-titulo">
-                <h2>Dados que se exploram</h2>
-            </div>
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/super/img_super_04.jpg"
-                    alt="Dois tablets com a reportagem 'peruca S/A' e o infográfico sobre cabelo." />
+                    src="assets/projetos/super/img_super_02.jpg"
+                    alt="Dois tablets com páginas da edição: um artigo de texto corrido e a abertura 'cultura inútil é útil'." />
             </div>
             <br />
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/super/img_super_05.jpg"
-                    alt="Dois tablets com infográficos: o gráfico circular da palestra TED e o 'Banco de dados' sobre ONGs." />
+                    src="assets/projetos/super/img_super_03.jpg"
+                    alt="Dois tablets com a reportagem sobre sequestros de avião: abertura ilustrada e página de texto com destaque." />
             </div>
+
+            <div class="container-titulo">
+                <h2>Dados que se exploram</h2>
+            </div>
+
             <div class="container-full proj-step">
                 <p>
                     Os infográficos foram o coração da edição. Mapas interativos, gráficos animados e
@@ -221,14 +215,22 @@
                 </p>
             </div>
 
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/super/img_super_04.jpg"
+                    alt="Dois tablets com a reportagem 'peruca S/A' e o infográfico sobre cabelo." />
+            </div>
+            <br />
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/super/img_super_05.jpg"
+                    alt="Dois tablets com infográficos: o gráfico circular da palestra TED e o 'Banco de dados' sobre ONGs." />
+            </div>
+
             <div class="container-titulo">
                 <h2>Acabamento e interação</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/super/img_super_06.jpg"
-                    alt="Dois tablets com páginas da seção de cultura, com imagem e texto." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     A edição foi montada no Adobe Publishing Suite, que permitiu criar layouts responsivos,
@@ -239,6 +241,12 @@
                     de cada interação, tudo ajustado página a página até a publicação. Vídeo, áudio, animação e
                     paralaxe entravam onde ajudavam a contar a história — nunca como enfeite.
                 </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/super/img_super_06.jpg"
+                    alt="Dois tablets com páginas da seção de cultura, com imagem e texto." />
             </div>
         </section>
 
@@ -347,7 +355,7 @@
                     clearInterval(intervalId);
                     var containerLoading = document.querySelector('.container-loading');
                     containerLoading.style.display = 'none'; // Oculta a div de carregamento
-                    document.body.style.overflow = 'auto'; // Ativa a rolagem da página
+                    document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
                     document.dispatchEvent(new Event('app:ready'));
                 } else {
                     progress += 1;
@@ -388,6 +396,7 @@
         setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
     </script><!-- Scroll Reveal -->
 
+    <script src="hero-blur.js"></script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body>

@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
-<body>
+<body class="proj-page">
 
     <script>
         function trocarSVGMenu() {
@@ -51,7 +51,7 @@
     <!-- Cabeçalho -->
     <header>
         <section id="Herosection">
-            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/plataforma/img_bg_plataforma.jpg)">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/thumb_plataforma.jpg)">
                 <h1 class="hero-phrase">Plataforma mag para Tablet</h1>
                 <div>[ Role a página para ver mais ]</div>
                 <div class="seta-animada">
@@ -155,17 +155,7 @@
             <div class="container-titulo">
                 <h2>Do zero, para a tela</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/plataforma/img_plataforma_03.jpg"
-                    alt="Tablet exibindo a capa da Plataforma, com fotografia em preto e branco e a marca da revista." />
-            </div>
-            <br />
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/plataforma/img_plataforma_01.jpg"
-                    alt="Cartaz de lançamento da Plataforma: 'Arte brasileira no mundo', publicação em inglês, lançamento em maio de 2014." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     A capa em preto e branco, com a obra ocupando a página inteira e a marca grande por cima,
@@ -178,20 +168,22 @@
                 </p>
             </div>
 
-            <div class="container-titulo">
-                <h2>Um projeto gráfico interativo</h2>
-            </div>
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/plataforma/img_plataforma_02.jpg"
-                    alt="Páginas da Plataforma em camadas: capa tipográfica, spread amarelo com obra e página de texto." />
+                    src="assets/projetos/plataforma/img_plataforma_03.jpg"
+                    alt="Tablet exibindo a capa da Plataforma, com fotografia em preto e branco e a marca da revista." />
             </div>
             <br />
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/plataforma/img_plataforma_04.jpg"
-                    alt="Páginas da Plataforma em camadas: capa vermelha, spread com obra e página da seção Critic Train." />
+                    src="assets/projetos/plataforma/img_plataforma_01.jpg"
+                    alt="Cartaz de lançamento da Plataforma: 'Arte brasileira no mundo', publicação em inglês, lançamento em maio de 2014." />
             </div>
+
+            <div class="container-titulo">
+                <h2>Um projeto gráfico interativo</h2>
+            </div>
+
             <div class="container-full proj-step">
                 <p>
                     O projeto gráfico partia de poucos elementos: tipografia grande, imagens em página inteira e
@@ -205,20 +197,22 @@
                 </p>
             </div>
 
-            <div class="container-titulo">
-                <h2>Conteúdo que se navega</h2>
-            </div>
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/plataforma/img_plataforma_05.jpg"
-                    alt="Três tablets com páginas da Plataforma: vídeo de entrevista, capa CONCRETE e índice de artistas brasileiros." />
+                    src="assets/projetos/plataforma/img_plataforma_02.jpg"
+                    alt="Páginas da Plataforma em camadas: capa tipográfica, spread amarelo com obra e página de texto." />
             </div>
             <br />
             <div class="fotoprojetos">
                 <img
-                    src="assets/projetos/plataforma/img_plataforma_06.gif"
-                    alt="Animação de uma página de projeto curatorial da Plataforma, com o índice lateral e a obra em tela." />
+                    src="assets/projetos/plataforma/img_plataforma_04.jpg"
+                    alt="Páginas da Plataforma em camadas: capa vermelha, spread com obra e página da seção Critic Train." />
             </div>
+
+            <div class="container-titulo">
+                <h2>Conteúdo que se navega</h2>
+            </div>
+
             <div class="container-full proj-step">
                 <p>
                     A revista tinha vídeos, entrevistas, índices de artistas e galerias navegáveis. Em vez de
@@ -230,6 +224,18 @@
                     um quebra-cabeça. A navegação — o índice lateral, as setas, os retornos — precisava ser simples
                     o suficiente para o leitor se perder na arte, não na interface.
                 </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/plataforma/img_plataforma_05.jpg"
+                    alt="Três tablets com páginas da Plataforma: vídeo de entrevista, capa CONCRETE e índice de artistas brasileiros." />
+            </div>
+            <br />
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/plataforma/img_plataforma_06.gif"
+                    alt="Animação de uma página de projeto curatorial da Plataforma, com o índice lateral e a obra em tela." />
             </div>
         </section>
 
@@ -369,7 +375,7 @@
                     clearInterval(intervalId);
                     var containerLoading = document.querySelector('.container-loading');
                     containerLoading.style.display = 'none'; // Oculta a div de carregamento
-                    document.body.style.overflow = 'auto'; // Ativa a rolagem da página
+                    document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
                     document.dispatchEvent(new Event('app:ready'));
                 } else {
                     progress += 1;
@@ -447,6 +453,7 @@
         setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
     </script><!-- Scroll Reveal -->
 
+    <script src="hero-blur.js"></script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body></html>

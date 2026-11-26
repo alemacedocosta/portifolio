@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
-<body>
+<body class="proj-page">
 
     <script>
         function trocarSVGMenu() {
@@ -51,7 +51,7 @@
     <!-- Cabeçalho -->
     <header>
         <section id="Herosection">
-            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/select/img_bg_select.jpg)">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/thumb_tablet_select.jpg)">
                 <h1 class="hero-phrase">Select mag para Tablet</h1>
                 <div>[ Role a página para ver mais ]</div>
                 <div class="seta-animada">
@@ -179,11 +179,7 @@
             <div class="container-titulo">
                 <h2>Um acervo de formatos</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/select/img_select_01.jpg"
-                    alt="Doze tablets com capas e páginas da Select: moda, arte, reportagens, infográficos e quadrinhos." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     Uma edição da Select misturava capas, reportagens longas, moda, arte, fotografia e quadrinhos.
@@ -197,14 +193,16 @@
                 </p>
             </div>
 
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/select/img_select_01.jpg"
+                    alt="Doze tablets com capas e páginas da Select: moda, arte, reportagens, infográficos e quadrinhos." />
+            </div>
+
             <div class="container-titulo">
                 <h2>Recompor, não reduzir</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/select/img_select_02.jpg"
-                    alt="Páginas de dados da Select em tablets: infográfico comparando Pequim e São Paulo e ensaio fotográfico com galeria de imagens." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     Reduzir a página impressa não funcionava: os textos ficavam longos demais, os infográficos
@@ -224,20 +222,16 @@
                 </ul>
             </div>
 
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/select/img_select_02.jpg"
+                    alt="Páginas de dados da Select em tablets: infográfico comparando Pequim e São Paulo e ensaio fotográfico com galeria de imagens." />
+            </div>
+
             <div class="container-titulo">
                 <h2>Interação com propósito</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/select/animacao01.gif"
-                    alt="Animação de um infográfico interativo da Select, com botão + para explorar os dados." />
-            </div>
-            <br />
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/select/animacao02.gif"
-                    alt="Animação de um ensaio fotográfico em tela cheia, com o texto sobreposto à imagem." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     Gráficos e infográficos estáticos ganharam camadas: o leitor podia tocar para revelar dados,
@@ -250,14 +244,22 @@
                 </p>
             </div>
 
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/select/animacao01.gif"
+                    alt="Animação de um infográfico interativo da Select, com botão + para explorar os dados." />
+            </div>
+            <br />
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/select/animacao02.gif"
+                    alt="Animação de um ensaio fotográfico em tela cheia, com o texto sobreposto à imagem." />
+            </div>
+
             <div class="container-titulo">
                 <h2>Consistência entre edições</h2>
             </div>
-            <div class="fotoprojetos">
-                <img
-                    src="assets/projetos/select/img_select_03.jpg"
-                    alt="Tablet na horizontal exibindo uma capa da Select com tipografia grande e máscara colorida." />
-            </div>
+
             <div class="container-full proj-step">
                 <p>
                     A revista saía periodicamente, com conteúdo novo e uma equipe editorial própria. Para manter
@@ -268,6 +270,12 @@
                     O resultado é uma experiência que muda de conteúdo a cada edição, mas mantém a mesma lógica de
                     leitura — e que o leitor reconhece como Select em qualquer tablet.
                 </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img
+                    src="assets/projetos/select/img_select_03.jpg"
+                    alt="Tablet na horizontal exibindo uma capa da Select com tipografia grande e máscara colorida." />
             </div>
         </section>
 
@@ -383,7 +391,7 @@
                     clearInterval(intervalId);
                     var containerLoading = document.querySelector('.container-loading');
                     containerLoading.style.display = 'none'; // Hide the loading div
-                    document.body.style.overflow = 'auto'; // Enable page scrolling
+                    document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
                     document.dispatchEvent(new Event('app:ready'));
                 } else {
                     progress += 1;
@@ -424,6 +432,7 @@
         setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
     </script><!-- Scroll Reveal -->
 
+    <script src="hero-blur.js"></script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body>

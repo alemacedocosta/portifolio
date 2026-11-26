@@ -345,6 +345,7 @@ a {
 }
 
 .div-heroprojetos {
+    overflow: hidden;
     height: 100vh;
     min-height: 500px;
     width: 100%;
@@ -886,8 +887,9 @@ section:nth-of-type(2) {
     justify-content: space-between;
     text-align: left;
     background-color: #fff;
-    border: 1.5px solid #000;
+    border: 0;
     border-radius: 22px;
+    box-shadow: var(--sombra-rosa);
     transition: background-color 0.4s ease;
     gap: 15px;
     padding: 40px;
@@ -2148,6 +2150,7 @@ footer {
     background-color: #fff;
     border: 0;
     border-radius: 22px;
+    box-shadow: var(--sombra-rosa);
     transition: background-color 0.4s ease;
 }
 .skills-grid .level-counter:hover {
@@ -3769,4 +3772,283 @@ footer {
     .how__label, .how__chev, .acc-label, .icon { transition: none; }
     .how__tab:hover .how__label, .accordion:hover .acc-label { transform: none; }
     .how__tab:hover .how__chev, .accordion:hover .icon { --tx: 0px; }
+}
+
+/* ===== Páginas de projeto: tags em uma coluna de 1/6, à direita do período/empresa ===== */
+.timeline > .container-full {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 28px;
+}
+.timeline > .container-full > .div-left {
+    grid-column: 1 / span 5;
+}
+.timeline > .container-full > .div-right {
+    grid-column: 6 / span 1;
+    min-width: 0;
+}
+@media (max-width: 800px) {
+    .timeline > .container-full {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 24px;
+    }
+    .timeline > .container-full > .div-left,
+    .timeline > .container-full > .div-right {
+        grid-column: auto;
+    }
+}
+
+/* ===== Hero: botão secundário (Baixar CV) ao lado do CTA ===== */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+    margin-bottom: 10px;
+}
+.hero-actions .hero-cta {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.hero-cta--ghost {
+    background-color: #fff;
+    color: #111;
+    box-shadow: 0 16px 32px -16px rgba(255, 120, 145, 0.55);
+}
+.hero-cta--ghost:hover {
+    background-color: var(--cor-apoio03);
+    color: #111;
+}
+.hero-cta__ico {
+    width: 14px;
+    height: auto;
+    display: block;
+}
+
+/* ===== Textura de pontos do header no hero dos projetos ===== */
+.div-heroprojetos::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(255, 240, 240, 0.62) 0%,
+        rgba(255, 240, 240, 0.52) 60%,
+        rgba(255, 240, 240, 0.44) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+.div-heroprojetos::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/img_bgmenu.png");
+    background-repeat: repeat;
+    background-size: 6px 6px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+}
+.div-heroprojetos > .hero-phrase {
+    z-index: 2;
+}
+.div-heroprojetos > div:not(.seta-animada) {
+    position: relative;
+    z-index: 2;
+}
+.div-heroprojetos > .seta-animada {
+    z-index: 2;
+}
+
+/* Camada da imagem do hero (recebe o blur conforme o scroll) */
+.hero-blur {
+    position: absolute;
+    inset: -30px 0;
+    background: inherit;
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+    filter: blur(var(--hero-blur, 0px));
+    pointer-events: none;
+    z-index: 0;
+    will-change: filter, transform;
+}
+
+/* ===== Páginas de projeto: respiro da lista no intro e antes do rodapé ===== */
+.timeline .div-left > .container-full {
+    margin-top: 28px;
+}
+main > #Aboutsection:last-child {
+    padding-bottom: 96px;
+}
+
+/* ===== Blur abaixo do header: o que passa sob a navbar fica embaçado ===== */
+
+
+/* frosted header: a navbar é translúcida (só os pontos), então o conteúdo que passa sob ela é desfocado */
+#navbar {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+/* Card "Em breve": cursor vermelho com texto branco no hover */
+.proj-cursor.is-soon span {
+    background: var(--cor-apoio01);
+    border-color: var(--cor-apoio01);
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+}
+
+/* ===== Telas do protótipo: slider com bullets ===== */
+.proto {
+    margin: 60px 0 20px;
+}
+.proto__head {
+    max-width: 780px;
+    margin-bottom: 36px;
+}
+.proto__head h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cor-apoio01);
+    line-height: 1.15;
+    margin: 0 0 12px;
+}
+.proto__head p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+.proto__slider {
+    position: relative;
+}
+.proto__viewport {
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.proto.is-dragging .proto__viewport,
+.proto__slider.is-dragging .proto__viewport {
+    cursor: grabbing;
+}
+.proto__track {
+    display: flex;
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+.proto__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.proto__slide img {
+    height: 68vh;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    align-self: center;
+    border-radius: 6px;
+}
+.proto__dots {
+    justify-content: center;
+}
+.proto__arrow {
+    position: absolute;
+    top: 34vh;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid #111;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.25s ease;
+}
+.proto__arrow:hover { background: var(--cor-apoio03); }
+.proto__arrow svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #111;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.proto__arrow--prev { left: 0; }
+.proto__arrow--next { right: 0; }
+.proto__slide img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+@media (max-width: 800px) {
+    .proto__arrow { display: none; }
+}
+.proto__slide figcaption {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #333;
+    max-width: 64ch;
+    align-self: center;
+}
+@media (max-width: 800px) {
+    .proto__slide img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+/* Subtítulos Cenário/Objetivo no mesmo estilo do rótulo "Tags do projeto" */
+.container-full.proj-step h4 {
+    margin: 24px 0 6px;
+    text-align: left;
+    font-family: var(--font-padrao);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #777;
+}
+.container-full.proj-step h4:first-child {
+    margin-top: 0;
+}
+
+/* ===== Páginas de projeto: setinha fina preta antes dos títulos ===== */
+.proj-page .container-titulo > h2::before {
+    content: "";
+    flex: none;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") no-repeat center / 16px 16px;
+}
+
+/* Páginas de projeto: o dobro do espaço acima dos títulos */
+.proj-page .container-titulo {
+    margin-top: 60px;
+}
+@media (max-width: 800px) {
+    .proj-page .container-titulo {
+        margin-top: 200px;
+    }
+}
+
+/* Fundo cinza dos conteúdos de imagem só no projeto Ecossistema Solar BV */
+.proj-ecossistema .fotoprojetos {
+    background-color: #f5f5f5;
 }

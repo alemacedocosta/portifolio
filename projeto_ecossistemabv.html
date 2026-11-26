@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Ecossistema Solar BV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+
+<body class="proj-page proj-ecossistema">
+
+    <script>
+        function trocarSVGMenu() {
+            var screenWidth = window.innerWidth;
+            if (screenWidth < 1024) {
+                var svg = document.getElementById("hamburguer");
+                if (svg.innerHTML.includes("ico_hamburguer_branco.svg")) {
+                    svg.innerHTML = '<img src="assets/ico_close_branco.svg" alt="Close menu">';
+                } else {
+                    svg.innerHTML = '<img src="assets/ico_hamburguer_branco.svg" alt="Show menu">';
+                }
+            }
+        }
+
+    </script><!-- When the user click in the button hamburguer, change the SVG button -->
+
+    <!-- Loading -->
+    <div class="container-loading">
+        <div id="logo-loading">
+            <img src="assets/img_logo_ar_black_v2.png" alt="Logo">
+        </div>
+        <div id="progress-loading"></div>
+    </div>
+
+    <!-- Menu -->
+    <nav>
+        <div id="navbar">
+            <div id="my-logo"></div>
+            <nav class="menu">
+                <ul>
+                    <li onclick="trocarSVGMenu()"><a href="index.html" target="_self">Voltar</a></li>
+                </ul>
+                <div class="menu-icon">
+                    <button class="icone" id="hamburguer" onclick="trocarSVGMenu()"><img src="assets/ico_hamburguer_branco.svg" alt="Menu"></button>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <section id="Herosection">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/bvecossistema/img_thumb_ecossistemabv.jpg)">
+                <h1 class="hero-phrase">Ecossistema Solar BV</h1>
+                <div>[ Role a página para ver mais ]</div>
+                <div class="seta-animada">
+                    <a href="#Aboutsection"><img src="assets/anima-seta.svg"></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <!-- Intro -->
+        <section id="Introsection">
+            <div id="Intro">
+                <div class="timeline">
+                    <div class="container-full">
+                        <div class="div-left">
+                            <h2>2025/2026</h2>
+                            <h4>Banco BV</h4>
+                            <p>
+                                Meu trabalho neste projeto teve como foco coordenar e orquestrar todas as
+                                iniciativas necessárias para o desenvolvimento do produto Ecossistema Solar BV.
+                                Um produto novo para um parceiro novo: o integrador solar que chegou ao BV
+                                junto com a aquisição da Meu Financiamento Solar e que não se encaixava no
+                                perfil dos correspondentes bancários que o banco já atendia.
+                            </p>
+                            <div class="container-full">
+                                <ul class="sectors__list">
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Realização de entrevistas</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Pesquisas quali e quanti</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Construção de personas</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Construção de jornada</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Arquitetura da informação</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Prototipação</li>
+                                    <li><svg class="stat__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>Testes de usabilidade</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="div-right">
+                            <h4>Tags do projeto:</h4>
+                            <div class="div-tags">
+                                <div class="tags"><span>Discovery</span></div>
+                                <div class="tags"><span>UX/UI</span></div>
+                                <div class="tags"><span>Product design</span></div>
+                                <div class="tags"><span>Design Thinking</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corpo do projeto -->
+        <section id="Aboutsection">
+            <div class="container-titulo">
+                <h2>Processo de discovery e design de experiência</h2>
+            </div>
+            <div class="container-full proj-step">
+                <h4>Cenário</h4>
+                <p>
+                    O Banco BV oferecia apenas uma experiência B2B de simulação para seus parceiros
+                    correspondentes bancários (COBANs). Ao adquirir a Meu Financiamento Solar, o banco
+                    herdou uma nova camada de parceiros — os integradores solares — que não se encaixavam
+                    no perfil dos parceiros existentes. Era preciso repensar o formato da plataforma
+                    oferecida a esses novos parceiros: explorar possibilidades, mapear oportunidades de
+                    mercado e entender a fundo quem era esse novo parceiro, suas necessidades e dores.
+                </p>
+                <h4>Objetivo</h4>
+                <p>
+                    Construir uma plataforma para os novos parceiros que migraram da ferramenta Meu
+                    Financiamento Solar para o BV, levando em conta suas necessidades, dores e anseios.
+                </p>
+            </div>
+
+            <div class="container-titulo">
+                <h2>Como o trabalho foi organizado</h2>
+            </div>
+            <ol class="fronts fronts--4">
+                <li class="front">
+                    <span class="front__num">01</span>
+                    <h3 class="front__title">Descoberta</h3>
+                    <p class="front__text">Pesquisa quali e quanti, entrevistas de profundidade e observação com parceiros de diferentes portes e regiões.</p>
+                </li>
+                <li class="front">
+                    <span class="front__num">02</span>
+                    <h3 class="front__title">Definição</h3>
+                    <p class="front__text">Síntese da pesquisa, personas, jornada, arquitetura e árvore de oportunidades para priorizar o produto.</p>
+                </li>
+                <li class="front">
+                    <span class="front__num">03</span>
+                    <h3 class="front__title">Validação</h3>
+                    <p class="front__text">Protótipos navegáveis, testes de usabilidade e rodadas de validação com o time e com parceiros.</p>
+                </li>
+                <li class="front">
+                    <span class="front__num">04</span>
+                    <h3 class="front__title">Entrega</h3>
+                    <p class="front__text">Product design, especificação e acompanhamento do desenvolvimento até o produto no ar.</p>
+                </li>
+            </ol>
+
+            <div class="container-titulo">
+                <h2>Desenho do modelo de negócio</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    Com o time de gerentes executivos e PM, desenhamos o modelo de negócio do produto usando
+                    Business Canvas Model e Golden Circle. O exercício alinhou o que o parceiro precisa, como o
+                    BV entrega e por que isso importa — antes de qualquer tela.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_businesscanvas.png" alt="Business Canvas Model, Value Proposition Canvas e Golden Circle preenchidos com o time do BV." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Entrevistas quali e pesquisa quanti</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    Conduzimos entrevistas em profundidade e uma pesquisa quantitativa com integradores solares
+                    de diferentes portes e regiões. A síntese virou um mapa de afinidades: dores, ganhos,
+                    objeções e o vocabulário do parceiro.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_pesquisaquali.png" alt="Mapa de afinidades da pesquisa com integradores solares, organizado por dores, ganhos e objeções." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Mapeamento dos perfis</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    A partir das entrevistas, organizamos os perfis de parceiro por estrutura organizacional,
+                    serviços oferecidos, modelo de trabalho e porte — a base para as personas e para as decisões
+                    de produto.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_perfisanalise.png" alt="Árvore de perfis de parceiros organizada por estrutura, serviços oferecidos, modelo de trabalho e porte." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Desenho de jornada</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    Mapeamos a jornada do parceiro Solar BV do primeiro contato à simulação e ao pós-venda, com
+                    emoções, canais e pontos de atrito em cada etapa.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_jornada.png" alt="Jornada do parceiro Solar BV com etapas, canais, emoções e pontos de atrito." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Rodada de árvore de oportunidades</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    Com o time, transformamos os achados em uma árvore de oportunidades — do objetivo de negócio
+                    às soluções — para priorizar o que entraria na primeira versão do produto.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_arvore.png" alt="Árvore de oportunidades do produto, do objetivo de negócio às soluções." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Estudo de fluxo</h2>
+            </div>
+
+            <div class="container-full proj-step">
+                <p>
+                    Desenhamos o fluxo completo do canal, do acesso e cadastro do parceiro à criação do
+                    projeto, simulação e envio da proposta, prevendo estados de erro, permissões e caminhos
+                    alternativos.
+                </p>
+            </div>
+
+            <div class="fotoprojetos">
+                <img src="assets/projetos/bvecossistema/img_estudofluxo.png" alt="Fluxo completo do canal Solar BV, do acesso do parceiro à simulação e ao envio da proposta." />
+            </div>
+
+            <div class="container-titulo">
+                <h2>Prototipação</h2>
+            </div>
+            <div class="container-full proj-step">
+                <p>As telas abaixo são do protótipo navegável do canal digital Solar BV — o que o integrador precisa em um só lugar: projetos dimensionados, simulações, configuração do telhado, seleção de kits e acompanhamento das propostas.</p>
+            </div>
+
+            <section class="proto" aria-label="Telas do protótipo navegável">
+                <div class="proto__slider">
+                    <div class="proto__viewport">
+                        <div class="proto__track">
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_00.jpg" alt="Notebook com a tela de acesso do BV Solar empresas." />
+                                <figcaption>Acesso do parceiro com a identidade do BV Solar empresas.</figcaption>
+                            </figure>
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_01.jpg" alt="Celular e notebook com a lista de projetos dimensionados do parceiro." />
+                                <figcaption>Projetos dimensionados com status, potência e valor, e ações rápidas por projeto.</figcaption>
+                            </figure>
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_02.jpg" alt="Celular e notebook com a lista de simulações enviadas." />
+                                <figcaption>Simulações enviadas com filtros, status e detalhamento de cada proposta.</figcaption>
+                            </figure>
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_03.jpg" alt="Celular e notebook com o dimensionamento do projeto e a configuração sobre o mapa do telhado." />
+                                <figcaption>Dimensionamento a partir do consumo do cliente e das características do telhado. Configuração do projeto com mapa do telhado, potência, irradiação e dados da unidade.</figcaption>
+                            </figure>
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_04.jpg" alt="Celular e notebook com a seleção de kits e equipamentos." />
+                                <figcaption>Seleção de kits e equipamentos, com comparativo de distribuidores e preços.</figcaption>
+                            </figure>
+                            <figure class="proto__slide">
+                                <img src="assets/projetos/bvecossistema/img_ecossistema_05.jpg" alt="Celular e notebook com o resultado da simulação de financiamento solar." />
+                                <figcaption>Resultado da simulação com economia, prazo, parcelas e detalhamento do financiamento — a ponta do fluxo que o parceiro leva para a conversa com o cliente.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <button type="button" class="proto__arrow proto__arrow--prev" aria-label="Tela anterior">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+                    </button>
+                    <button type="button" class="proto__arrow proto__arrow--next" aria-label="Próxima tela">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                    <div class="proto__dots how__dots" role="tablist" aria-label="Telas do protótipo">
+                        <button type="button" class="is-active" aria-label="Tela 1" aria-pressed="true"></button>
+                        <button type="button" aria-label="Tela 2" aria-pressed="false"></button>
+                        <button type="button" aria-label="Tela 3" aria-pressed="false"></button>
+                        <button type="button" aria-label="Tela 4" aria-pressed="false"></button>
+                        <button type="button" aria-label="Tela 5" aria-pressed="false"></button>
+                        <button type="button" aria-label="Tela 6" aria-pressed="false"></button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container-titulo">
+                <h2>Aprendizados</h2>
+                <div class="container-full proj-step">
+                    <p>
+                        Entender um parceiro que não era o usuário original do banco foi o maior desafio — e o
+                        que mais mudou o produto. A árvore de oportunidades e o canvas ajudaram a manter
+                        negócio, produto e tecnologia olhando para o mesmo problema.
+                    </p>
+                    <p>
+                        Aprendi que, em um ecossistema, a experiência do parceiro começa muito antes da tela: no
+                        modelo de negócio, na jornada comercial e na relação com o distribuidor.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão Ir ao topo -->
+    <button id="botao-topo"><img src="assets/ico_setaup_branco.svg" alt="Ir ao topo"></button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Criado e codificado por mim - Copyright 2022</p>
+    </footer>
+
+    <!-- Here start the scripts-->
+
+    <script>
+        const filterBtns = document.querySelectorAll('.btn');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const category = btn.dataset.filter;
+
+                // Remove a classe 'active' de todos os botões de filtro
+                filterBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Adiciona a classe 'active' ao botão clicado
+                btn.classList.add('active');
+
+                const items = document.querySelectorAll('.portfolio-item');
+
+                items.forEach(function(item) {
+                    const isCategory = category === 'todos' || item.classList.contains(category);
+
+                    item.classList.toggle('hide', !isCategory);
+                });
+            });
+        });
+
+    </script><!-- Js code dos botões de categoria de jobs-->
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            // Verificar se a largura da janela do navegador é maior que 1024px
+            if (window.innerWidth > 1024) {
+                // Ocultar ou exibir a barra de navegação com base no scroll
+                if (prevScrollpos > currentScrollPos) {
+                    document.getElementById("navbar").style.top = "0";
+                } else {
+                    document.getElementById("navbar").style.top = "-100px";
+                }
+            }
+
+            // Mostrar ou ocultar o botão de volta ao topo com base no scroll
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("botao-topo").style.display = "block";
+            } else {
+                document.getElementById("botao-topo").style.display = "none";
+            }
+
+            prevScrollpos = currentScrollPos;
+        };
+
+        // Levar o usuário de volta ao topo quando o botão for clicado
+        document.getElementById("botao-topo").addEventListener("click", function() {
+            document.body.scrollTop = 0; // Para Safari
+            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+        });
+
+    </script><!-- Mostrar botão UP quando o usuário rolar para baixo -->
+    <!-- When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar -->
+
+
+    <script>
+        window.addEventListener('load', function() {
+            var progressBar = document.getElementById('progress-loading');
+            var maxWidth = document.body.clientWidth;
+            var progress = 0;
+            var intervalId = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(intervalId);
+                    var containerLoading = document.querySelector('.container-loading');
+                    containerLoading.style.display = 'none'; // Oculta a div de carregamento
+                    document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
+                    document.dispatchEvent(new Event('app:ready'));
+                } else {
+                    progress += 1;
+                    var width = (progress / 100) * maxWidth;
+                    progressBar.style.width = width + 'px';
+                }
+            }, 10);
+        });
+
+    </script><!-- Loading javasacrpt code -->
+    
+    <script>
+                function initReveal() {
+            if (window.__revealInit) return;
+            window.__revealInit = true;
+            if (typeof ScrollReveal === "undefined") {
+                // se a lib não carregar, garante o texto visível
+                document.querySelectorAll(".hero-phrase, .container-full").forEach(function (el) {
+                    el.style.visibility = "visible";
+                });
+                return;
+            }
+            // reset: false -> o texto é revelado uma vez e não some ao rolar de volta
+            window.sr = ScrollReveal({ reset: false });
+            sr.reveal('.hero-phrase', {
+                delay: 0,
+                rotate: { x: 100, y: 10, z: 0 },
+                duration: 1000
+            });
+            sr.reveal('.container-full', {
+                delay: 0,
+                rotate: { x: 0, y: 10, z: 0 },
+                duration: 500
+            });
+        }
+        // o hero só anima depois que o loader sai (senão a animação acontece escondida)
+        document.addEventListener("app:ready", initReveal, { once: true });
+        setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
+    </script><!-- Scroll Reveal -->
+
+    <script>
+        // Telas do protótipo: slider com bullets, setas e arraste
+        (function () {
+            var slider = document.querySelector(".proto__slider");
+            if (!slider) return;
+            var viewport = slider.querySelector(".proto__viewport");
+            var track = slider.querySelector(".proto__track");
+            var slides = Array.prototype.slice.call(track.children);
+            var dots = Array.prototype.slice.call(slider.querySelectorAll(".proto__dots button"));
+            var prev = slider.querySelector(".proto__arrow--prev");
+            var next = slider.querySelector(".proto__arrow--next");
+            var i = 0;
+
+            function go(n) {
+                i = (n + slides.length) % slides.length;
+                track.style.transition = "";
+                track.style.transform = "translate3d(-" + (i * 100) + "%,0,0)";
+                dots.forEach(function (d, k) {
+                    d.classList.toggle("is-active", k === i);
+                    d.setAttribute("aria-pressed", k === i ? "true" : "false");
+                });
+            }
+            dots.forEach(function (d, k) {
+                d.addEventListener("click", function () { go(k); });
+            });
+            if (prev) prev.addEventListener("click", function () { go(i - 1); });
+            if (next) next.addEventListener("click", function () { go(i + 1); });
+
+            // arraste (mouse e touch)
+            var dragging = false, startX = 0, dx = 0, startIndex = 0;
+            viewport.addEventListener("pointerdown", function (e) {
+                if (e.pointerType === "mouse" && e.button !== 0) return;
+                dragging = true;
+                startX = e.clientX;
+                dx = 0;
+                startIndex = i;
+                track.style.transition = "none";
+                slider.classList.add("is-dragging");
+                try { viewport.setPointerCapture(e.pointerId); } catch (err) {}
+            });
+            viewport.addEventListener("pointermove", function (e) {
+                if (!dragging) return;
+                dx = e.clientX - startX;
+                track.style.transform = "translate3d(calc(" + (-startIndex * 100) + "% + " + dx + "px),0,0)";
+            });
+            function endDrag() {
+                if (!dragging) return;
+                dragging = false;
+                slider.classList.remove("is-dragging");
+                if (Math.abs(dx) > 60) go(i + (dx < 0 ? 1 : -1));
+                else go(i);
+            }
+            viewport.addEventListener("pointerup", endDrag);
+            viewport.addEventListener("pointercancel", endDrag);
+            viewport.addEventListener("lostpointercapture", endDrag);
+            go(0);
+        })();
+    </script>
+    <script src="hero-blur.js"></script>
+    <script src="menu.js"></script>
+    <script src="scroll-inertia.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
-<body>
+<body class="proj-page">
 
     <script>
         function trocarSVGMenu() {
@@ -51,7 +51,7 @@
     <!-- Header -->
     <header>
         <section id="Herosection">
-            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/projetos/cia/img_bg_cia.jpg)">
+            <div id="hero" class="div-heroprojetos" style="background-image: url(assets/thumb_site_cia.jpg)">
                 <h1 class="hero-phrase">Website Cia da Consulta</h1>
                 <div>[ Role a página para ver mais ]</div>
                 <div class="seta-animada">
@@ -212,7 +212,7 @@
                     clearInterval(intervalId);
                     var containerLoading = document.querySelector('.container-loading');
                     containerLoading.style.display = 'none'; // Oculta a div de carregamento
-                    document.body.style.overflow = 'auto'; // Ativa a rolagem da página
+                    document.body.style.overflow = 'visible'; // o documento rola (sticky das galerias funciona)
                     document.dispatchEvent(new Event('app:ready'));
                 } else {
                     progress += 1;
@@ -252,6 +252,7 @@
         setTimeout(function () { if (!window.sr) initReveal(); }, 3000);
     </script><!-- Scroll Reveal -->
 
+    <script src="hero-blur.js"></script>
     <script src="menu.js"></script>
     <script src="scroll-inertia.js"></script>
 </body>
