@@ -679,3 +679,5 @@
 - 242: seta dos títulos de projeto agora fica dentro de um quadradinho (28px, borda preta, raio 8, fundo branco), no mesmo desenho dos ícones dos títulos do index.
 - 243: fundo #F5F5F5 dos conteúdos de imagem agora é só no projeto Ecossistema Solar BV (classe .proj-ecossistema); demais projetos voltaram ao branco.
 - 244: card do Site BV Open também ficou "Em breve" (sem link, cursor vermelho).
+- 245: Google Tag Manager (GTM-NCTXBX76) instalado no head de todas as páginas públicas (menos o fonte do CV), com o noscript do body; usei o snippet oficial do container no lugar do snippet misto (gtag) enviado.
+- 246: GA4 (G-V5RLCHZQW0) instalado direto no head de todas as páginas públicas via gtag.js + config, junto do GTM. Se um dia criar a tag GA4 dentro do GTM, remover o gtag direto para não contar em dobro.
