@@ -2846,7 +2846,7 @@ footer {
 .front__num {
     font-family: "Doto", monospace;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 22px;
     line-height: 1;
     color: #ff0000;
 }
@@ -2908,7 +2908,7 @@ footer {
 
 @media (max-width: 800px) {
     .fronts { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-    .front__num { font-size: 40px; }
+    .front__num { font-size: 18px; }
 }
 @media (max-width: 600px) {
     .checklist { grid-template-columns: minmax(0, 1fr); }
