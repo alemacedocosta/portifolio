@@ -701,3 +701,4 @@
 - 264: campos do contato sem outline; no estado selecionado (focus) fundo cinza escuro (#555) com texto branco e sem sombra/efeito; a seta do select acompanha a cor do texto; botão "Enviar mensagem" com ícone de seta.
 - 265: os campos do contato ficaram sem a borda/outline também no estado default (border: 0), mantendo só o fundo cinza claro; hover sem borda e foco cinza escuro com texto branco.
 - 266: menu principal da navbar (desk) ganhou uma animação rápida de hover/leave: o fundo branco entra com wipe da esquerda (0.22s cubic-bezier) e a cor do texto transita em 0.2s; no rollout o wipe recolhe.
+- 267: auditoria do Analytics. O GTM-NCTXBX76 está em todas as páginas públicas e envia page_view para G-BD6T9D5LD0 (a propriedade do print), mas o contêiner também tem uma segunda configuração GA4 antiga (G-V5RLCHZQW0) disparando — precisa ser removida no GTM. Removido do HTML o gtag.js direto (G-V5RLCHZQW0), que era redundante.
