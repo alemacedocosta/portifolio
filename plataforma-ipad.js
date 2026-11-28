@@ -102,6 +102,30 @@
     if (prevBtn) prevBtn.addEventListener("click", function () { trocar(atual - 1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { trocar(atual + 1); });
 
+    // arraste: no desktop e no touch, troca de página
+    var stage = root.querySelector(".ipad-showcase__stage");
+    if (stage) {
+        var dragStart = null;
+        stage.addEventListener("pointerdown", function (e) {
+            if (e.pointerType === "mouse" && e.button !== 0) return;
+            if (e.target.closest("button")) return;
+            dragStart = e.clientX;
+            stage.classList.add("is-dragging");
+            try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+        });
+        stage.addEventListener("pointerup", function (e) {
+            if (dragStart === null) return;
+            var dx = e.clientX - dragStart;
+            dragStart = null;
+            stage.classList.remove("is-dragging");
+            if (Math.abs(dx) > 50) trocar(atual + (dx < 0 ? 1 : -1));
+        });
+        stage.addEventListener("pointercancel", function () {
+            dragStart = null;
+            stage.classList.remove("is-dragging");
+        });
+    }
+
     function aoCarregar() {
         img.style.opacity = 1;
         medir();

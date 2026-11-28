@@ -1621,10 +1621,9 @@ footer {
 }
 
 #Timelinesection .container-timeline {
-    /* cards em fluxo normal (sem empilhar); só a linha superior */
+    /* cards em fluxo normal (sem empilhar) */
     border: 0;
-    border-top: 1px solid #000;
-    border-radius: 0 0 24px 24px;
+    border-radius: 24px;
     position: static;
     margin-bottom: 0;
     background-color: #fff;
@@ -3896,6 +3895,9 @@ footer {
 }
 .div-heroprojetos > .hero-phrase {
     z-index: 2;
+    color: var(--cor-principal-escura, #951B1D);
+    color: #951B1D;
+    font-weight: 800;
 }
 .div-heroprojetos > div:not(.seta-animada) {
     position: relative;
@@ -4194,7 +4196,12 @@ main > #Aboutsection:last-child {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 560px;
+    max-width: none;
+    cursor: grab;
+    touch-action: pan-y;
+}
+.ipad-showcase__stage.is-dragging {
+    cursor: grabbing;
 }
 .ipad {
     position: relative;
@@ -4205,7 +4212,7 @@ main > #Aboutsection:last-child {
     padding: 16px;
     background: #fff;
     border-radius: 34px;
-    box-shadow: 0 40px 70px -40px rgba(255, 120, 145, 0.55), 0 0 0 1px #ececec;
+    box-shadow: 0 0 0 1px #ececec;
     animation: ipad-float 7s ease-in-out infinite;
 }
 .ipad::before {
@@ -4385,4 +4392,203 @@ main > #Aboutsection:last-child {
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
     }
+}
+
+/* ===== Páginas de projeto: frase e tags no hero ===== */
+.div-heroprojetos > .hero-lead {
+    width: 80%;
+    margin: 6px 0 20px;
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2.8vh, 28px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: #1b1b1b;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+.div-heroprojetos > .hero-tags {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+    position: relative;
+    z-index: 2;
+}
+.div-heroprojetos > .hero-tags span {
+    background: var(--cor-apoio03);
+    color: #111;
+    border-radius: 50px;
+    padding: 7px 14px;
+    font-family: var(--font-padrao);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* ===== Tarja de ficha colada abaixo do hero ===== */
+.proj-ficha {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+}
+.proj-ficha__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 24px 50px 26px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+}
+.proj-ficha__label {
+    display: block;
+    font-family: var(--font-padrao);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #777;
+}
+.proj-ficha__value {
+    display: block;
+    margin-top: 5px;
+    font-family: var(--font-padrao);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #111;
+}
+@media (max-width: 800px) {
+    .proj-ficha__inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 20px 20px 22px;
+    }
+    .div-heroprojetos > .hero-lead,
+    .div-heroprojetos > .hero-tags {
+        width: 80%;
+    }
+}
+
+/* Intro sem a coluna de tags: texto e lista ocupam a largura toda */
+.timeline > .container-full.no-tags {
+    grid-template-columns: minmax(0, 1fr);
+}
+.timeline > .container-full.no-tags > .div-left {
+    grid-column: 1 / -1;
+}
+
+/* ===== Páginas de projeto: kicker numerado das seções ===== */
+.proj-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+}
+.proj-kicker .num {
+    font-family: "Doto", ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    color: #777;
+}
+.proj-kicker .ln {
+    width: 40px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.18);
+}
+.proj-kicker .label {
+    font-family: var(--font-padrao);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+/* ===== Páginas de projeto: card "O que eu fiz" com a lista de atividades ===== */
+.intro-activities {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: var(--sombra-rosa);
+    padding: 28px 32px 30px;
+}
+.intro-activities__label {
+    display: block;
+    margin-bottom: 16px;
+    font-family: var(--font-padrao);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #777;
+}
+.intro-activities .sectors__list {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: 12px 30px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.intro-activities .sectors__list li {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+.intro-activities .sectors__list li .stat__arrow {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    margin: 4px 0 0;
+    align-self: flex-start;
+}
+@media (max-width: 800px) {
+    .intro-activities {
+        padding: 22px 20px 24px;
+    }
+    .intro-activities .sectors__list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ===== Trilho com dots acima dos cards de processo ===== */
+.fronts-rail {
+    position: relative;
+    height: 2px;
+    background: var(--cor-apoio03);
+    border-radius: 2px;
+}
+.fronts-rail i {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cor-apoio01);
+    transform: translate(-50%, -50%);
+}
+.fronts-rail i:nth-child(1) { left: calc(12.5% - 6px); }
+.fronts-rail i:nth-child(2) { left: calc(37.5% - 2px); }
+.fronts-rail i:nth-child(3) { left: calc(62.5% + 2px); }
+.fronts-rail i:nth-child(4) { left: calc(87.5% + 6px); }
+@media (max-width: 800px) {
+    .fronts-rail { display: none; }
+}
+
+/* ===== Grifo amarelo nos subtítulos dos projetos ===== */
+.proj-hl {
+    background: linear-gradient(transparent 54%, #ffff1f 54%, #ffff1f 94%, transparent 94%);
+    padding: 0 3px;
 }
